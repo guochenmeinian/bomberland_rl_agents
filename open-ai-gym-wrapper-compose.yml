@@ -16,11 +16,14 @@ services:
             file: base-compose.yml
             service: game-engine
         environment:
-            - TELEMETRY_ENABLED=0
-            - PORT=6969
-            - WORLD_SEED=1234
-            - PRNG_SEED=1234
+            ADMIN_ROLE_ENABLED: "1"
+            TRAINING_MODE_ENABLED: "1"  # 明确设置
+            TELEMETRY_ENABLED: "0"
+            PORT: "6969"
+            WORLD_SEED: "1234"
+            PRNG_SEED: "1234"
         networks:
             - coderone-open-ai-gym-wrapper
+
 networks:
     coderone-open-ai-gym-wrapper: null

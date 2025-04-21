@@ -1,2 +1,5 @@
 asyncio==3.4.3
 websockets==10.1
+torch
+websockets
+matplotlib
