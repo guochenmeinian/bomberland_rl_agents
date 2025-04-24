@@ -1,7 +1,3 @@
 # Overview
 
-`agent.py` - random agent
-
-`agent_fwd.py` - random agent that connects to forward model
-
-`dev_gym.py` - [open ai gym wrapper](https://gym.openai.com/)
+`dev_gym.py` - our implementation for the project based on the [open ai gym wrapper](https://gym.openai.com/)

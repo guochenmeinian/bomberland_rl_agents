@@ -1,166 +1,107 @@
+# train.py
 import asyncio
 import torch
 import os
 from gym import Gym
 from env_utils import generate_initial_state
+from entity_feature_extractor import extract_entity_features
 from ppo_agent import PPOAgent
+from ppo_trainer import PPOTrainer
 from memory import Memory
 from rewards import calculate_reward
 from save_model import save_model, load_or_create_model
 from plot import plot_curve
 
 reward_history = []
+ACTIONS = ["up", "down", "left", "right", "bomb", "detonate"]
 
-ACTIONS = ["up", "down", "left", "right", "stop", "bomb"]
-
-def action_from_id(idx):
+def action_from_id(idx, state, unit_id):
     action = ACTIONS[idx]
     if action in ["up", "down", "left", "right"]:
-        return {"type": "move", "move": action}
+        return {"type": "move", "move": action, "unit_id": unit_id}
     elif action == "bomb":
-        return {"type": "bomb"}
-    elif action == "stop":
-        # ✅ "stop" = do nothing = send nothing (omit action)
-        return None
-    else:
-        raise ValueError(f"Invalid action: {action}")
-
-def build_unit_actions(state, model_a, model_b, entities):
-    
-    parsed = parse_entities(entities)
-
-    obs_a, obs_b = [], []
-    unit_ids_a, unit_ids_b = [], []
-
-    for uid, unit in state["unit_state"].items():
-        if unit["agent_id"] == "a":
-            obs_a.extend(unit["coordinates"])
-            unit_ids_a.append(uid)
-        elif unit["agent_id"] == "b":
-            obs_b.extend(unit["coordinates"])
-            unit_ids_b.append(uid)
-
-    if len(obs_a) != 6 or len(obs_b) != 6:
-        raise ValueError("Agent observations must each have 3 units → 6 coordinates")
-
-    obs_a = torch.tensor(obs_a, dtype=torch.float32).unsqueeze(0)
-    obs_b = torch.tensor(obs_b, dtype=torch.float32).unsqueeze(0)
-
-    dist_a, _ = model_a(obs_a)
-    dist_b, _ = model_b(obs_b)
-
-    actions_a = dist_a.sample().tolist()
-    actions_b = dist_b.sample().tolist()
-
-    def format_action(agent_id, unit_id, act_id):
-        act = action_from_id(act_id)
-        if act is None:
-            return None  # stop → skip
-        act["unit_id"] = unit_id
-        return {
-            "agent_id": agent_id,
-            "action": act
-        }
-
-    final_actions = [
-        format_action("a", uid, act_id) for uid, act_id in zip(unit_ids_a, actions_a)
-    ] + [
-        format_action("b", uid, act_id) for uid, act_id in zip(unit_ids_b, actions_b)
-    ]
-
-    # 去除 stop = None 的项
-    final_actions = [a for a in final_actions if a is not None]
-
-    return final_actions, obs_a, dist_a
+        return {"type": "bomb", "unit_id": unit_id}
+    elif action == "detonate":
+        bomb_coords = get_bomb_to_detonate(state, unit_id)
+        if bomb_coords:
+            return {"type": "detonate", "coordinates": bomb_coords, "unit_id": unit_id}
+    return None
 
 
-def parse_entities(entities):
-    metal_blocks = set()
-    wooden_blocks = {}
-    bombs = []
-    powerups = []
+def get_bomb_to_detonate(state, unit_id):
+    for e in state.get("entities", []):
+        if e.get("type") == "b" and e.get("unit_id") == unit_id:
+            return [e.get("x"), e.get("y")]
+    return None
 
-    for entity in entities:
-        x, y = entity["x"], entity["y"]
-        ent_type = entity["type"]
-        coord = (x, y)
-
-        if ent_type == "m":
-            metal_blocks.add(coord)
-        elif ent_type in {"w", "o"}:
-            wooden_blocks[coord] = entity["hp"]
-        elif ent_type in {"a", "bp", "fp"}:
-            powerups.append(entity)
-        elif ent_type == "b":
-            bombs.append(entity)
-
-    return {
-        "metal_blocks": metal_blocks,
-        "wooden_blocks": wooden_blocks,
-        "bombs": bombs,
-        "powerups": powerups
-    }
+def format_actions(state, unit_ids, actions, agent_id):
+    final = []
+    for uid, act_id in zip(unit_ids, actions):
+        act = action_from_id(act_id, state, uid)
+        if act:
+            final.append({"agent_id": agent_id, "action": act})
+    return final
 
 
 async def main():
     gym = Gym(os.getenv("FWD_MODEL_CONNECTION_STRING", "ws://fwd-server:6969/?role=admin"))
     await gym.connect()
 
-    model = load_or_create_model(obs_dim=6, action_dim=6)
-    old_model = PPOAgent(obs_dim=6, action_dim=6)
-    old_model.load_state_dict(model.state_dict())
-    old_model.eval()
+    model_a = PPOAgent(entity_input_dim=8, hidden_dim=64, embed_dim=64, num_heads=4, action_dim=len(ACTIONS))
+    model_b = PPOAgent(entity_input_dim=8, hidden_dim=64, embed_dim=64, num_heads=4, action_dim=len(ACTIONS))
+    trainer_a = PPOTrainer(model_a)
+    trainer_b = PPOTrainer(model_b)
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    if os.path.exists("checkpoints/ppo.pt"):
+        model_a.load_state_dict(torch.load("checkpoints/ppo.pt"))
+        print("[Checkpoint] Loaded agent A")
+
+    model_a.train()
+    model_b.load_state_dict(model_a.state_dict())
+    model_b.eval()
 
     for episode in range(10000):
         if episode % 100 == 0:
-            save_model(model)
-            old_model.load_state_dict(model.state_dict())
-            print("[Self-Play] Updated old_model")
+            save_model(model_a)
+            model_b.load_state_dict(model_a.state_dict())
+            print("[Checkpoint] Model saved and agent B updated")
 
-        memory = Memory()
+        memory_a, memory_b = Memory(), Memory()
         state = generate_initial_state()
         env = gym.make(f"ep-{episode}", state)
         await env.reset()
 
         done = False
         while not done:
-            entities = state.get("entities", [])
-            actions, obs_tensor, dist = build_unit_actions(state, model, old_model, entities)
-            action_tensor = dist.sample()
-            logprob = dist.log_prob(action_tensor)
+            entity_tensor_a = extract_entity_features(state, agent_id="a")
+            entity_tensor_b = extract_entity_features(state, agent_id="b")
 
-            # ✅ send in correct format: list of {agent_id, unit_id, action}
-            next_state, done, info = await env.step(actions)
-            reward = calculate_reward(info)
-            memory.store(obs_tensor, action_tensor, reward, done, logprob)
+            dist_a, _ = model_a(entity_tensor_a)
+            dist_b, _ = model_b(entity_tensor_b)
 
-            if episode % 100 == 0:
-                reward_history.append(sum(memory.rewards))
-                plot_curve(reward_history)
+            actions_a = dist_a.sample()
+            logprob_a = dist_a.log_prob(actions_a)
+            actions_b = dist_b.sample()
+            logprob_b = dist_b.log_prob(actions_b)
+
+            unit_ids_a = state["agents"]["a"]["unit_ids"]
+            unit_ids_b = state["agents"]["b"]["unit_ids"]
+
+            game_actions = format_actions(state, unit_ids_a, actions_a.tolist(), "a") + \
+                           format_actions(state, unit_ids_b, actions_b.tolist(), "b")
+
+            next_state, done, info = await env.step(game_actions)
+
+            reward_a = calculate_reward(info)
+            reward_b = -reward_a  # 对称对抗
+
+            memory_a.store(entity_tensor_a, actions_a, reward_a, done, logprob_a)
+            memory_b.store(entity_tensor_b, actions_b, reward_b, done, logprob_b)
 
             state = next_state
 
-        # PPO update
-        states = torch.cat(memory.states, dim=0)
-        actions_tensor = torch.cat(memory.actions)
-        old_logprobs = torch.cat(memory.logprobs)
-        returns = torch.tensor(memory.rewards, dtype=torch.float32)
-
-        dists, values = model(states)
-        new_logprobs = dists.log_prob(actions_tensor)
-        adv = returns - values.squeeze()
-
-        surr1 = torch.exp(new_logprobs - old_logprobs) * adv
-        surr2 = torch.clamp(torch.exp(new_logprobs - old_logprobs), 0.8, 1.2) * adv
-        loss = -torch.min(surr1, surr2).mean() + 0.5 * (returns - values.squeeze()).pow(2).mean()
-
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-
-        print(f"[EP {episode}] loss = {loss.item():.4f}")
+        loss_a = trainer_a.update(memory_a)
+        print(f"[EP {episode}] Agent A Loss: {loss_a:.4f}")
 
     await gym.close()
 
