@@ -1,12 +1,13 @@
 version: "3"
 services:
     game-engine:
-        image: gocoderone/bomberland-engine:2477
+        image: bomberland:011a277
         volumes:
             - type: "bind"
               source: ./agents/replay.json
               target: /app/replay.json
-
+        command: ./bomberland-engine
+        
     go-agent:
         build:
             context: agents/go

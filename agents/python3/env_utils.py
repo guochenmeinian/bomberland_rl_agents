@@ -1,10 +1,17 @@
 import random
 from typing import Dict
 
-def generate_initial_state(width=6, height=6) -> Dict:
+import random
+from typing import Dict, Optional
+
+def generate_initial_state(width=6, height=6, world_seed: Optional[int] = None, prng_seed: Optional[int] = None, use_forward_model=False) -> Dict:
     agent_a_ids = ["c", "e", "g"]
     agent_b_ids = ["d", "f", "h"]
     all_units = agent_a_ids + agent_b_ids
+
+    # Apply random seeds if provided
+    if world_seed is not None:
+        random.seed(world_seed)
 
     state = {
         "game_id": "train",
@@ -23,42 +30,48 @@ def generate_initial_state(width=6, height=6) -> Dict:
         }
     }
 
-    used_coords = set()
-    for idx, uid in enumerate(all_units):
-        while True:
-            x, y = random.randint(0, width - 1), random.randint(0, height - 1)
-            if (x, y) not in used_coords:
-                used_coords.add((x, y))
-                break
-        state["unit_state"][uid] = {
-            "coordinates": [x, y],
-            "hp": 3,
-            "inventory": {"bombs": 3},
-            "blast_diameter": 3,
-            "unit_id": uid,
-            "agent_id": "a" if uid in agent_a_ids else "b",
-            "invulnerable": 0,
-            "stunned": 0
-        }
-    
-    # add obstacles
-    for _ in range(8):
-        while True:
-            x, y = random.randint(0, width - 1), random.randint(0, height - 1)
-            if (x, y) not in used_coords:
-                used_coords.add((x, y))
-                state["entities"].append({"created": 0, "x": x, "y": y, "type": "m"})  # 木箱
-                break
+    if use_forward_model:
+        # Add seeds if using forward model
+        state["world_seed"] = world_seed if world_seed is not None else random.randint(0, 1e6)
+        state["prng_seed"] = prng_seed if prng_seed is not None else random.randint(0, 1e6)
+    else:
+        # Manually construct the map
+        used_coords = set()
+        for uid in all_units:
+            while True:
+                x, y = random.randint(0, width - 1), random.randint(0, height - 1)
+                if (x, y) not in used_coords:
+                    used_coords.add((x, y))
+                    break
+            state["unit_state"][uid] = {
+                "coordinates": [x, y],
+                "hp": 3,
+                "inventory": {"bombs": 3},
+                "blast_diameter": 3,
+                "unit_id": uid,
+                "agent_id": "a" if uid in agent_a_ids else "b",
+                "invulnerable": 0,
+                "stunned": 0
+            }
 
-    for _ in range(8):
-        while True:
-            x, y = random.randint(0, width - 1), random.randint(0, height - 1)
-            if (x, y) not in used_coords:
-                used_coords.add((x, y))
-                state["entities"].append({"created": 0, "x": x, "y": y, "type": "w", "hp": 1})  # 可破坏墙体
-                break
+        for _ in range(8):  # 木箱
+            while True:
+                x, y = random.randint(0, width - 1), random.randint(0, height - 1)
+                if (x, y) not in used_coords:
+                    used_coords.add((x, y))
+                    state["entities"].append({"created": 0, "x": x, "y": y, "type": "m"})
+                    break
+
+        for _ in range(8):  # 可破坏墙体
+            while True:
+                x, y = random.randint(0, width - 1), random.randint(0, height - 1)
+                if (x, y) not in used_coords:
+                    used_coords.add((x, y))
+                    state["entities"].append({"created": 0, "x": x, "y": y, "type": "w", "hp": 1})
+                    break
 
     return state
+
 
 def extract_obs(state: Dict):
     obs = []
