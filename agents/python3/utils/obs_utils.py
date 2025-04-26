@@ -136,7 +136,7 @@ def state_to_observations(state, agent_id="a"):
 
 
 # Convert the model's action index to the game action format
-def action_index_to_game_action(action_indices, state, agent_id="a"):
+def action_index_to_game_action(action_indices, state, detonate_targets, agent_id="a"):
     # print(f"action index to game action: {state}")
     if isinstance(state, dict) and "payload" in state:
         state = state["payload"]
@@ -172,14 +172,37 @@ def action_index_to_game_action(action_indices, state, agent_id="a"):
         action["unit_id"] = unit_id
 
         if action["type"] == "detonate":
-            bombs = [e for e in state["entities"] if e["type"] == "b" and e["unit_id"] == unit_id]
-            bombs = [b for b in bombs if state["tick"] - b.get("created", 0) >= 5]
-            if bombs:
-                bombs.sort(key=lambda x: x.get("created", 0))
-                action["coordinates"] = [bombs[0]["x"], bombs[0]["y"]]
+            target = detonate_targets[i]
+            if target is not None:
+                x, y = target
+                action["coordinates"] = [x, y]
             else:
                 continue
 
         game_actions.append({"agent_id": agent_id, "action": action})
 
     return game_actions
+
+
+def bombs_positions_and_count(state, unit_ids):
+    if isinstance(state, dict) and "payload" in state:
+        state = state["payload"]
+
+    bomb_infos = []
+    bomb_count = 0
+    current_tick = state["tick"]
+
+    for entity in state["entities"]:
+        if entity["type"] == "b" and entity.get("unit_id") in unit_ids:
+            x = entity["x"]
+            y = entity["y"]
+            unit_id = entity["unit_id"]
+            created_tick = entity["created"]
+
+            if current_tick - created_tick >= 5:
+                bomb_infos.append((x, y, unit_id))
+                bomb_count += 1
+            else:
+                continue
+
+    return bomb_infos, bomb_count

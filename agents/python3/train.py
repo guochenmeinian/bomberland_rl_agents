@@ -38,6 +38,9 @@ async def run_training():
 
     episode_rewards = []
 
+    initial_decay = 1.0
+    decay_rate = 0.999
+
     for episode in range(start_episode, Config.num_episodes):
         print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
         gym = SafeGym(Config.fwd_model_uri)
@@ -50,29 +53,36 @@ async def run_training():
 
             episode_buffer = []
             total_reward = 0
+            
+            # print(current_state)
+
+            current_decay = initial_decay
 
             for step in range(Config.max_steps_per_episode):
                 # agent_a
 
                 self_states_a, full_map_a, agent_units_ids_a, agent_alive_units_ids_a = state_to_observations(current_state, agent_id="a")
                 alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
-                action_indices_a, log_probs_a, value_a = agent.select_actions(self_states_a, full_map_a, alive_mask_a)
+                current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
+
+                action_indices_a, log_probs_a, value_a, detonate_targets_a = agent.select_actions(self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state)
                 action_indices_a = action_indices_a[0]
                 log_probs_a = log_probs_a[0]
                 value_a = value_a[0]
 
+             
                 # agent_b
                 self_states_b, full_map_b, agent_units_ids_b, agent_alive_units_ids_b = state_to_observations(current_state, agent_id="b")
-                
                 alive_mask_b = get_alive_mask(agent_units_ids_b, agent_alive_units_ids_b)
-                with torch.no_grad():
-                    action_indices_b, _, _ = target_agent.select_actions(self_states_b, full_map_b, alive_mask_b)
-                action_indices_b = action_indices_b[0]
+                current_bomb_infos_b, current_bomb_count_b = bombs_positions_and_count(current_state, agent_units_ids_b)
 
+                with torch.no_grad():
+                    action_indices_b, _, _, detonate_targets_b = target_agent.select_actions(self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state)
+                action_indices_b = action_indices_b[0]
                 
                 # 合并动作
-                actions_a = action_index_to_game_action(action_indices_a, current_state, agent_id="a")
-                actions_b = action_index_to_game_action(action_indices_b, current_state, agent_id="b")
+                actions_a = action_index_to_game_action(action_indices_a, current_state, detonate_targets_a, agent_id="a")
+                actions_b = action_index_to_game_action(action_indices_b, current_state, detonate_targets_b, agent_id="b")
                 combined_actions = actions_a + actions_b
 
                 prev_state = current_state.copy()
@@ -92,6 +102,10 @@ async def run_training():
                     done = True
    
                 reward = calculate_reward(next_state, prev_state, action_indices_a, agent_id="a")
+
+                reward *= current_decay
+                current_decay *= decay_rate
+
                 total_reward += reward
 
                 episode_buffer.append((self_states_a, full_map_a, action_indices_a, log_probs_a, reward, value_a, done))
