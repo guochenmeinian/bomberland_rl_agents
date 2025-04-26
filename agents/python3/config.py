@@ -1,8 +1,9 @@
 import torch
+import os
 
 class Config:
     # 环境参数
-    fwd_model_uri = "ws://127.0.0.1:6969/?role=admin"
+    fwd_model_uri = os.environ.get("FWD_MODEL_CONNECTION_STRING", "ws://127.0.0.1:6969/?role=admin")
     checkpoint_dir = "checkpoints"  # 目录名
     keep_last_n_checkpoint = 5  # 保留最近的5个checkpoint
     log_frequency = 10  # 每10个episode打印一次
@@ -16,7 +17,7 @@ class Config:
     # PPO参数
     self_state_dim = 10
     map_channels = 8
-    map_size = 5
+    map_size = 15
     action_dim = 7
     num_units = 3
 

@@ -1,7 +1,8 @@
 # reward.py
 
+
 # Calculate the reward based on the state change
-def calculate_reward(state, prev_state, agent_id="a"):
+def calculate_reward(state, prev_state, action_indices, agent_id="a"):
     if isinstance(state, dict) and "payload" in state:
         state = state["payload"]
 
@@ -13,9 +14,11 @@ def calculate_reward(state, prev_state, agent_id="a"):
     unit_ids = state["agents"][agent_id]["unit_ids"]
     enemy_id = "b" if agent_id == "a" else "a"
     enemy_unit_ids = state["agents"][enemy_id]["unit_ids"]
+
+
     
     # 检查单位状态变化
-    for unit_id in unit_ids:
+    for idx, unit_id in enumerate(unit_ids):
         # 如果单位在上一个状态中存在但在当前状态中不存在，说明单位死亡
         current_unit = state["unit_state"].get(unit_id)
         prev_unit = prev_state["unit_state"].get(unit_id)

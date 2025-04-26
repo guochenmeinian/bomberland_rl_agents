@@ -7,7 +7,7 @@ import os
 import glob
 import torch
 
-def save_checkpoint(agent, save_dir, episode, keep_last_n=5):
+def save_checkpoint(agent, episode, keep_last_n=5, save_dir="models"):
     """
     保存模型到 save_dir/ppo_checkpoint_ep{episode}.pt
     并且自动只保留最近 keep_last_n 个checkpoint

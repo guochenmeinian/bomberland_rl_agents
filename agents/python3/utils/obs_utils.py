@@ -3,7 +3,7 @@ import torch
 import numpy as np
 
 SELF_STATE_DIM = 10  # 单位状态维度
-MAP_SIZE = 5     # 局部地图
+
 
 def extract_entity_features(state, agent_id="a"):
     entity_features = []
@@ -101,9 +101,9 @@ def state_to_observations(state, agent_id="a"):
     enemy_unit_ids = state["agents"][enemy_id]["unit_ids"]
     
     # 填充单位位置
-    self_states, local_maps, alive_unit_ids = [], [], []
+    self_states, alive_unit_ids = [], []
     
-    for unit_id in alive_unit_ids:
+    for unit_id in unit_ids:
         unit = state["unit_state"].get(unit_id)
        
         if unit is not None and unit["hp"] > 0:
@@ -120,30 +120,10 @@ def state_to_observations(state, agent_id="a"):
             self_state[5] = unit["invulnerable"] / 5.0  # 标准化无敌时间
             self_state[6] = unit["stunned"] / 5.0  # 标准化眩晕时间
             self_state[7] = state["tick"] / 300.0  # 标准化游戏时间
-            
-            # 提取局部地图 (5x5)
-            local_x_start = max(0, x - MAP_SIZE // 2)
-            local_x_end = min(map_size, x + MAP_SIZE // 2 + 1)
-            local_y_start = max(0, y - MAP_SIZE // 2)
-            local_y_end = min(map_size, y + MAP_SIZE // 2 + 1)
-            
-            # 初始化局部地图
-            local_map = np.zeros((8, MAP_SIZE, MAP_SIZE), dtype=np.float32)
-            
-            # 复制地图部分到局部地图
-            x_offset = max(0, MAP_SIZE // 2 - x)
-            y_offset = max(0, MAP_SIZE // 2 - y)
-            local_map[:, 
-                      y_offset:y_offset + local_y_end - local_y_start, 
-                      x_offset:x_offset + local_x_end - local_x_start] = \
-                full_map[:, local_y_start:local_y_end, local_x_start:local_x_end]
-            
-            self_states.append(self_state)
-            local_maps.append(local_map)
         else:
-            self_states.append(np.zeros(SELF_STATE_DIM, dtype=np.float32))
-            local_maps.append(np.zeros((8, MAP_SIZE, MAP_SIZE), dtype=np.float32))
-    
+            self_state = np.zeros(SELF_STATE_DIM, dtype=np.float32)
+
+        self_states.append(self_state)
     # 为敌方单位填充位置
     for unit_id in enemy_unit_ids:
         unit = state["unit_state"].get(unit_id)
@@ -151,7 +131,8 @@ def state_to_observations(state, agent_id="a"):
             x, y = unit["coordinates"]
             full_map[1, y, x] = 1
     
-    return np.array(self_states), np.array(local_maps), unit_ids, alive_unit_ids
+    return np.array(self_states), np.expand_dims(full_map, 0), unit_ids, alive_unit_ids
+
 
 
 # Convert the model's action index to the game action format
@@ -177,36 +158,28 @@ def action_index_to_game_action(action_indices, state, agent_id="a"):
         6: None  # 不动时不发送动作
     }
     
-    for i, unit_id in enumerate(alive_unit_ids):
-        # assert len(action_indices) == len(alive_unit_ids), "Mismatch between actions and alive units"
+    for i, unit_id in enumerate(unit_ids):
+        unit = unit_state.get(unit_id)
+        if unit is None or unit.get("hp", 0) <= 0:
+            continue
 
         action_idx = action_indices[i]
         action = action_mapping[action_idx]
-        
-        # if the action is None, skip this unit's action inf
         if action is None:
             continue
-            
-       # Copy the origional data, just in case we need it later
+
         action = action.copy()
-        
-        # update the unit_id in the action dic
         action["unit_id"] = unit_id
 
         if action["type"] == "detonate":
-            bombs = []
-            for entity in state["entities"]:
-                if entity["type"] == "b" and entity["unit_id"] == unit_id:
-                    current_tick = state.get("tick", 0)
-                    if current_tick - entity.get("created", 0)  >= 5:
-                        bombs.append(entity)
+            bombs = [e for e in state["entities"] if e["type"] == "b" and e["unit_id"] == unit_id]
+            bombs = [b for b in bombs if state["tick"] - b.get("created", 0) >= 5]
             if bombs:
                 bombs.sort(key=lambda x: x.get("created", 0))
                 action["coordinates"] = [bombs[0]["x"], bombs[0]["y"]]
             else:
-                # If no bombs are available, skip this action
                 continue
 
         game_actions.append({"agent_id": agent_id, "action": action})
-    
+
     return game_actions

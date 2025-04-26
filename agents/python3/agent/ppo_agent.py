@@ -22,33 +22,44 @@ class PPOAgent:
         self.clip_eps = config.clip_eps
         self.memory = []
 
-    def select_actions(self, self_states, local_maps, alive_mask):
-        self_states = torch.tensor(self_states[None], dtype=torch.float32).to(self.device)
-        local_maps = torch.tensor(local_maps[None], dtype=torch.float32).to(self.device)
+    def select_actions(self, self_states, full_map, alive_mask):
+        # 检查输入维度
+        if isinstance(self_states, np.ndarray) and len(self_states.shape) == 2:  # (num_units, self_state_dim)
+            self_states = np.expand_dims(self_states, 0)  # 添加批次维度 -> (1, num_units, self_state_dim)
+        
+        if isinstance(full_map, np.ndarray) and len(full_map.shape) == 3:  # (C, H, W)
+            full_map = np.expand_dims(full_map, 0)  # 添加批次维度 -> (1, C, H, W)
+        
+        # The batch size in this project should be 1, so B = 1
+        self_states = torch.tensor(self_states, dtype=torch.float32).to(self.device)    # (B, num_units, self_state_dim)
+        full_map = torch.tensor(full_map, dtype=torch.float32).to(self.device)      # (B, C, H, W)
 
         with torch.no_grad():
-            logits_list, value = self.model(self_states, local_maps)
-
+            logits_list, value = self.model(self_states, full_map)
+        
+        # Since each agent has 3 units, we need to store them separately
         actions = []
         log_probs = []
 
         for i, logits in enumerate(logits_list):
             if alive_mask[i] == 0:
                 action = torch.tensor(6, device=self.device)
-                log_prob = torch.tensor(0.0, device=self.device)
+                log_prob = torch.tensor(0.0, device=self.device)  # log(1) = 0
             else:
                 probs = torch.softmax(logits, dim=-1)
                 dist = torch.distributions.Categorical(probs)
+                # Sample an action from the distribution
                 action = dist.sample()
                 log_prob = dist.log_prob(action)
 
             actions.append(action)
             log_probs.append(log_prob)
 
-        actions = torch.stack(actions, dim=1)
-        log_probs = torch.stack(log_probs, dim=1)
+        actions = torch.stack(actions, dim=1)      # (B, num_units)
+        log_probs = torch.stack(log_probs, dim=1)  # (B, num_units)
 
         return actions.cpu().numpy(), log_probs.cpu().numpy(), value.cpu().numpy()
+
 
     def update_from_buffer(self, episode_buffer):
         if not episode_buffer:

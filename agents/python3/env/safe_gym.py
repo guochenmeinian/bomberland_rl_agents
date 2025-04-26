@@ -1,9 +1,9 @@
 import asyncio
 import traceback
-from gym import Gym
+from env.gym import Gym
 import json
 import random
-from game_state import GameState
+from env.game_state import GameState
 
 # 由于这是一个长期和需要稳定运行的 RL 训练，我们需要一个稳定的环境。
 # 为了实现这一点，我们将使用一个名为 SafeGym 的类，它将封装 Gym 类，并提供一些额外的功能，如重试机制和状态转换。

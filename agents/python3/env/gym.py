@@ -3,7 +3,7 @@ import json
 from typing import Callable, Dict, List
 
 import websockets
-from forward_model import ForwardModel
+from env.forward_model import ForwardModel
 
 
 class GymEnv():

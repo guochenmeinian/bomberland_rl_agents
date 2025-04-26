@@ -10,18 +10,18 @@ from agent.ppo_agent import PPOAgent
 from env.safe_gym import SafeGym
 from utils.obs_utils import *
 from utils.rewards import calculate_reward
-from utils.save_model import save_model, load_latest_checkpoint
+from utils.save_model import save_checkpoint, load_latest_checkpoint, find_latest_checkpoint
 from config import Config
 
 async def run_training():
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M")
     run_name = f"ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
 
-    wandb.init(
-        project="bomberland-ppo",
-        name=run_name,
-        config=vars(Config)
-    )
+    # wandb.init(
+    #     project="bomberland-ppo",
+    #     name=run_name,
+    #     config=vars(Config)
+    # )
 
     agent = PPOAgent(Config)
     target_agent = PPOAgent(Config)
@@ -53,20 +53,23 @@ async def run_training():
 
             for step in range(Config.max_steps_per_episode):
                 # agent_a
-                self_states_a, local_maps_a, agent_units_ids_a, agent_alive_units_ids_a = state_to_observations(current_state, agent_id="a")
+
+                self_states_a, full_map_a, agent_units_ids_a, agent_alive_units_ids_a = state_to_observations(current_state, agent_id="a")
                 alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
-                action_indices_a, log_probs_a, value_a = agent.select_actions(self_states_a, local_maps_a, alive_mask_a)
+                action_indices_a, log_probs_a, value_a = agent.select_actions(self_states_a, full_map_a, alive_mask_a)
                 action_indices_a = action_indices_a[0]
                 log_probs_a = log_probs_a[0]
                 value_a = value_a[0]
 
                 # agent_b
-                self_states_b, local_maps_b, agent_units_ids_b, agent_alive_units_ids_b = state_to_observations(current_state, agent_id="b")
+                self_states_b, full_map_b, agent_units_ids_b, agent_alive_units_ids_b = state_to_observations(current_state, agent_id="b")
+                
                 alive_mask_b = get_alive_mask(agent_units_ids_b, agent_alive_units_ids_b)
                 with torch.no_grad():
-                    action_indices_b, _, _ = target_agent.select_actions(self_states_b, local_maps_b, alive_mask_b)
+                    action_indices_b, _, _ = target_agent.select_actions(self_states_b, full_map_b, alive_mask_b)
                 action_indices_b = action_indices_b[0]
 
+                
                 # 合并动作
                 actions_a = action_index_to_game_action(action_indices_a, current_state, agent_id="a")
                 actions_b = action_index_to_game_action(action_indices_b, current_state, agent_id="b")
@@ -82,19 +85,25 @@ async def run_training():
                 if next_state["tick"] >= next_state["config"]["game_duration_ticks"]:
                     done = True
 
-                reward = calculate_reward(next_state, prev_state, agent_id="a")
+                alive_units = filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])
+                alive_enemies = filter_alive_units("b", next_state["agents"]["b"]["unit_ids"], next_state["unit_state"])
+
+                if len(alive_units) == 0 or len(alive_enemies) == 0:
+                    done = True
+   
+                reward = calculate_reward(next_state, prev_state, action_indices_a, agent_id="a")
                 total_reward += reward
 
-                episode_buffer.append((self_states_a, local_maps_a, action_indices_a, log_probs_a, reward, value_a, done))
+                episode_buffer.append((self_states_a, full_map_a, action_indices_a, log_probs_a, reward, value_a, done))
                 current_state = next_state
 
                 if step % 10 == 0:
-                    wandb.log({
-                        "step_reward": reward,
-                        "total_reward": total_reward,
-                        "step": step,
-                        "episode": episode
-                    })
+                    # wandb.log({
+                    #     "step_reward": reward,
+                    #     "total_reward": total_reward,
+                    #     "step": step,
+                    #     "episode": episode
+                    # })
                     print(f"Step {step+1}, Reward: {reward:.2f}, Total: {total_reward:.2f}")
 
                 if done:
@@ -104,14 +113,14 @@ async def run_training():
             agent.update_from_buffer(episode_buffer)
             episode_rewards.append(total_reward)
 
-            wandb.log({
-                "episode_reward": total_reward,
-                "episode": episode
-            })
+            # wandb.log({
+            #     "episode_reward": total_reward,
+            #     "episode": episode
+            # })
 
             # 保存 checkpoint
             if (episode + 1) % Config.save_frequency == 0:
-                save_model(agent, episode+1)
+                save_checkpoint(agent, episode+1)
 
             # 同步 target_agent
             if (episode + 1) % Config.update_target_frequency == 0:
@@ -123,7 +132,7 @@ async def run_training():
         finally:
             await gym.close()
 
-    wandb.finish()
+    # wandb.finish()
     print("训练完成")
 
 if __name__ == "__main__":
