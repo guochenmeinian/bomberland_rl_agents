@@ -1,6 +1,5 @@
 # reward.py
 
-
 # Calculate the reward based on the state change
 def calculate_reward(state, prev_state, agent_id="a"):
     if isinstance(state, dict) and "payload" in state:

@@ -1,4 +1,4 @@
-# models/ppo_model.py (with attention)
+# model/ppo_model.py (with attention)
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

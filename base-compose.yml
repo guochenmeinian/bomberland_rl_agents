@@ -7,60 +7,10 @@ services:
               source: ./agents/replay.json
               target: /app/replay.json
         command: ./bomberland-engine
-        
-    go-agent:
-        build:
-            context: agents/go
-            dockerfile: Dockerfile
 
-    python3-agent:
-        build:
-            context: agents/python3
-            dockerfile: Dockerfile
-
-    python3-agent-dev:
-        build:
-            context: agents/python3
-            dockerfile: Dockerfile.dev
-        volumes:
-            - ./agents/python3:/app
-
-    python3-fwd:
-        build:
-            context: agents/python3
-            dockerfile: Dockerfile.fwd
-
-    python3-fwd-dev:
-        build:
-            context: agents/python3
-            dockerfile: Dockerfile.fwd.dev
-        volumes:
-            - ./agents/python3:/app
     python3-gym-dev:
         build:
             context: agents/python3
-            dockerfile: Dockerfile.gym.dev
+            dockerfile: Dockerfile
         volumes:
             - ./agents/python3:/app
-
-    typescript-agent:
-        build:
-            context: agents/typescript
-            dockerfile: Dockerfile
-
-    typescript-agent-dev:
-        build:
-            context: agents/typescript
-            dockerfile: Dockerfile.dev
-        volumes:
-            - ./agents/typescript:/app
-
-    cpp-agent:
-        build:
-            context: agents/cpp
-            dockerfile: Dockerfile
-
-    rust-agent:
-        build:
-            context: agents/rust
-            dockerfile: Dockerfile
