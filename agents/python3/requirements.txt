@@ -2,4 +2,5 @@ asyncio==3.4.3
 websockets==10.1
 torch==2.1.0
 wandb==0.15.12
-numpy==1.24.3
+numpy==1.24.
+python-dotenv

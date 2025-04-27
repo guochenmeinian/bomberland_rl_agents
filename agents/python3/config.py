@@ -9,6 +9,7 @@ class Config:
     log_frequency = 10  # 每10个episode打印一次
     save_frequency = 50  # 每50个episode保存一次
     update_target_frequency = 15  # 每15个episode同步一次
+    eval_frequency = 100  # 每100次训练后评估一次
 
     # 训练参数
     num_episodes = 1000

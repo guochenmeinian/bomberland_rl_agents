@@ -6,6 +6,7 @@ import torch.optim as optim
 import numpy as np
 from model.ppo_model import PPOModel
 import random
+import wandb
 
 class PPOAgent:
     def __init__(self, config):
@@ -145,7 +146,7 @@ class PPOAgent:
         return None # shouldn't be triggered
         
 
-    def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state):
+    def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state, lstm_states):
         # 检查输入维度
         if isinstance(self_states, np.ndarray) and len(self_states.shape) == 2:  # (num_units, self_state_dim)
             self_states = np.expand_dims(self_states, 0)  # 添加批次维度 -> (1, num_units, self_state_dim)
@@ -158,7 +159,7 @@ class PPOAgent:
         full_map = torch.tensor(full_map, dtype=torch.float32).to(self.device)      # (B, C, H, W)
 
         with torch.no_grad():
-            logits_list, value = self.model(self_states, full_map)
+            logits_list, value, next_lstm_states = self.model(self_states, full_map, lstm_states)
         
         # Since each agent has 3 units, we need to store them separately
         actions = []
@@ -205,7 +206,7 @@ class PPOAgent:
         actions = torch.cat(actions, dim=0).unsqueeze(0)      # (B=1, num_units)
         log_probs = torch.cat(log_probs, dim=0).unsqueeze(0)  # (B=1, num_units)
 
-        return actions.cpu().numpy(), log_probs.cpu().numpy(), value.squeeze().cpu().numpy(), detonate_targets
+        return actions.cpu().numpy(), log_probs.cpu().numpy(), value.squeeze().cpu().numpy(), detonate_targets, next_lstm_states
 
 
 
@@ -288,6 +289,14 @@ class PPOAgent:
         avg_policy_loss = total_policy_loss_value / num_batches
         avg_value_loss = total_value_loss_value / num_batches
         avg_loss = total_loss_value / num_batches
+
+        # 🔵 wandb记录
+        wandb.log({
+            "policy_loss": avg_policy_loss,
+            "value_loss": avg_value_loss,
+            "total_loss": avg_loss,
+            "episode": current_episode
+        })
 
         print(f"Update stats - Policy loss: {avg_policy_loss:.4f}, Value loss: {avg_value_loss:.4f}, Total loss: {avg_loss:.4f}")
 

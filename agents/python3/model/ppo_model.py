@@ -9,6 +9,7 @@ class PPOModel(nn.Module):
 
         self.num_units = num_units
         self.hidden_dim = hidden_dim
+        self.lstm_hidden_dim = lstm_hidden_dim
 
         # CNN to process local map
         self.cnn = nn.Sequential(
