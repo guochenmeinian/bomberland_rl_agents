@@ -199,7 +199,9 @@ async def run_training():
 
     initial_decay = 1.0
     decay_rate = 0.
-    lstm_states = None
+    lstm_states_a = None  # 自己的agent
+    lstm_states_b = None  # target_agent（敌方智能体）
+
 
     for episode in range(start_episode, Config.num_episodes):
         print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
@@ -231,23 +233,25 @@ async def run_training():
 
             for step in range(Config.max_steps_per_episode):
                 try:
+                    # agent_a
                     self_states_a, full_map_a, agent_units_ids_a, agent_alive_units_ids_a = state_to_observations(current_state, agent_id="a")
                     alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
                     current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
 
-                    action_indices_a, log_probs_a, value_a, detonate_targets_a, lstm_states = agent.select_actions(
-                        self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state, lstm_states
+                    action_indices_a, log_probs_a, value_a, detonate_targets_a, lstm_states_a = agent.select_actions(
+                        self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state, lstm_states_a
                     )
                     action_indices_a = action_indices_a[0]
                     log_probs_a = log_probs_a[0]
 
+                    # agent_b
                     self_states_b, full_map_b, agent_units_ids_b, agent_alive_units_ids_b = state_to_observations(current_state, agent_id="b")
                     alive_mask_b = get_alive_mask(agent_units_ids_b, agent_alive_units_ids_b)
                     current_bomb_infos_b, current_bomb_count_b = bombs_positions_and_count(current_state, agent_units_ids_b)
 
                     with torch.no_grad():
-                        action_indices_b, _, _, detonate_targets_b = target_agent.select_actions(
-                            self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state
+                        action_indices_b, _, _, detonate_targets_b, lstm_states_b = target_agent.select_actions(
+                                self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state, lstm_states_b
                         )
                     action_indices_b = action_indices_b[0]
 

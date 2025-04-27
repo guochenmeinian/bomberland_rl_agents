@@ -7,7 +7,7 @@ import os
 import glob
 import torch
 
-def save_checkpoint(agent, episode, keep_last_n=5, save_dir="models"):
+def save_checkpoint(agent, episode, keep_last_n=5, save_dir="checkpoints"):
     """
     保存模型到 save_dir/ppo_checkpoint_ep{episode}.pt
     并且自动只保留最近 keep_last_n 个checkpoint
@@ -51,7 +51,7 @@ def load_latest_checkpoint(agent, save_dir):
     print(f"[Checkpoint] Loaded {latest_ckpt} (episode {episode})")
     return episode
 
-def find_latest_checkpoint(save_dir="models"):
+def find_latest_checkpoint(save_dir="checkpoints"):
     os.makedirs(save_dir, exist_ok=True)
     checkpoints = glob.glob(os.path.join(save_dir, "ppo_checkpoint_ep*.pt"))
     if not checkpoints:

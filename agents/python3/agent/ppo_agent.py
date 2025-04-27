@@ -127,13 +127,9 @@ class PPOAgent:
                 # Bonus if the bomb is about to expire anyway
                 if entity["type"] == "b" and entity["x"] == bomb_x and entity["y"] == bomb_y:
                     ticks_until_explosion = entity["expires"] - game_state["tick"]
-                    if ticks_until_explosion <= 5:  # If bomb will explode soon anyway
+                    if ticks_until_explosion == 5:  # If bomb will explode soon anyway
                         score += 1
-                        
-                        # Even higher bonus if it's about to explode next tick
-                        if ticks_until_explosion <= 2:
-                            score += 1
-            
+                                    
             bomb_scores.append((bomb_x, bomb_y, score, ticks_until_explosion))
         
         # If no bomb has a positive score, prefer bombs that will explode soon

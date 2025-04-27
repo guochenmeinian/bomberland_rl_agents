@@ -2,7 +2,7 @@
 
 # Bomberland Project
 
-[Report](https://guochenmeinian.github.io/bomberland_rl_report/) | [Github](https://github.com/guochenmeinian/bomberland_rl_agents/)
+[![GitHub Repo](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/guochenmeinian/bomberland_rl_agents.git) | [![Website](https://img.shields.io/badge/Website-Online-blue?logo=google-chrome)](https://guochenmeinian.github.io/bomberland_rl_report/)
 
 ## About
 

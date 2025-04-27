@@ -58,7 +58,10 @@ def state_to_observations(state, agent_id="a"):
         elif entity["type"] == "o":  # 矿石
             full_map[4, y, x] = 1
         elif entity["type"] == "b":  # 炸弹
-            full_map[5, y, x] = 1
+            # 处理炸弹剩余时间
+            expires_tick = entity.get("expires", state["tick"] + 30)  # 保险，没expires就假设30 tick后爆炸
+            ticks_left = expires_tick - state["tick"]
+            full_map[5, y, x] = max(ticks_left / 30.0, 0.0)  # 🔥归一化到0~1，假设30tick是最长爆炸时间
         elif entity["type"] == "x":  # 火焰
             if "expires" in entity:  
                 ticks_left = entity["expires"] - state["tick"]

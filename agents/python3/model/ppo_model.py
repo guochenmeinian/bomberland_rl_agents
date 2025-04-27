@@ -32,6 +32,9 @@ class PPOModel(nn.Module):
             nn.ReLU()
         )
 
+        # Global state value head (pool all unit outputs)
+        self.value_head = nn.Linear(hidden_dim, 1)
+
         # Multi-head self-attention among units
         self.attn = nn.MultiheadAttention(embed_dim=hidden_dim, num_heads=4, batch_first=True)
 
@@ -52,9 +55,6 @@ class PPOModel(nn.Module):
         self.policy_heads = nn.ModuleList([
             nn.Linear(hidden_dim, action_dim) for _ in range(num_units)
         ])
-
-        # Global state value head (pool all unit outputs)
-        self.value_head = nn.Linear(hidden_dim, 1)
 
     def forward(self, self_states, full_map, lstm_states=None):
         """
@@ -84,6 +84,9 @@ class PPOModel(nn.Module):
         attn_out, _ = self.attn(unit_tensor, unit_tensor, unit_tensor)
         attn_out = self.post_attn_fc(attn_out)
 
+        pooled = attn_out.mean(dim=1)  # (B, hidden)
+        value = self.value_head(pooled).squeeze(-1)  # (B,)
+
         # ⚡ LSTM处理（按单位展开）
         lstm_in = attn_out.view(B * self.num_units, 1, self.hidden_dim)  # (B*num_units, 1, hidden_dim)
         if lstm_states is None:
@@ -95,9 +98,6 @@ class PPOModel(nn.Module):
         lstm_out_units = lstm_out.view(B, self.num_units, self.lstm_hidden_dim)  # (B, num_units, lstm_hidden_dim)
 
         logits = [self.policy_heads[i](lstm_out_units[:, i]) for i in range(self.num_units)]
-
-        pooled = attn_out.mean(dim=1)  # (B, hidden)
-        value = self.value_head(pooled).squeeze(-1)  # (B,)
 
         return logits, value, next_lstm_states
 
