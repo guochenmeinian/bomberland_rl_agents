@@ -4,37 +4,6 @@ import numpy as np
 
 SELF_STATE_DIM = 10  # 单位状态维度
 
-
-def extract_entity_features(state, agent_id="a"):
-    entity_features = []
-    unit_ids = state["agents"][agent_id]["unit_ids"]
-    for uid in unit_ids:
-        if uid not in state["unit_state"]:
-            continue
-        unit = state["unit_state"][uid]
-        x, y = unit["coordinates"]
-        hp = unit["hp"]
-        bombs = unit["inventory"]["bombs"]
-        blast = unit["blast_diameter"]
-        invul = unit["invulnerable"]
-        stunned = unit["stunned"]
-        tick = state["tick"]
-
-        # 构建每个 unit 的 feature 向量（你也可以加入周围实体）
-        f = [
-            x / 15, y / 15,         # normalized coordinates
-            hp / 3.0,
-            bombs / 3.0,
-            blast / 5.0,
-            invul / 5.0,
-            stunned / 5.0,
-            tick / 300.0
-        ]
-        entity_features.append(f)
-
-    entity_tensor = torch.tensor([entity_features], dtype=torch.float32)  # [1, num_units, feat_dim]
-    return entity_tensor
-
 # Helper to filter out dead units
 def filter_alive_units(agent_id, unit_ids, unit_state):
     alive_ids = []
@@ -91,7 +60,11 @@ def state_to_observations(state, agent_id="a"):
         elif entity["type"] == "b":  # 炸弹
             full_map[5, y, x] = 1
         elif entity["type"] == "x":  # 火焰
-            full_map[6, y, x] = 1
+            if "expires" in entity:  
+                ticks_left = entity["expires"] - state["tick"]
+                full_map[6, y, x] = max(ticks_left / 5.0, 0.0)  # 假设最多5 tick
+            else:
+                full_map[6, y, x] = 1.0  # End-game fire 永远存在，直接1
         elif entity["type"] in ["a", "bp"]:  # 道具
             full_map[7, y, x] = 1
     
@@ -102,7 +75,10 @@ def state_to_observations(state, agent_id="a"):
     
     # 填充单位位置
     self_states, alive_unit_ids = [], []
-    
+
+    game_duration = state["config"]["game_duration_ticks"]
+    fire_interval = state["config"]["fire_spawn_interval_ticks"]
+
     for unit_id in unit_ids:
         unit = state["unit_state"].get(unit_id)
        
@@ -119,7 +95,10 @@ def state_to_observations(state, agent_id="a"):
             self_state[4] = unit["blast_diameter"] / 5.0  # 标准化爆炸范围
             self_state[5] = unit["invulnerable"] / 5.0  # 标准化无敌时间
             self_state[6] = unit["stunned"] / 5.0  # 标准化眩晕时间
-            self_state[7] = state["tick"] / 300.0  # 标准化游戏时间
+            self_state[7] = state["tick"] / 300.0  # 全局时间（感知到「游戏进行到哪了」）
+            self_state[8] = game_duration / 3000.0 # 终局开始时间（缩图大约什么时候开始）
+            self_state[9] = fire_interval / 20.0 # 缩图速度
+            
         else:
             self_state = np.zeros(SELF_STATE_DIM, dtype=np.float32)
 

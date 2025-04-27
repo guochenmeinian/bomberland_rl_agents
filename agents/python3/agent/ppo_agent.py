@@ -26,13 +26,14 @@ class PPOAgent:
 
 
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
+        
         if isinstance(game_state, dict) and "payload" in game_state:
             game_state = game_state["payload"]
-            
+        
+        # Get all bombs that belong to this unit
         if len(current_bomb_infos) == 0:
             return None
 
-        # Get all bombs that belong to this unit
         candidate_targets = []
         for x, y, bomb_owner in current_bomb_infos:
             if bomb_owner == unit_id:
@@ -40,9 +41,112 @@ class PPOAgent:
         
         if len(candidate_targets) == 0:
             return None
+        
+        bomb_scores = []
 
+        for bomb_x, bomb_y in candidate_targets:
+            score = 0
+            blast_diameter = 0
+            ticks_until_explosion = 9999
 
-        return random.choice(candidate_targets)
+            # Find the blast diameter for the bomb
+            for entity in game_state["entities"]:
+                if entity["type"] == "b" and entity["x"] == bomb_x and entity["y"] == bomb_y:
+                    blast_diameter = entity.get("blast_diameter", 3)  # Default to 3 if missing
+                    break
+
+            blast_radius = blast_diameter // 2
+
+            # Identify self_agent and enemy_agent info
+            unit_to_agent = {}
+            for agent_id, agent_info in game_state["agents"].items():
+                for uid in agent_info["unit_ids"]:
+                    unit_to_agent[uid] = agent_id
+
+            if unit_id not in unit_to_agent:
+                print(f"[Warning] Unit {unit_id} not found in agents.")
+                return None
+
+            self_agent = unit_to_agent[unit_id]
+            enemy_agent = "b" if self_agent == "a" else "a"
+
+            teammates = game_state["agents"][self_agent]["unit_ids"]
+            enemies = game_state["agents"][enemy_agent]["unit_ids"]
+
+            # Score based on enemies hit
+            for enemy_id in enemies:
+                if enemy_id in game_state["unit_state"]:
+                    enemy_unit = game_state["unit_state"][enemy_id]
+                    ex, ey = enemy_unit["coordinates"]
+
+                    if (bomb_x == ex and abs(bomb_y - ey) <= blast_radius) or \
+                    (bomb_y == ey and abs(bomb_x - ex) <= blast_radius):
+                        # Prefer damaging low-HP enemies
+                        score += 10 * (4 - enemy_unit["hp"])
+
+                        # Bonus if enemy is stunned
+                        if enemy_unit.get("stunned", 0) > game_state["tick"]:
+                            score += 10
+
+            # Penalty based on teammates in blast
+            for mate_id in teammates:
+                if mate_id in game_state["unit_state"] and mate_id != unit_id:  # Don't count self
+                    mate_unit = game_state["unit_state"][mate_id]
+                    mx, my = mate_unit["coordinates"]
+
+                    if (bomb_x == mx and abs(bomb_y - my) <= blast_radius) or \
+                    (bomb_y == my and abs(bomb_x - mx) <= blast_radius):
+                        # Heavily penalize hitting teammates
+                        score -= 20
+
+                        # Even worse if teammate has low HP
+                        if mate_unit["hp"] == 1:
+                            score -= 10
+            
+            # Check for destructible blocks in range
+            for entity in game_state["entities"]:
+                ex, ey = entity["x"], entity["y"]
+                if entity["type"] in ["w", "o"] and \
+                    (bomb_x == ex and abs(bomb_y - ey) <= blast_radius) or \
+                    (bomb_y == ey and abs(bomb_x - ex) <= blast_radius):
+
+                    # Modest bonus for destroying blocks
+                    if entity["type"] == "w":  # wood block，hp == 1
+                        score += 5
+                    elif entity["type"] == "o":  # ore block，default hp == 3
+                        hp = entity.get("hp", 3)
+                        if hp == 1:
+                            # only 1 hp left, treat as wood block
+                            score += 5
+                        elif hp == 2:
+                            # 血厚的矿，加少点
+                            score += 3
+                        else:        
+                            score += 1
+
+                # Bonus if the bomb is about to expire anyway
+                if entity["type"] == "b" and entity["x"] == bomb_x and entity["y"] == bomb_y:
+                    ticks_until_explosion = entity["expires"] - game_state["tick"]
+                    if ticks_until_explosion <= 5:  # If bomb will explode soon anyway
+                        score += 1
+                        
+                        # Even higher bonus if it's about to explode next tick
+                        if ticks_until_explosion <= 2:
+                            score += 1
+            
+            bomb_scores.append((bomb_x, bomb_y, score, ticks_until_explosion))
+        
+        # If no bomb has a positive score, prefer bombs that will explode soon
+        # if all(score <= 0 for _, _, score, _ in bomb_scores):
+        #     bomb_scores = [(bx, by, -ticks, ticks) for bx, by, _, ticks in bomb_scores]
+        
+        # Select the bomb with the highest score
+        if bomb_scores:
+            best_bomb = max(bomb_scores, key=lambda x: x[2])
+            return (best_bomb[0], best_bomb[1])
+            
+        # If all bombs have very negative scores, better not to detonate
+        return None # shouldn't be triggered
         
 
     def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state):
@@ -66,7 +170,7 @@ class PPOAgent:
         detonate_targets = []
 
         for i, logits in enumerate(logits_list):
-            if alive_mask[i] == 0:
+            if alive_mask[i] == 0: # unit already dead, do nothing
                 action = torch.tensor(6, device=self.device).unsqueeze(0) 
                 log_prob = torch.tensor(0.0, device=self.device).unsqueeze(0) 
                 detonate_targets.append(None)
@@ -74,12 +178,13 @@ class PPOAgent:
                 my_unit_id = unit_ids[i]
                 mask = torch.ones_like(logits, dtype=torch.bool)
                 
-                if current_bomb_count >= 3:
+                if current_bomb_count >= 3: # no more bomb allo
                     mask[0, 4] = False 
                 
                 candidate_target = self.select_detonate_target(my_unit_id, current_bomb_infos, current_state)
-                if candidate_target is None:
-                    mask[0, 5] = False
+                # if candidate_target is None: # no detonate target, mask detonate action (shouldn't be triggered though)
+                #     mask[0, 4] = False
+                #     mask[0, 5] = False
 
                 logits_masked = logits.clone()
                 logits_masked[~mask] = -1e10
