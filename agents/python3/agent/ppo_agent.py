@@ -210,7 +210,7 @@ class PPOAgent:
 
 
 
-    def update_from_buffer(self, episode_buffer):
+    def update_from_buffer(self, episode_buffer, current_episode):
         if not episode_buffer:
             return
 
@@ -226,7 +226,7 @@ class PPOAgent:
         for i in range(len(states)):
             self.memory.append((states[i], maps[i], actions[i], log_probs[i], returns[i], advantages[i]))
 
-        self.update()
+        self.update(current_episode)
 
     def compute_gae(self, rewards, values, dones):
         advantages = []
@@ -241,7 +241,7 @@ class PPOAgent:
         returns = np.array(advantages) + values[:-1]
         return advantages, returns
 
-    def update(self, epochs=4, batch_size=64):
+    def update(self, current_episode, epochs=4, batch_size=64):
         states, maps, actions, old_log_probs, returns, advantages = zip(*self.memory)
 
         states = torch.tensor(np.array(states), dtype=torch.float32).to(self.device)
@@ -262,7 +262,7 @@ class PPOAgent:
 
         for _ in range(epochs):
             for b_s, b_m, b_a, b_old_lp, b_ret, b_adv in loader:
-                logits_list, values = self.model(b_s, b_m)
+                logits_list, values, _ = self.model(b_s, b_m) # no need to lstm states
 
                 total_policy_loss = 0
                 for i, logits in enumerate(logits_list):

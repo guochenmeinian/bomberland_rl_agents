@@ -71,8 +71,8 @@ class ForwardModel:
         game_state.pop("connection", None)
         
         # 👇 打印所有 entity type
-        print("[DEBUG] entity types:", {e.get("type") for e in game_state["entities"]})
-        print("[DEBUG] actions:", actions)
+        # print("[DEBUG] entity types:", {e.get("type") for e in game_state["entities"]})
+        # print("[DEBUG] actions:", actions)
 
         packet = {"actions": actions,
                   "type": "evaluate_next_state", "state": game_state, "sequence_id": sequence_id}

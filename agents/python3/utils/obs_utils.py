@@ -99,7 +99,7 @@ def state_to_observations(state, agent_id="a"):
             self_state[5] = unit["invulnerable"] / 5.0  # 标准化无敌时间
             self_state[6] = unit["stunned"] / 5.0  # 标准化眩晕时间
             self_state[7] = state["tick"] / 300.0  # 全局时间（感知到「游戏进行到哪了」）
-            self_state[8] = game_duration / 3000.0 # 终局开始时间（缩图大约什么时候开始）
+            self_state[8] = game_duration / 300.0 # 终局开始时间（缩图大约什么时候开始）
             self_state[9] = fire_interval / 20.0 # 缩图速度
             
         else:

@@ -81,20 +81,20 @@ class SafeGym:
                 return self.current_state
         
         # 6. 如果超时，尝试直接从游戏状态获取
-        print("通过回调获取状态超时，尝试直接从游戏状态获取...")
+        # print("通过回调获取状态超时，尝试直接从游戏状态获取...")
         
         if self.game_state._state is not None:
-            print("成功从 GameState 获取状态")
+            # print("成功从 GameState 获取状态")
             self.current_state = {"type": "game_state", "payload": self.game_state._state}
             return self.current_state
         
         # 7. 如果仍然无法获取，使用备份状态或默认状态
         if backup_state is not None:
-            print("使用备份状态")
+            # print("使用备份状态")
             return backup_state
         
         # 8. 最后才使用默认状态
-        print("警告：无法获取任何状态，使用默认状态")
+        # print("警告：无法获取任何状态，使用默认状态")
         from train import load_initial_state
         default_state = load_initial_state()
         self.current_state = {"type": "game_state", "payload": default_state}
@@ -123,7 +123,7 @@ class SafeGym:
             if not self.env:
                 raise ValueError("环境未初始化，请先调用make方法")
                 
-            print(f"执行动作: {actions}")
+            # print(f"执行动作: {actions}")
             
             # 使用标准步进方法
             observation, done, info = await self.env.step(actions)
@@ -138,10 +138,10 @@ class SafeGym:
                         unit_id = action['action']['unit_id']
                         if unit_id in observation["unit_state"]:
                             unit_pos = observation["unit_state"][unit_id]["coordinates"]
-                            print(f"单位 {unit_id} 位置: {unit_pos}")
+                            # print(f"单位 {unit_id} 位置: {unit_pos}")
                 
-                print(f"游戏时钟: {observation['tick']}")
-                print(f"事件: {info}")
+                # print(f"游戏时钟: {observation['tick']}")
+                # print(f"事件: {info}")
                 
             return observation, done, info
 

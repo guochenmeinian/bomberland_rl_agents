@@ -729,3 +729,586 @@ Traceback (most recent call last):
 ValueError: too many values to unpack (expected 2)
 
 
+[总体错误] Episode 1 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 2 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 3 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 4 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 5 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 6 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 7 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 8 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 9 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 10 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 11 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 12 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 13 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 14 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 15 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 16 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 17 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 18 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 19 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 20 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 21 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 22 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 23 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 24 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 25 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 26 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 27 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 28 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 29 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 30 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 31 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 32 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 33 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 34 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 35 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 36 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 37 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 38 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 39 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 40 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 41 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 42 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 43 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 44 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 45 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 46 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 47 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 1 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 2 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 3 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 4 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 5 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+
+[总体错误] Episode 6 失败: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "train.py", line 314, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 229, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 265, in update
+    logits_list, values = self.model(b_s, b_m)
+ValueError: too many values to unpack (expected 2)
+
+

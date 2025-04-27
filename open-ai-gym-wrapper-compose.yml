@@ -6,6 +6,7 @@ services:
             service: python3-gym-dev
         environment:
             - FWD_MODEL_CONNECTION_STRING=ws://fwd-server:6969/?role=admin
+            - WANDB_API_KEY=b4f00a2d5dbba0577c580a658bc5028981a86ebf
         depends_on:
             - fwd-server
         networks:
