@@ -163,7 +163,7 @@ def action_index_to_game_action(action_indices, state, detonate_targets, agent_i
         if unit is None or unit.get("hp", 0) <= 0:
             continue
 
-        action_idx = action_indices[i]
+        action_idx = int(action_indices[i])
         action = action_mapping[action_idx]
         if action is None:
             continue
