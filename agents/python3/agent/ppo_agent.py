@@ -213,19 +213,23 @@ class PPOAgent:
     def update_from_buffer(self, episode_buffer, current_episode):
         if not episode_buffer:
             return
-
-        states, maps, actions, log_probs, rewards, values, dones = zip(*episode_buffer)
-
-        rewards = np.array(rewards)
-        values_arr = np.array(values)
-        dones = np.array(dones)
-
-        advantages, returns = self.compute_gae(rewards, values_arr, dones)
-
+        
         self.memory.clear()
-        for i in range(len(states)):
-            self.memory.append((states[i], maps[i], actions[i], log_probs[i], returns[i], advantages[i]))
 
+        for sequence in episode_buffer:
+            # sequence 是一个 list of (state, map, action, log_prob, reward, value, done)
+            rewards = np.array([step[4] for step in sequence])
+            values_arr = np.array([step[5] for step in sequence])
+            dones = np.array([step[6] for step in sequence])
+
+            advantages, returns = self.compute_gae(rewards, values_arr, dones)
+
+            new_sequence = []
+            for (state, map_data, action, log_prob, reward, value, done), adv, ret in zip(sequence, advantages, returns):
+                new_sequence.append((state, map_data, action, log_prob, ret, adv))
+
+            self.memory.append(new_sequence)
+        
         self.update(current_episode)
 
     def compute_gae(self, rewards, values, dones):
@@ -241,61 +245,89 @@ class PPOAgent:
         returns = np.array(advantages) + values[:-1]
         return advantages, returns
 
-    def update(self, current_episode, epochs=4, batch_size=64):
-        states, maps, actions, old_log_probs, returns, advantages = zip(*self.memory)
+    def update(self, current_episode, epochs=4, batch_size=4):
+        # memory 是 list of sequences
+        all_sequences = self.memory
 
-        states = torch.tensor(np.array(states), dtype=torch.float32).to(self.device)
-        maps = torch.tensor(np.array(maps), dtype=torch.float32).squeeze(1).to(self.device)
-        actions = torch.tensor(np.array(actions)).to(self.device)
-        old_log_probs = torch.tensor(np.array(old_log_probs), dtype=torch.float32).to(self.device)
-        returns = torch.tensor(np.array(returns), dtype=torch.float32).to(self.device)
-        advantages = torch.tensor(np.array(advantages), dtype=torch.float32).to(self.device)
-        advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+        # 预处理每个sequence
+        sequences = []
+        for seq in all_sequences:
+            states, maps, actions, old_log_probs, returns, advantages = zip(*seq)
+            states = torch.tensor(states, dtype=torch.float32).to(self.device)
+            maps = torch.tensor(maps, dtype=torch.float32).to(self.device)
+            actions = torch.tensor(actions).to(self.device)
+            old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(self.device)
+            returns = torch.tensor(returns, dtype=torch.float32).to(self.device)
+            advantages = torch.tensor(advantages, dtype=torch.float32).to(self.device)
 
+            advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+            sequences.append((states, maps, actions, old_log_probs, returns, advantages))
 
-        dataset = torch.utils.data.TensorDataset(states, maps, actions, old_log_probs, returns, advantages)
-        loader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True)
-
-        total_policy_loss_value = 0 
+        total_policy_loss_value = 0
         total_value_loss_value = 0
         total_loss_value = 0
 
         for _ in range(epochs):
-            for b_s, b_m, b_a, b_old_lp, b_ret, b_adv in loader:
-                logits_list, values, _ = self.model(b_s, b_m) # no need to lstm states
+            random_batches = [sequences[i:i + batch_size] for i in range(0, len(sequences), batch_size)]
+            for batch in random_batches:
+                policy_loss_sum = 0
+                value_loss_sum = 0
 
-                total_policy_loss = 0
-                for i, logits in enumerate(logits_list):
-                    dist = torch.distributions.Categorical(logits=logits)
-                    log_probs = dist.log_prob(b_a[:, i])
-                    ratio = torch.exp(log_probs - b_old_lp[:, i])
-                    surr1 = ratio * b_adv
-                    surr2 = torch.clamp(ratio, 1 - self.clip_eps, 1 + self.clip_eps) * b_adv
-                    policy_loss = -torch.min(surr1, surr2).mean()
-                    total_policy_loss += policy_loss
+                for seq in batch:
+                    s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq = seq
+                    T = s_seq.shape[0]
 
-                value_loss = F.mse_loss(values, b_ret)
-                loss = total_policy_loss + 0.5 * value_loss
+                    # reset LSTM hidden state
+                    hidden_state = None
 
-                self.optimizer.zero_grad()
-                loss.backward()
-                self.optimizer.step()
+                    policy_losses = []
+                    value_losses = []
 
-                total_policy_loss_value += total_policy_loss.item()
-                total_value_loss_value += value_loss.item()
-                total_loss_value += loss.item()
-            
-        num_batches = len(loader) * epochs
+                    for t in range(T):
+                        s_t = s_seq[t].unsqueeze(0)  # (1, num_units, self_state_dim)
+                        m_t = m_seq[t].unsqueeze(0)  # (1, C, H, W)
+
+                        logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+
+                        total_unit_loss = 0
+                        for unit_idx, logits in enumerate(logits_list):
+                            dist = torch.distributions.Categorical(logits=logits)
+                            log_prob = dist.log_prob(a_seq[t, unit_idx])
+                            ratio = torch.exp(log_prob - old_lp_seq[t, unit_idx])
+
+                            surr1 = ratio * adv_seq[t]
+                            surr2 = torch.clamp(ratio, 1 - self.clip_eps, 1 + self.clip_eps) * adv_seq[t]
+                            total_unit_loss += -torch.min(surr1, surr2)
+
+                        policy_losses.append(total_unit_loss)
+                        value_losses.append(F.mse_loss(value.squeeze(0), ret_seq[t]))
+
+                    policy_loss = torch.stack(policy_losses).mean()
+                    value_loss = torch.stack(value_losses).mean()
+                    loss = policy_loss + 0.5 * value_loss
+
+                    policy_loss_sum += policy_loss
+                    value_loss_sum += value_loss
+
+                    self.optimizer.zero_grad()
+                    loss.backward()
+                    self.optimizer.step()
+
+                total_policy_loss_value += policy_loss_sum.item()
+                total_value_loss_value += value_loss_sum.item()
+                total_loss_value += (policy_loss_sum.item() + value_loss_sum.item())
+
+        num_batches = len(random_batches) * epochs
         avg_policy_loss = total_policy_loss_value / num_batches
         avg_value_loss = total_value_loss_value / num_batches
         avg_loss = total_loss_value / num_batches
 
         # 🔵 wandb记录
         # wandb.log({
-        #     "policy_loss": avg_policy_loss,
-        #     "value_loss": avg_value_loss,
-        #     "total_loss": avg_loss,
-        #     "episode": current_episode
+        #     "train/policy_loss": avg_policy_loss,
+        #     "train/value_loss": avg_value_loss,
+        #     "train/total_loss": avg_loss,
+        #     "train/episode": current_episode
         # })
 
         print(f"Update stats - Policy loss: {avg_policy_loss:.4f}, Value loss: {avg_value_loss:.4f}, Total loss: {avg_loss:.4f}")

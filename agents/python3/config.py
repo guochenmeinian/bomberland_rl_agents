@@ -10,6 +10,7 @@ class Config:
     save_frequency = 50  # 每50个episode保存一次
     update_target_frequency = 15  # 每15个episode同步一次
     eval_frequency = 100  # 每100次训练后评估一次
+    sequence_length = 20 # 每段20步
 
     # 多环境设置
     num_envs = 5  # 🛠️ 开5个环境并行训练

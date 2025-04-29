@@ -1,0 +1,11 @@
+[总体错误] Episode 3763 失败: 无法连接到服务器
+Traceback (most recent call last):
+  File "train.py", line 74, in run_training
+    raise e
+  File "train.py", line 69, in run_training
+    await gym.connect()
+  File "/app/env/safe_gym.py", line 42, in connect
+    raise ConnectionError("无法连接到服务器")
+ConnectionError: 无法连接到服务器
+
+

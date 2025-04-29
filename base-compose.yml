@@ -2,13 +2,22 @@ version: "3"
 services:
     game-engine:
         image: bomberland:011a277
+        environment: # don't quit automatically
+            - SHUTDOWN_ON_GAME_END_ENABLED=0
         volumes:
             - type: "bind"
               source: ./agents/replay.json
               target: /app/replay.json
         command: ./bomberland-engine
 
-    python3-gym-dev:
+    python3-gym-single-dev:
+        build:
+            context: agents/python3
+            dockerfile: Dockerfile
+        volumes:
+            - ./agents/python3:/app
+    
+    python3-gym-multi-dev:
         build:
             context: agents/python3
             dockerfile: Dockerfile.multi_env

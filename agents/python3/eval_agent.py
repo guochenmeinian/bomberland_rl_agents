@@ -6,7 +6,7 @@ from agent.ppo_agent import PPOAgent
 from utils.obs_utils import state_to_observations, action_index_to_game_action, get_alive_mask
 from utils.save_model import find_latest_checkpoint
 from config import Config
-from game_state import GameState  # 你说要保留GameState这种结构
+from env.game_state import GameState
 from utils.obs_utils import bombs_positions_and_count
 
 
@@ -37,7 +37,6 @@ class Agent:
             
             # 提取self state和map
             self_states, full_map, unit_ids, alive_unit_ids = state_to_observations(game_state, agent_id=agent_id)
-
 
             current_bomb_infos, current_bomb_count = bombs_positions_and_count(game_state, unit_ids)
 

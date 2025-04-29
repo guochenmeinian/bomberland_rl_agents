@@ -87,6 +87,7 @@ async def run_training():
             episode_buffer = []
             total_reward = 0
             current_decay = initial_decay
+            current_sequence = [] # for lstm timesteps
 
             for step in range(Config.max_steps_per_episode):
                 try:
@@ -153,7 +154,11 @@ async def run_training():
 
                 total_reward += reward
 
-                episode_buffer.append((self_states_a, full_map_a, action_indices_a, log_probs_a, reward, value_a, done))
+                # 平时凑够 Config.sequence_length 步存一次；如果提前done，且current_sequence不为空，也存一次
+                if len(current_sequence) == Config.sequence_length or (done and current_sequence):
+                    episode_buffer.append(current_sequence)
+                    current_sequence = []
+
                 current_state = next_state
 
                 if step % 10 == 0:
@@ -192,8 +197,18 @@ async def run_training():
         # 🔵 每 batch_size 个 episode 打印一次时间
         if (episode + 1) % Config.benchmark_batch_size == 0:
             batch_elapsed = time.time() - batch_start_time
-            print(f"\n🚀 Completed {Config.benchmark_batch_size} episodes in {batch_elapsed:.2f} seconds (Avg {batch_elapsed/Config.benchmark_batch_size:.2f} sec/episode)")
-            batch_start_time = time.time()  # 重置 batch 计时器
+            avg_time_per_ep = batch_elapsed / Config.benchmark_batch_size
+
+            print(f"\n🚀 Completed {Config.benchmark_batch_size} episodes in {batch_elapsed:.2f} seconds (Avg {avg_time_per_ep:.2f} sec/episode)")
+
+            # 🟢 wandb log
+            # wandb.log({
+            #     "benchmark/batch_elapsed_time": batch_elapsed,
+            #     "benchmark/avg_episode_time": avg_time_per_ep,
+            #     "benchmark/episode": episode
+            # })
+
+            batch_start_time = time.time()
 
     # wandb.finish()
     print("训练完成")
