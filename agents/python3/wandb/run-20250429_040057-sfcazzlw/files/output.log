@@ -1,0 +1,23 @@
+[Checkpoint] No checkpoint found. Start from scratch.
+开始训练，在 0 轮
+开始 Episode 1/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: -0.00, Total: -1.15
+Step 21, Reward: -0.00, Total: -1.15
+Step 31, Reward: 0.00, Total: -1.15
+Step 41, Reward: 0.00, Total: -1.15
+Step 51, Reward: -0.00, Total: -1.15
+Step 61, Reward: -0.00, Total: -1.15
+Step 71, Reward: -0.00, Total: -1.15
+Step 81, Reward: 0.00, Total: -1.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.2502, Value loss: 1.1995, Total loss: 0.8500
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭

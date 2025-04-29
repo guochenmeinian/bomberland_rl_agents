@@ -30,25 +30,21 @@ def save_checkpoint(agent, episode, keep_last_n=5, save_dir="checkpoints"):
             os.remove(ckpt)
             print(f"[Checkpoint] Removed old checkpoint: {ckpt}")
 
-def load_latest_checkpoint(agent, save_dir):
+def load_latest_checkpoint(agent, checkpoint_path):
     """
-    从 save_dir 加载最新的 checkpoint
-    如果不存在任何 checkpoint，返回 0
+    直接从 checkpoint_path 加载
     """
-    checkpoints = sorted(glob.glob(os.path.join(save_dir, "ppo_checkpoint_ep*.pt")), key=os.path.getmtime)
-    
-    if not checkpoints:
+    if not os.path.exists(checkpoint_path):
         print("[Checkpoint] No checkpoint found. Start from scratch.")
-        return 0  # 没找到，返回 episode 0
+        return 0
 
-    latest_ckpt = checkpoints[-1]
-    checkpoint = torch.load(latest_ckpt)
+    checkpoint = torch.load(checkpoint_path)
 
     agent.model.load_state_dict(checkpoint["model"])
     agent.optimizer.load_state_dict(checkpoint["optimizer"])
     episode = checkpoint["episode"]
 
-    print(f"[Checkpoint] Loaded {latest_ckpt} (episode {episode})")
+    print(f"[Checkpoint] Loaded {checkpoint_path} (episode {episode})")
     return episode
 
 def find_latest_checkpoint(save_dir="checkpoints"):

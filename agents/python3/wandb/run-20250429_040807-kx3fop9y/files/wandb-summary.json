@@ -1,0 +1,1 @@
+{"policy_loss": -0.014464152016444132, "value_loss": 8.509422367808384e-05, "total_loss": -0.014421603086520917, "episode": 3717, "_timestamp": 1745944546.640646, "_runtime": 44859.48062705994, "_step": 3754, "eval_win_rate": 0.6, "eval_avg_reward": 111.73173599999991}

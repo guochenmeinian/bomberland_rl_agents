@@ -5,15 +5,15 @@ class Config:
     # 环境参数
     fwd_model_uri = os.environ.get("FWD_MODEL_CONNECTION_STRING", "ws://127.0.0.1:6969/?role=admin")
     checkpoint_dir = "checkpoints"  # 目录名
-    keep_last_n_checkpoint = 15  # 保留最近的5个checkpoint
+    keep_last_n_checkpoint = 100  # 保留最近的15个checkpoint
     log_frequency = 10  # 每10个episode打印一次
     save_frequency = 50  # 每50个episode保存一次
     update_target_frequency = 15  # 每15个episode同步一次
     eval_frequency = 100  # 每100次训练后评估一次
 
     # 训练参数
-    num_episodes = 1000
-    max_steps_per_episode = 300
+    num_episodes = 10000
+    max_steps_per_episode = 650
 
     # PPO参数
     self_state_dim = 10

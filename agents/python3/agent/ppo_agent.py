@@ -179,9 +179,9 @@ class PPOAgent:
                     mask[0, 4] = False 
                 
                 candidate_target = self.select_detonate_target(my_unit_id, current_bomb_infos, current_state)
-                # if candidate_target is None: # no detonate target, mask detonate action (shouldn't be triggered though)
-                #     mask[0, 4] = False
-                #     mask[0, 5] = False
+                
+                if candidate_target is None: # no detonate target, mask detonate action (shouldn't be triggered though)
+                    mask[0, 5] = False
 
                 logits_masked = logits.clone()
                 logits_masked[~mask] = -1e10

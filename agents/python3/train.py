@@ -14,12 +14,16 @@ from utils.obs_utils import *
 from utils.rewards import calculate_reward
 from utils.save_model import save_checkpoint, load_latest_checkpoint, find_latest_checkpoint
 from config import Config 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 def log_error(error_message):
-    with open("error.log", "a") as f:
+    os.makedirs("logs", exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+
+    log_path = f"logs/error_{timestamp}.log"
+    with open(log_path, "w") as f:
         f.write(error_message + "\n\n")
 
 async def run_training():
@@ -39,6 +43,7 @@ async def run_training():
     target_agent = PPOAgent(Config)
     
     latest_ckpt = find_latest_checkpoint()
+    
     if latest_ckpt:
         start_episode = load_latest_checkpoint(agent, latest_ckpt)
         target_agent.model.load_state_dict(agent.model.state_dict())
@@ -50,13 +55,12 @@ async def run_training():
     episode_rewards = []
 
     initial_decay = 1.0
-    decay_rate = 0.
+    decay_rate = 0.999
+    
     lstm_states_a = None  # 自己的agent
     lstm_states_b = None  # target_agent（敌方智能体）
 
-    initial_decay = 1.0
-    decay_rate = 0.
-
+   
     for episode in range(start_episode, Config.num_episodes):
         print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
         gym = SafeGym(Config.fwd_model_uri)
@@ -79,7 +83,7 @@ async def run_training():
                 raise e
 
             gym.make("bomberland-env", current_state["payload"])
-            await asyncio.sleep(0.5)
+            # await asyncio.sleep(0.5)
 
             episode_buffer = []
             total_reward = 0
@@ -117,7 +121,7 @@ async def run_training():
 
                     try:
                         next_state, done, info = await gym.step(combined_actions)
-                        await asyncio.sleep(0.2)
+                        # await asyncio.sleep(0.2)
                     except Exception as e:
                         msg = f"[执行动作错误] Episode {episode+1} Step {step+1} gym.step() 失败: {e}\n{traceback.format_exc()}"
                         print(msg)
@@ -143,7 +147,7 @@ async def run_training():
                     print("警告: 有一个队伍没有活着的单位，跳出当前 episode")
                     done = True
 
-                reward = calculate_reward(next_state, prev_state, action_indices_a, agent_id="a")
+                reward = calculate_reward(next_state, prev_state, action_indices_a, episode, agent_id="a")
 
                 reward *= current_decay
                 current_decay *= decay_rate
@@ -165,10 +169,10 @@ async def run_training():
             # 🔵 每 eval_frequency 轮做一次评估
             if (episode + 1) % Config.eval_frequency == 0:
                 print(f"\n[评估] 开始 Evaluation at Episode {episode+1}")
-                await evaluate(agent, target_agent)
+                await evaluate(agent, target_agent, episode)
 
             if (episode + 1) % Config.save_frequency == 0:
-                save_checkpoint(agent, episode+1)
+                save_checkpoint(agent, episode+1, Config.keep_last_n_checkpoint)
 
             if (episode + 1) % Config.update_target_frequency == 0:
                 target_agent.model.load_state_dict(agent.model.state_dict())
@@ -191,7 +195,7 @@ async def run_training():
 
 
 
-async def evaluate(agent, target_agent, num_episodes=5):
+async def evaluate(agent, target_agent, episode, num_episodes=5):
     total_rewards = []
     win_count = 0
 
@@ -200,7 +204,7 @@ async def evaluate(agent, target_agent, num_episodes=5):
         await gym.connect()
         current_state = await gym.reset_game()
         gym.make("bomberland-env", current_state["payload"])
-        await asyncio.sleep(0.5)
+        # await asyncio.sleep(0.5)
 
         lstm_states_a = None
         lstm_states_b = None
@@ -211,6 +215,7 @@ async def evaluate(agent, target_agent, num_episodes=5):
             self_states_a, full_map_a, agent_units_ids_a, agent_alive_units_ids_a = state_to_observations(current_state, agent_id="a")
             alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
             current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
+            
 
             action_indices_a, _, _, detonate_targets_a, lstm_states_a = agent.select_actions(
                 self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state, lstm_states_a
@@ -231,9 +236,9 @@ async def evaluate(agent, target_agent, num_episodes=5):
             combined_actions = actions_a + actions_b
 
             next_state, done, info = await gym.step(combined_actions)
-            await asyncio.sleep(0.2)
+            # await asyncio.sleep(0.2)
 
-            reward = calculate_reward(next_state, current_state, action_indices_a, agent_id="a")
+            reward = calculate_reward(next_state, current_state, action_indices_a, episode, agent_id="a")
             total_reward += reward
             current_state = next_state
 

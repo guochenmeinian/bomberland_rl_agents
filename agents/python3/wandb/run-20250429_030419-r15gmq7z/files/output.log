@@ -1,0 +1,5291 @@
+[Checkpoint] 没找到已有模型，从头训练
+开始 Episode 1/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.55, Total: -0.55
+Step 11, Reward: 0.00, Total: -0.55
+Step 21, Reward: -0.00, Total: -0.55
+Step 31, Reward: 0.00, Total: -0.55
+Step 41, Reward: -0.00, Total: -0.55
+Step 51, Reward: -0.00, Total: -0.55
+Step 61, Reward: 0.00, Total: -0.55
+Step 71, Reward: 0.00, Total: -0.55
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.3032, Value loss: 1.3789, Total loss: 0.9927
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 2/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: 0.00, Total: -1.15
+Step 21, Reward: -0.00, Total: -1.15
+Step 31, Reward: 0.00, Total: -1.15
+Step 41, Reward: -0.00, Total: -1.15
+Step 51, Reward: 0.00, Total: -1.15
+Step 61, Reward: 0.00, Total: -1.15
+Step 71, Reward: 0.00, Total: -1.15
+Step 81, Reward: -0.00, Total: -1.15
+Step 91, Reward: 0.00, Total: -1.15
+Step 101, Reward: 0.00, Total: -1.15
+Step 111, Reward: 0.00, Total: -1.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1816, Value loss: 0.0432, Total loss: 0.2032
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 3/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.65, Total: 0.65
+Step 11, Reward: -0.00, Total: 0.65
+Step 21, Reward: -0.00, Total: 0.65
+Step 31, Reward: 0.00, Total: 0.65
+Step 41, Reward: -0.00, Total: 0.65
+Step 51, Reward: 0.00, Total: 0.65
+Step 61, Reward: -0.00, Total: 0.65
+Step 71, Reward: 0.00, Total: 0.65
+Step 81, Reward: -0.00, Total: 0.65
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.2911, Value loss: 0.0187, Total loss: 0.3004
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 4/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.65, Total: -0.65
+Step 11, Reward: -0.00, Total: -0.65
+Step 21, Reward: -0.00, Total: -0.65
+Step 31, Reward: 0.00, Total: -0.65
+Step 41, Reward: 0.00, Total: -0.65
+Step 51, Reward: 0.00, Total: -0.65
+Step 61, Reward: -0.00, Total: -0.65
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1408, Value loss: 0.0159, Total loss: 0.1487
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 5/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.05, Total: -1.05
+Step 11, Reward: 0.00, Total: -1.05
+Step 21, Reward: 0.00, Total: -1.05
+Step 31, Reward: -0.00, Total: -1.05
+Step 41, Reward: -0.00, Total: -1.05
+Step 51, Reward: 0.00, Total: -1.05
+Step 61, Reward: 0.00, Total: -1.05
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.6601, Value loss: 0.0509, Total loss: 0.6855
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 6/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.05, Total: 0.05
+Step 11, Reward: 0.00, Total: 0.05
+Step 21, Reward: 0.00, Total: 0.05
+Step 31, Reward: -0.00, Total: 0.05
+Step 41, Reward: -0.00, Total: 0.05
+Step 51, Reward: -0.00, Total: 0.05
+Step 61, Reward: 0.00, Total: 0.05
+Step 71, Reward: 0.00, Total: 0.05
+Step 81, Reward: 0.00, Total: 0.05
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0223, Value loss: 0.0107, Total loss: 0.0276
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 7/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.75, Total: 0.75
+Step 11, Reward: -0.00, Total: 0.75
+Step 21, Reward: 0.00, Total: 0.75
+Step 31, Reward: 0.00, Total: 0.75
+Step 41, Reward: -0.00, Total: 0.75
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0403, Value loss: 0.0165, Total loss: 0.0486
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 8/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.55, Total: -0.55
+Step 11, Reward: -0.00, Total: -0.55
+Step 21, Reward: -0.00, Total: -0.55
+Step 31, Reward: -0.00, Total: -0.55
+Step 41, Reward: 0.00, Total: -0.55
+Step 51, Reward: 0.00, Total: -0.55
+Step 61, Reward: -0.00, Total: -0.55
+Step 71, Reward: 0.00, Total: -0.55
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1081, Value loss: 0.0104, Total loss: 0.1133
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 9/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.45, Total: -0.45
+Step 11, Reward: -0.00, Total: -0.45
+Step 21, Reward: -0.00, Total: -0.45
+Step 31, Reward: 0.00, Total: -0.45
+Step 41, Reward: -0.00, Total: -0.45
+Step 51, Reward: -0.00, Total: -0.45
+Step 61, Reward: -0.00, Total: -0.45
+Step 71, Reward: -0.00, Total: -0.45
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0143, Value loss: 0.0048, Total loss: 0.0167
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 10/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: -0.00, Total: -0.15
+Step 21, Reward: 0.00, Total: -0.15
+Step 31, Reward: -0.00, Total: -0.15
+Step 41, Reward: 0.00, Total: -0.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.2280, Value loss: 0.0056, Total loss: 0.2307
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 11/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: -0.00, Total: 0.45
+Step 21, Reward: 0.00, Total: 0.45
+Step 31, Reward: 0.00, Total: 0.45
+Step 41, Reward: 0.00, Total: 0.45
+Step 51, Reward: -0.00, Total: 0.45
+Step 61, Reward: -0.00, Total: 0.45
+Step 71, Reward: 0.00, Total: 0.45
+Step 81, Reward: -0.00, Total: 0.45
+Step 91, Reward: -0.00, Total: 0.45
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0553, Value loss: 0.0924, Total loss: -0.0091
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 12/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: 0.00, Total: 0.45
+Step 21, Reward: 0.00, Total: 0.45
+Step 31, Reward: 0.00, Total: 0.45
+Step 41, Reward: 0.00, Total: 0.45
+Step 51, Reward: -0.00, Total: 0.45
+Step 61, Reward: -0.00, Total: 0.45
+Step 71, Reward: 0.00, Total: 0.45
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0496, Value loss: 0.2000, Total loss: 0.0505
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 13/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.55, Total: -0.55
+Step 11, Reward: 0.00, Total: -0.55
+Step 21, Reward: -0.00, Total: -0.55
+Step 31, Reward: -0.00, Total: -0.55
+Step 41, Reward: -0.00, Total: -0.55
+Step 51, Reward: 0.00, Total: -0.55
+Step 61, Reward: 0.00, Total: -0.55
+Step 71, Reward: 0.00, Total: -0.55
+Step 81, Reward: 0.00, Total: -0.55
+Step 91, Reward: 0.00, Total: -0.55
+Step 101, Reward: 0.00, Total: -0.55
+Step 111, Reward: 0.00, Total: -0.55
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Step 121, Reward: -0.00, Total: -0.55
+Update stats - Policy loss: 0.1425, Value loss: 0.0354, Total loss: 0.1602
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 14/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.15, Total: 0.15
+Step 11, Reward: 0.00, Total: 0.15
+Step 21, Reward: 0.00, Total: 0.15
+Step 31, Reward: 0.00, Total: 0.15
+Step 41, Reward: 0.00, Total: 0.15
+Step 51, Reward: 0.00, Total: 0.15
+Step 61, Reward: 0.00, Total: 0.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.7328, Value loss: 0.0421, Total loss: 0.7538
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 15/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: 0.00, Total: 0.45
+Step 21, Reward: 0.00, Total: 0.45
+Step 31, Reward: -0.00, Total: 0.45
+Step 41, Reward: 0.00, Total: 0.45
+Step 51, Reward: 0.00, Total: 0.45
+Step 61, Reward: 0.00, Total: 0.45
+Step 71, Reward: 0.00, Total: 0.45
+Step 81, Reward: 0.00, Total: 0.45
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0510, Value loss: 0.0121, Total loss: 0.0570
+[Sync] target_agent 同步于 Episode 15
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 16/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: -0.00, Total: 0.25
+Step 21, Reward: -0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: -0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1022, Value loss: 0.0074, Total loss: -0.0985
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 17/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: 0.00, Total: 0.45
+Step 21, Reward: 0.00, Total: 0.45
+Step 31, Reward: 0.00, Total: 0.45
+Step 41, Reward: 0.00, Total: 0.45
+Step 51, Reward: 0.00, Total: 0.45
+Step 61, Reward: 0.00, Total: 0.45
+Step 71, Reward: 0.00, Total: 0.45
+Step 81, Reward: 0.00, Total: 0.45
+Step 91, Reward: -0.00, Total: 0.45
+Step 101, Reward: 0.00, Total: 0.45
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1045, Value loss: 0.0032, Total loss: 0.1061
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 18/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: 0.00, Total: -0.15
+Step 21, Reward: 0.00, Total: -0.15
+Step 31, Reward: -0.00, Total: -0.15
+Step 41, Reward: 0.00, Total: -0.15
+Step 51, Reward: 0.00, Total: -0.15
+Step 61, Reward: -0.00, Total: -0.15
+Step 71, Reward: -0.00, Total: -0.15
+Step 81, Reward: 0.00, Total: -0.15
+Step 91, Reward: 0.00, Total: -0.15
+Step 101, Reward: 0.00, Total: -0.15
+Step 111, Reward: 0.00, Total: -0.15
+Step 121, Reward: -0.00, Total: -0.15
+Step 131, Reward: 0.00, Total: -0.15
+Step 141, Reward: 0.00, Total: -0.15
+Step 151, Reward: 0.00, Total: -0.15
+Step 161, Reward: 0.00, Total: -0.15
+Step 171, Reward: 0.00, Total: -0.15
+Step 181, Reward: 0.00, Total: -0.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1939, Value loss: 0.0006, Total loss: 0.1942
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 19/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0908, Value loss: 0.0019, Total loss: 0.0918
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 20/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: 0.00, Total: -0.15
+Step 21, Reward: 0.00, Total: -0.15
+Step 31, Reward: 0.00, Total: -0.15
+Step 41, Reward: 0.00, Total: -0.15
+Step 51, Reward: 0.00, Total: -0.15
+Step 61, Reward: 0.00, Total: -0.15
+Step 71, Reward: 0.00, Total: -0.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1595, Value loss: 0.0012, Total loss: 0.1601
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 21/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1363, Value loss: 0.0946, Total loss: 0.1836
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 22/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1109, Value loss: 0.0444, Total loss: 0.1331
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 23/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0637, Value loss: 0.0158, Total loss: 0.0715
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 24/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.3930, Value loss: 0.0159, Total loss: -0.3851
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 25/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0451, Value loss: 0.0168, Total loss: 0.0535
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 26/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: -0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0773, Value loss: 0.0156, Total loss: 0.0850
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 27/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: 0.00, Total: -0.15
+Step 21, Reward: 0.00, Total: -0.15
+Step 31, Reward: 0.00, Total: -0.15
+Step 41, Reward: 0.00, Total: -0.15
+Step 51, Reward: 0.00, Total: -0.15
+Step 61, Reward: 0.00, Total: -0.15
+Step 71, Reward: 0.00, Total: -0.15
+Step 81, Reward: 0.00, Total: -0.15
+Step 91, Reward: 0.00, Total: -0.15
+Step 101, Reward: 0.00, Total: -0.15
+Step 111, Reward: 0.00, Total: -0.15
+Step 121, Reward: 0.00, Total: -0.15
+Step 131, Reward: 0.00, Total: -0.15
+Step 141, Reward: 0.00, Total: -0.15
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1659, Value loss: 0.0076, Total loss: 0.1697
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 28/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.2159, Value loss: 0.0032, Total loss: 0.2175
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 29/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0177, Value loss: 0.0058, Total loss: -0.0149
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 30/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0841, Value loss: 0.0041, Total loss: 0.0861
+[Sync] target_agent 同步于 Episode 30
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 31/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: -0.00, Total: 0.25
+Step 201, Reward: -0.00, Total: 0.25
+Step 211, Reward: -0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0200, Value loss: 0.0028, Total loss: 0.0214
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 32/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: -0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0211, Value loss: 0.0020, Total loss: 0.0221
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 33/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: -0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: -0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0215, Value loss: 0.0118, Total loss: 0.0274
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 34/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0114, Value loss: 0.0256, Total loss: 0.0243
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 35/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: -0.00, Total: 0.25
+Step 331, Reward: -0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: -0.00, Total: 0.25
+Step 371, Reward: -0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0175, Value loss: 0.0013, Total loss: 0.0182
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 36/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: -0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0218, Value loss: 0.0005, Total loss: 0.0221
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 37/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: -0.00, Total: 0.25
+Step 431, Reward: -0.00, Total: 0.25
+Step 441, Reward: -0.00, Total: 0.25
+Step 451, Reward: -0.00, Total: 0.25
+Step 461, Reward: -0.00, Total: 0.25
+Step 471, Reward: -0.00, Total: 0.25
+Step 481, Reward: -0.00, Total: 0.25
+Step 491, Reward: -0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: -0.00, Total: 0.25
+Step 521, Reward: -0.00, Total: 0.25
+Step 531, Reward: -0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0090, Value loss: 0.0006, Total loss: 0.0093
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 38/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0647, Value loss: 0.0054, Total loss: -0.0620
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 39/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0110, Value loss: 0.0004, Total loss: -0.0108
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 40/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: -0.00, Total: 0.25
+Step 341, Reward: -0.00, Total: 0.25
+Step 351, Reward: -0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0155, Value loss: 0.0006, Total loss: -0.0152
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 41/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0040, Value loss: 0.0007, Total loss: -0.0036
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 42/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0029, Value loss: 0.0011, Total loss: -0.0023
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 43/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0060, Value loss: 0.0004, Total loss: 0.0062
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 44/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0091, Value loss: 0.0003, Total loss: -0.0090
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 45/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0245, Value loss: 0.0002, Total loss: 0.0246
+[Sync] target_agent 同步于 Episode 45
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 46/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: -0.00, Total: 0.25
+Step 601, Reward: -0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+Step 621, Reward: 0.00, Total: 0.25
+Step 631, Reward: 0.00, Total: 0.25
+Step 641, Reward: 0.00, Total: 0.25
+Update stats - Policy loss: -0.1137, Value loss: 0.0041, Total loss: -0.1116
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 47/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0118, Value loss: 0.0055, Total loss: -0.0090
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 48/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: -0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0091, Value loss: 0.0007, Total loss: -0.0088
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 49/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: -0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: -0.00, Total: 0.25
+Step 451, Reward: -0.00, Total: 0.25
+Step 461, Reward: -0.00, Total: 0.25
+Step 471, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0255, Value loss: 0.0007, Total loss: -0.0251
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 50/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: -0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0214, Value loss: 0.0003, Total loss: 0.0215
+[Checkpoint] Saved: checkpoints/ppo_checkpoint_ep50.pt
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 51/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0132, Value loss: 0.0002, Total loss: 0.0133
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 52/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: -0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0040, Value loss: 0.0047, Total loss: 0.0063
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 53/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: -0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0085, Value loss: 0.0231, Total loss: 0.0201
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 54/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: -0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0177, Value loss: 0.0012, Total loss: -0.0171
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 55/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+Step 621, Reward: 0.00, Total: 0.25
+Step 631, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0031, Value loss: 0.0002, Total loss: 0.0032
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 56/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0232, Value loss: 0.0002, Total loss: -0.0231
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 57/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: -0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: -0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: -0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0077, Value loss: 0.0003, Total loss: 0.0078
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 58/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: -0.00, Total: 0.25
+Step 551, Reward: -0.00, Total: 0.25
+Step 561, Reward: -0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0083, Value loss: 0.0002, Total loss: 0.0084
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 59/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0008, Value loss: 0.0003, Total loss: 0.0010
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 60/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0013, Value loss: 0.0003, Total loss: 0.0015
+[Sync] target_agent 同步于 Episode 60
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 61/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0052, Value loss: 0.0015, Total loss: 0.0060
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 62/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: -0.00, Total: 0.25
+Step 341, Reward: -0.00, Total: 0.25
+Step 351, Reward: -0.00, Total: 0.25
+Step 361, Reward: -0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0068, Value loss: 0.0007, Total loss: -0.0064
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 63/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0057, Value loss: 0.0002, Total loss: -0.0056
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 64/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: -0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0018, Value loss: 0.0002, Total loss: 0.0020
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 65/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0101, Value loss: 0.0003, Total loss: 0.0102
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 66/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0032, Value loss: 0.0002, Total loss: 0.0033
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 67/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: -0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0126, Value loss: 0.0008, Total loss: 0.0130
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 68/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0028, Value loss: 0.0005, Total loss: 0.0030
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 69/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: -0.00, Total: 0.25
+Step 351, Reward: -0.00, Total: 0.25
+Step 361, Reward: -0.00, Total: 0.25
+Step 371, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0028, Value loss: 0.0006, Total loss: 0.0031
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 70/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0013, Value loss: 0.0005, Total loss: 0.0015
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 71/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0009, Value loss: 0.0002, Total loss: 0.0010
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 72/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0015, Value loss: 0.0002, Total loss: 0.0017
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 73/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: -0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0135, Value loss: 0.0006, Total loss: 0.0138
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 74/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1075, Value loss: 0.0010, Total loss: -0.1070
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 75/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0005, Value loss: 0.0004, Total loss: -0.0003
+[Sync] target_agent 同步于 Episode 75
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 76/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: -0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: -0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0182, Value loss: 0.0188, Total loss: -0.0089
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 77/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0002, Value loss: 0.0007, Total loss: 0.0002
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 78/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: -0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: -0.00, Total: 0.25
+Step 371, Reward: -0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0257, Value loss: 0.0003, Total loss: 0.0259
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 79/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0015, Value loss: 0.0003, Total loss: -0.0014
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 80/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: -0.00, Total: 0.25
+Step 351, Reward: -0.00, Total: 0.25
+Step 361, Reward: -0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0154, Value loss: 0.0002, Total loss: -0.0153
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 81/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: -0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0019, Value loss: 0.0003, Total loss: 0.0021
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 82/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0166, Value loss: 0.0006, Total loss: -0.0162
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 83/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: -0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0410, Value loss: 0.0054, Total loss: -0.0383
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 84/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1202, Value loss: 0.0032, Total loss: -0.1186
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 85/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1540, Value loss: 0.0020, Total loss: -0.1530
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 86/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1272, Value loss: 0.0013, Total loss: -0.1266
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 87/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: -0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1161, Value loss: 0.0002, Total loss: -0.1160
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 88/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0631, Value loss: 0.0006, Total loss: -0.0628
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 89/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1043, Value loss: 0.0663, Total loss: -0.0711
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 90/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0191, Value loss: 0.0061, Total loss: 0.0222
+[Sync] target_agent 同步于 Episode 90
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 91/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+Step 591, Reward: 0.00, Total: 0.25
+Step 601, Reward: 0.00, Total: 0.25
+Step 611, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0254, Value loss: 0.0040, Total loss: -0.0234
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 92/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: 0.00, Total: 0.25
+Step 241, Reward: 0.00, Total: 0.25
+Step 251, Reward: 0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0128, Value loss: 0.0109, Total loss: 0.0183
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 93/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: -0.00, Total: 0.25
+Step 21, Reward: -0.00, Total: 0.25
+Step 31, Reward: -0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: -0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: -0.00, Total: 0.25
+Step 81, Reward: -0.00, Total: 0.25
+Step 91, Reward: -0.00, Total: 0.25
+Step 101, Reward: -0.00, Total: 0.25
+Step 111, Reward: -0.00, Total: 0.25
+Step 121, Reward: -0.00, Total: 0.25
+Step 131, Reward: -0.00, Total: 0.25
+Step 141, Reward: -0.00, Total: 0.25
+Step 151, Reward: -0.00, Total: 0.25
+Step 161, Reward: -0.00, Total: 0.25
+Step 171, Reward: -0.00, Total: 0.25
+Step 181, Reward: -0.00, Total: 0.25
+Step 191, Reward: -0.00, Total: 0.25
+Step 201, Reward: -0.00, Total: 0.25
+Step 211, Reward: -0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+Step 551, Reward: 0.00, Total: 0.25
+Step 561, Reward: 0.00, Total: 0.25
+Step 571, Reward: 0.00, Total: 0.25
+Step 581, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0257, Value loss: 0.0037, Total loss: 0.0276
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 94/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: -0.00, Total: 0.25
+Step 21, Reward: -0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: -0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: -0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1929, Value loss: 0.0010, Total loss: 0.1934
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 95/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.04, Total: 0.04
+Step 11, Reward: 0.00, Total: 0.04
+Step 21, Reward: -0.00, Total: 0.04
+Step 31, Reward: 0.00, Total: 0.04
+Step 41, Reward: -0.00, Total: 0.04
+Step 51, Reward: 0.00, Total: 0.04
+Step 61, Reward: -0.00, Total: 0.04
+Step 71, Reward: -0.00, Total: 0.04
+Step 81, Reward: -0.00, Total: 0.04
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.3333, Value loss: 0.0004, Total loss: 0.3335
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 96/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.66, Total: -0.66
+Step 11, Reward: -0.00, Total: -0.66
+Step 21, Reward: 0.00, Total: -0.66
+Step 31, Reward: -0.00, Total: -0.66
+Step 41, Reward: -0.00, Total: -0.66
+Step 51, Reward: -0.00, Total: -0.66
+Step 61, Reward: -0.00, Total: -0.66
+Step 71, Reward: -0.00, Total: -0.66
+Step 81, Reward: -0.00, Total: -0.66
+Step 91, Reward: -0.00, Total: -0.66
+Step 101, Reward: -0.00, Total: -0.66
+Step 111, Reward: -0.00, Total: -0.66
+Step 121, Reward: -0.00, Total: -0.66
+Step 131, Reward: -0.00, Total: -0.66
+Step 141, Reward: -0.00, Total: -0.66
+Step 151, Reward: -0.00, Total: -0.66
+Step 161, Reward: -0.00, Total: -0.66
+Step 171, Reward: -0.00, Total: -0.66
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0464, Value loss: 0.0134, Total loss: 0.0531
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 97/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: -0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: -0.00, Total: 0.25
+Step 101, Reward: -0.00, Total: 0.25
+Step 111, Reward: -0.00, Total: 0.25
+Step 121, Reward: -0.00, Total: 0.25
+Step 131, Reward: -0.00, Total: 0.25
+Step 141, Reward: -0.00, Total: 0.25
+Step 151, Reward: -0.00, Total: 0.25
+Step 161, Reward: -0.00, Total: 0.25
+Step 171, Reward: -0.00, Total: 0.25
+Step 181, Reward: -0.00, Total: 0.25
+Step 191, Reward: -0.00, Total: 0.25
+Step 201, Reward: -0.00, Total: 0.25
+Step 211, Reward: -0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: -0.00, Total: 0.25
+Step 331, Reward: -0.00, Total: 0.25
+Step 341, Reward: -0.00, Total: 0.25
+Step 351, Reward: -0.00, Total: 0.25
+Step 361, Reward: -0.00, Total: 0.25
+Step 371, Reward: -0.00, Total: 0.25
+Step 381, Reward: -0.00, Total: 0.25
+Step 391, Reward: -0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+Step 411, Reward: -0.00, Total: 0.25
+Step 421, Reward: -0.00, Total: 0.25
+Step 431, Reward: -0.00, Total: 0.25
+Step 441, Reward: -0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+Step 501, Reward: 0.00, Total: 0.25
+Step 511, Reward: 0.00, Total: 0.25
+Step 521, Reward: 0.00, Total: 0.25
+Step 531, Reward: 0.00, Total: 0.25
+Step 541, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0068, Value loss: 0.0014, Total loss: 0.0075
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 98/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: -0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: -0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: -0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: -0.00, Total: 0.25
+Step 191, Reward: -0.00, Total: 0.25
+Step 201, Reward: -0.00, Total: 0.25
+Step 211, Reward: -0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: 0.00, Total: 0.25
+Step 301, Reward: 0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0288, Value loss: 0.0002, Total loss: 0.0289
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 99/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: -0.00, Total: 0.25
+Step 141, Reward: -0.00, Total: 0.25
+Step 151, Reward: -0.00, Total: 0.25
+Step 161, Reward: -0.00, Total: 0.25
+Step 171, Reward: -0.00, Total: 0.25
+Step 181, Reward: -0.00, Total: 0.25
+Step 191, Reward: -0.00, Total: 0.25
+Step 201, Reward: -0.00, Total: 0.25
+Step 211, Reward: -0.00, Total: 0.25
+Step 221, Reward: -0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: -0.00, Total: 0.25
+Step 271, Reward: -0.00, Total: 0.25
+Step 281, Reward: -0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: -0.00, Total: 0.25
+Step 321, Reward: -0.00, Total: 0.25
+Step 331, Reward: -0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0485, Value loss: 0.0002, Total loss: 0.0486
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 100/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.00, Total: 0.25
+Step 21, Reward: 0.00, Total: 0.25
+Step 31, Reward: 0.00, Total: 0.25
+Step 41, Reward: 0.00, Total: 0.25
+Step 51, Reward: 0.00, Total: 0.25
+Step 61, Reward: 0.00, Total: 0.25
+Step 71, Reward: 0.00, Total: 0.25
+Step 81, Reward: 0.00, Total: 0.25
+Step 91, Reward: 0.00, Total: 0.25
+Step 101, Reward: 0.00, Total: 0.25
+Step 111, Reward: 0.00, Total: 0.25
+Step 121, Reward: 0.00, Total: 0.25
+Step 131, Reward: 0.00, Total: 0.25
+Step 141, Reward: 0.00, Total: 0.25
+Step 151, Reward: 0.00, Total: 0.25
+Step 161, Reward: 0.00, Total: 0.25
+Step 171, Reward: 0.00, Total: 0.25
+Step 181, Reward: 0.00, Total: 0.25
+Step 191, Reward: 0.00, Total: 0.25
+Step 201, Reward: 0.00, Total: 0.25
+Step 211, Reward: 0.00, Total: 0.25
+Step 221, Reward: 0.00, Total: 0.25
+Step 231, Reward: -0.00, Total: 0.25
+Step 241, Reward: -0.00, Total: 0.25
+Step 251, Reward: -0.00, Total: 0.25
+Step 261, Reward: 0.00, Total: 0.25
+Step 271, Reward: 0.00, Total: 0.25
+Step 281, Reward: 0.00, Total: 0.25
+Step 291, Reward: -0.00, Total: 0.25
+Step 301, Reward: -0.00, Total: 0.25
+Step 311, Reward: 0.00, Total: 0.25
+Step 321, Reward: 0.00, Total: 0.25
+Step 331, Reward: 0.00, Total: 0.25
+Step 341, Reward: 0.00, Total: 0.25
+Step 351, Reward: 0.00, Total: 0.25
+Step 361, Reward: 0.00, Total: 0.25
+Step 371, Reward: 0.00, Total: 0.25
+Step 381, Reward: 0.00, Total: 0.25
+Step 391, Reward: 0.00, Total: 0.25
+Step 401, Reward: 0.00, Total: 0.25
+Step 411, Reward: 0.00, Total: 0.25
+Step 421, Reward: 0.00, Total: 0.25
+Step 431, Reward: 0.00, Total: 0.25
+Step 441, Reward: 0.00, Total: 0.25
+Step 451, Reward: 0.00, Total: 0.25
+Step 461, Reward: 0.00, Total: 0.25
+Step 471, Reward: 0.00, Total: 0.25
+Step 481, Reward: 0.00, Total: 0.25
+Step 491, Reward: 0.00, Total: 0.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0077, Value loss: 0.0002, Total loss: 0.0078
+[评估] 开始 Evaluation at Episode 100
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+[总体错误] Episode 100 失败: calculate_reward() missing 1 required positional argument: 'episode'
+Traceback (most recent call last):
+  File "train.py", line 172, in run_training
+    await evaluate(agent, target_agent)
+  File "train.py", line 241, in evaluate
+    reward = calculate_reward(next_state, current_state, action_indices_a, agent_id="a")
+TypeError: calculate_reward() missing 1 required positional argument: 'episode'
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 101/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: 0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: 0.00, Total: 0.24
+Step 221, Reward: 0.00, Total: 0.24
+Step 231, Reward: 0.00, Total: 0.24
+Step 241, Reward: 0.00, Total: 0.24
+Step 251, Reward: 0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: 0.00, Total: 0.24
+Step 291, Reward: 0.00, Total: 0.24
+Step 301, Reward: 0.00, Total: 0.24
+Step 311, Reward: 0.00, Total: 0.24
+Step 321, Reward: 0.00, Total: 0.24
+Step 331, Reward: 0.00, Total: 0.24
+Step 341, Reward: 0.00, Total: 0.24
+Step 351, Reward: -0.00, Total: 0.24
+Step 361, Reward: -0.00, Total: 0.24
+Step 371, Reward: -0.00, Total: 0.24
+Step 381, Reward: -0.00, Total: 0.24
+Step 391, Reward: -0.00, Total: 0.24
+Step 401, Reward: -0.00, Total: 0.24
+Step 411, Reward: -0.00, Total: 0.24
+Step 421, Reward: -0.00, Total: 0.24
+Step 431, Reward: -0.00, Total: 0.24
+Step 441, Reward: -0.00, Total: 0.24
+Step 451, Reward: 0.00, Total: 0.24
+Step 461, Reward: 0.00, Total: 0.24
+Step 471, Reward: 0.00, Total: 0.24
+Step 481, Reward: 0.00, Total: 0.24
+Step 491, Reward: 0.00, Total: 0.24
+Step 501, Reward: 0.00, Total: 0.24
+Step 511, Reward: 0.00, Total: 0.24
+Step 521, Reward: 0.00, Total: 0.24
+Step 531, Reward: 0.00, Total: 0.24
+Step 541, Reward: 0.00, Total: 0.24
+Step 551, Reward: 0.00, Total: 0.24
+Step 561, Reward: 0.00, Total: 0.24
+Step 571, Reward: 0.00, Total: 0.24
+Step 581, Reward: 0.00, Total: 0.24
+Step 591, Reward: 0.00, Total: 0.24
+Step 601, Reward: 0.00, Total: 0.24
+Step 611, Reward: 0.00, Total: 0.24
+Step 621, Reward: 0.00, Total: 0.24
+Step 631, Reward: 0.00, Total: 0.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0104, Value loss: 0.0013, Total loss: -0.0098
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 102/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: 0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: 0.00, Total: 0.24
+Step 221, Reward: 0.00, Total: 0.24
+Step 231, Reward: 0.00, Total: 0.24
+Step 241, Reward: 0.00, Total: 0.24
+Step 251, Reward: 0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: -0.00, Total: 0.24
+Step 291, Reward: -0.00, Total: 0.24
+Step 301, Reward: -0.00, Total: 0.24
+Step 311, Reward: -0.00, Total: 0.24
+Step 321, Reward: 0.00, Total: 0.24
+Step 331, Reward: 0.00, Total: 0.24
+Step 341, Reward: 0.00, Total: 0.24
+Step 351, Reward: 0.00, Total: 0.24
+Step 361, Reward: 0.00, Total: 0.24
+Step 371, Reward: 0.00, Total: 0.24
+Step 381, Reward: 0.00, Total: 0.24
+Step 391, Reward: 0.00, Total: 0.24
+Step 401, Reward: 0.00, Total: 0.24
+Step 411, Reward: 0.00, Total: 0.24
+Step 421, Reward: 0.00, Total: 0.24
+Step 431, Reward: 0.00, Total: 0.24
+Step 441, Reward: 0.00, Total: 0.24
+Step 451, Reward: 0.00, Total: 0.24
+Step 461, Reward: -0.00, Total: 0.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0356, Value loss: 0.0019, Total loss: -0.0346
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 103/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: 0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: -0.00, Total: 0.24
+Step 221, Reward: -0.00, Total: 0.24
+Step 231, Reward: -0.00, Total: 0.24
+Step 241, Reward: -0.00, Total: 0.24
+Step 251, Reward: -0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: 0.00, Total: 0.24
+Step 291, Reward: 0.00, Total: 0.24
+Step 301, Reward: 0.00, Total: 0.24
+Step 311, Reward: 0.00, Total: 0.24
+Step 321, Reward: 0.00, Total: 0.24
+Step 331, Reward: 0.00, Total: 0.24
+Step 341, Reward: 0.00, Total: 0.24
+Step 351, Reward: 0.00, Total: 0.24
+Step 361, Reward: 0.00, Total: 0.24
+Step 371, Reward: 0.00, Total: 0.24
+Step 381, Reward: 0.00, Total: 0.24
+Step 391, Reward: 0.00, Total: 0.24
+Step 401, Reward: 0.00, Total: 0.24
+Step 411, Reward: 0.00, Total: 0.24
+Step 421, Reward: 0.00, Total: 0.24
+Step 431, Reward: 0.00, Total: 0.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0224, Value loss: 0.0002, Total loss: 0.0225
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 104/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: 0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: 0.00, Total: 0.24
+Step 221, Reward: 0.00, Total: 0.24
+Step 231, Reward: 0.00, Total: 0.24
+Step 241, Reward: 0.00, Total: 0.24
+Step 251, Reward: 0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: 0.00, Total: 0.24
+Step 291, Reward: 0.00, Total: 0.24
+Step 301, Reward: 0.00, Total: 0.24
+Step 311, Reward: 0.00, Total: 0.24
+Step 321, Reward: 0.00, Total: 0.24
+Step 331, Reward: 0.00, Total: 0.24
+Step 341, Reward: 0.00, Total: 0.24
+Step 351, Reward: 0.00, Total: 0.24
+Step 361, Reward: 0.00, Total: 0.24
+Step 371, Reward: 0.00, Total: 0.24
+Step 381, Reward: 0.00, Total: 0.24
+Step 391, Reward: 0.00, Total: 0.24
+Step 401, Reward: 0.00, Total: 0.24
+Step 411, Reward: 0.00, Total: 0.24
+Step 421, Reward: 0.00, Total: 0.24
+Step 431, Reward: 0.00, Total: 0.24
+Step 441, Reward: 0.00, Total: 0.24
+Step 451, Reward: 0.00, Total: 0.24
+Step 461, Reward: 0.00, Total: 0.24
+Step 471, Reward: 0.00, Total: 0.24
+Step 481, Reward: 0.00, Total: 0.24
+Step 491, Reward: 0.00, Total: 0.24
+Step 501, Reward: 0.00, Total: 0.24
+Step 511, Reward: 0.00, Total: 0.24
+Step 521, Reward: 0.00, Total: 0.24
+Step 531, Reward: 0.00, Total: 0.24
+Step 541, Reward: 0.00, Total: 0.24
+Step 551, Reward: 0.00, Total: 0.24
+Step 561, Reward: 0.00, Total: 0.24
+Step 571, Reward: 0.00, Total: 0.24
+Step 581, Reward: 0.00, Total: 0.24
+Step 591, Reward: 0.00, Total: 0.24
+Step 601, Reward: 0.00, Total: 0.24
+Step 611, Reward: 0.00, Total: 0.24
+Step 621, Reward: 0.00, Total: 0.24
+Step 631, Reward: 0.00, Total: 0.24
+Step 641, Reward: 0.00, Total: 0.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0266, Value loss: 0.0005, Total loss: 0.0268
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 105/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: -0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: 0.00, Total: 0.24
+Step 221, Reward: 0.00, Total: 0.24
+Step 231, Reward: 0.00, Total: 0.24
+Step 241, Reward: 0.00, Total: 0.24
+Step 251, Reward: 0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: 0.00, Total: 0.24
+Step 291, Reward: 0.00, Total: 0.24
+Step 301, Reward: 0.00, Total: 0.24
+Step 311, Reward: 0.00, Total: 0.24
+Step 321, Reward: 0.00, Total: 0.24
+Step 331, Reward: 0.00, Total: 0.24
+Step 341, Reward: 0.00, Total: 0.24
+Step 351, Reward: 0.00, Total: 0.24
+Step 361, Reward: 0.00, Total: 0.24
+Step 371, Reward: 0.00, Total: 0.24
+Step 381, Reward: 0.00, Total: 0.24
+Step 391, Reward: 0.00, Total: 0.24
+Step 401, Reward: 0.00, Total: 0.24
+Step 411, Reward: 0.00, Total: 0.24
+Step 421, Reward: 0.00, Total: 0.24
+Step 431, Reward: -0.00, Total: 0.24
+Step 441, Reward: -0.00, Total: 0.24
+Step 451, Reward: 0.00, Total: 0.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0044, Value loss: 0.0002, Total loss: -0.0043
+[Sync] target_agent 同步于 Episode 105
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 106/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: 0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: 0.00, Total: 0.24
+Step 221, Reward: 0.00, Total: 0.24
+Step 231, Reward: 0.00, Total: 0.24
+Step 241, Reward: 0.00, Total: 0.24
+Step 251, Reward: 0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: 0.00, Total: 0.24
+Step 291, Reward: 0.00, Total: 0.24
+Step 301, Reward: 0.00, Total: 0.24
+Step 311, Reward: 0.00, Total: 0.24
+Step 321, Reward: 0.00, Total: 0.24
+Step 331, Reward: 0.00, Total: 0.24
+Step 341, Reward: 0.00, Total: 0.24
+Step 351, Reward: 0.00, Total: 0.24
+Step 361, Reward: 0.00, Total: 0.24
+Step 371, Reward: 0.00, Total: 0.24
+Step 381, Reward: 0.00, Total: 0.24
+Step 391, Reward: 0.00, Total: 0.24
+Step 401, Reward: 0.00, Total: 0.24
+Step 411, Reward: 0.00, Total: 0.24
+Step 421, Reward: 0.00, Total: 0.24
+Step 431, Reward: -0.00, Total: 0.24
+Step 441, Reward: -0.00, Total: 0.24
+Step 451, Reward: 0.00, Total: 0.24
+Step 461, Reward: 0.00, Total: 0.24
+Step 471, Reward: 0.00, Total: 0.24
+Step 481, Reward: 0.00, Total: 0.24
+Step 491, Reward: 0.00, Total: 0.24
+Step 501, Reward: 0.00, Total: 0.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0475, Value loss: 0.0003, Total loss: -0.0473
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 107/2000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.24, Total: 0.24
+Step 11, Reward: 0.00, Total: 0.24
+Step 21, Reward: 0.00, Total: 0.24
+Step 31, Reward: 0.00, Total: 0.24
+Step 41, Reward: 0.00, Total: 0.24
+Step 51, Reward: 0.00, Total: 0.24
+Step 61, Reward: 0.00, Total: 0.24
+Step 71, Reward: 0.00, Total: 0.24
+Step 81, Reward: 0.00, Total: 0.24
+Step 91, Reward: 0.00, Total: 0.24
+Step 101, Reward: 0.00, Total: 0.24
+Step 111, Reward: 0.00, Total: 0.24
+Step 121, Reward: 0.00, Total: 0.24
+Step 131, Reward: 0.00, Total: 0.24
+Step 141, Reward: 0.00, Total: 0.24
+Step 151, Reward: 0.00, Total: 0.24
+Step 161, Reward: 0.00, Total: 0.24
+Step 171, Reward: 0.00, Total: 0.24
+Step 181, Reward: 0.00, Total: 0.24
+Step 191, Reward: 0.00, Total: 0.24
+Step 201, Reward: 0.00, Total: 0.24
+Step 211, Reward: 0.00, Total: 0.24
+Step 221, Reward: 0.00, Total: 0.24
+Step 231, Reward: 0.00, Total: 0.24
+Step 241, Reward: 0.00, Total: 0.24
+Step 251, Reward: 0.00, Total: 0.24
+Step 261, Reward: 0.00, Total: 0.24
+Step 271, Reward: 0.00, Total: 0.24
+Step 281, Reward: 0.00, Total: 0.24

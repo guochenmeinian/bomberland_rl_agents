@@ -1,0 +1,94 @@
+{
+    "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.2.5",
+    "python": "3.8.20",
+    "heartbeatAt": "2025-04-29T04:02:53.567796",
+    "startedAt": "2025-04-29T04:02:53.185520",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train.py",
+    "codePathLocal": "train.py",
+    "codePath": "train.py",
+    "host": "c8aa5091b264",
+    "username": "root",
+    "executable": "/usr/local/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2591.998,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2591.998,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1006.853931427002,
+            "used": 43.758113861083984
+        }
+    },
+    "memory": {
+        "total": 15.555831909179688
+    }
+}

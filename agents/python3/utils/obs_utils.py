@@ -39,7 +39,7 @@ def padding_actions(action_indices, unit_ids, alive_unit_ids):
     return padded_actions
 
 
-def state_to_observations(state, agent_id="a"):
+def state_to_observations(state, agent_id):
     # print(f"state to observations: {state}")
     if isinstance(state, dict) and "payload" in state:
         state = state["payload"]
@@ -118,7 +118,7 @@ def state_to_observations(state, agent_id="a"):
 
 
 # Convert the model's action index to the game action format
-def action_index_to_game_action(action_indices, state, detonate_targets, agent_id="a"):
+def action_index_to_game_action(action_indices, state, detonate_targets, agent_id):
     # print(f"action index to game action: {state}")
     if isinstance(state, dict) and "payload" in state:
         state = state["payload"]

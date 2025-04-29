@@ -26,3 +26,10 @@ config: {'action_dim': 7, 'checkpoint_dir': 'checkpoints', 'clip_eps': 0.2, 'dev
 2025-04-27 22:24:19,965 INFO    MainThread:1 [wandb_run.py:_redirect():2119] Wrapping output streams.
 2025-04-27 22:24:19,965 INFO    MainThread:1 [wandb_run.py:_redirect():2144] Redirects installed.
 2025-04-27 22:24:19,966 INFO    MainThread:1 [wandb_init.py:init():845] run started, returning control to user process
+2025-04-28 19:16:46,238 INFO    MainThread:1 [wandb_run.py:_finish():1934] finishing run cg3972-new-york-university/bomberland/bv8l74xk
+2025-04-28 19:16:46,239 INFO    MainThread:1 [wandb_run.py:_atexit_cleanup():2168] got exitcode: 0
+2025-04-28 19:16:46,240 INFO    MainThread:1 [wandb_run.py:_restore():2151] restore
+2025-04-28 19:16:46,240 INFO    MainThread:1 [wandb_run.py:_restore():2157] restore done
+2025-04-28 19:16:50,895 INFO    MainThread:1 [wandb_run.py:_footer_history_summary_info():3599] rendering history
+2025-04-28 19:16:50,896 INFO    MainThread:1 [wandb_run.py:_footer_history_summary_info():3631] rendering summary
+2025-04-28 19:16:50,905 INFO    MainThread:1 [wandb_run.py:_footer_sync_info():3558] logging synced files
