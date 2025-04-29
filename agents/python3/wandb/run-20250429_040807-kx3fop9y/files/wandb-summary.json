@@ -1,1 +1,1 @@
-{"policy_loss": -0.0013192457974784905, "value_loss": 8.171297356006512e-05, "total_loss": -0.0012783902283344003, "episode": 3752, "_timestamp": 1745944999.74317, "_runtime": 45312.583151102066, "_step": 3789, "eval_win_rate": 0.6, "eval_avg_reward": 111.73173599999991}
+{"policy_loss": 0.012715423974441364, "value_loss": 0.00010319256445256997, "total_loss": 0.012767020787578076, "episode": 3787, "_timestamp": 1745945456.2711012, "_runtime": 45769.111082315445, "_step": 3824, "eval_win_rate": 0.6, "eval_avg_reward": 111.73173599999991}
