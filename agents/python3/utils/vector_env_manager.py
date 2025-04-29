@@ -12,17 +12,24 @@ class VectorGymManager:
 
     async def connect_all(self):
         """连接所有环境"""
-        for env in self.envs:
-            await env.connect()
+        # for env in self.envs:
+        #     await env.connect()
+        await asyncio.gather(*[env.connect() for env in self.envs])
 
     async def reset_all(self):
         """重置所有环境"""
-        self.current_states = []
-        for env in self.envs:
-            state = await env.reset_game()
-            await asyncio.sleep(0.2)  # 🧹 防止同步bug，还是保留sleep
+        # self.current_states = []
+        # for env in self.envs:
+        #     state = await env.reset_game()
+        #     await asyncio.sleep(0.2)  # 🧹 防止同步bug，还是保留sleep
+        #     env.make("bomberland-env", state["payload"])
+        #     self.current_states.append(state)
+        results = await asyncio.gather(*[env.reset_game() for env in self.envs])
+        self.current_states = results
+        await asyncio.gather(*[
             env.make("bomberland-env", state["payload"])
-            self.current_states.append(state)
+            for env, state in zip(self.envs, self.current_states)
+        ])
 
     async def step_all(self, all_actions):
         """
@@ -34,32 +41,40 @@ class VectorGymManager:
             dones: list of done flags
             infos: list of info dicts
         """
-        next_states = []
-        dones = []
-        infos = []
+        # next_states = []
+        # dones = []
+        # infos = []
 
-        for env, actions in zip(self.envs, all_actions):
-            try:
-                next_state, done, info = await env.step(actions)
-                await asyncio.sleep(0.2)
-            except Exception as e:
-                print(f"[step_all 错误] {e}")
-                next_state, done, info = None, True, {}
+        # for env, actions in zip(self.envs, all_actions):
+        #     try:
+        #         next_state, done, info = await env.step(actions)
+        #         await asyncio.sleep(0.2)
+        #     except Exception as e:
+        #         print(f"[step_all 错误] {e}")
+        #         next_state, done, info = None, True, {}
 
-            next_states.append(next_state)
-            dones.append(done)
-            infos.append(info)
+        #     next_states.append(next_state)
+        #     dones.append(done)
+        #     infos.append(info)
 
-        self.current_states = next_states
-        return next_states, dones, infos
+        # self.current_states = next_states
+        # return next_states, dones, infos
+        results = await asyncio.gather(*[
+            env.step(actions) if actions else (None, True, {}) 
+            for env, actions in zip(self.envs, all_actions)
+        ])
+        next_states, dones, infos = zip(*results)
+        self.current_states = list(next_states)
+        return list(next_states), list(dones), list(infos)
 
     async def close_all(self):
         """关闭所有环境"""
-        for env in self.envs:
-            try:
-                await env.close()
-            except Exception as e:
-                print(f"[close_all 错误] {e}")
+        # for env in self.envs:
+        #     try:
+        #         await env.close()
+        #     except Exception as e:
+        #         print(f"[close_all 错误] {e}")
+        await asyncio.gather(*[env.close() for env in self.envs])
 
     def get_current_states(self):
         """返回当前所有环境的状态"""

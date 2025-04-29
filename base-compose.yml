@@ -11,7 +11,7 @@ services:
     python3-gym-dev:
         build:
             context: agents/python3
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.multi_env
         volumes:
             - ./agents/python3:/app
 

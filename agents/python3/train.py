@@ -14,9 +14,7 @@ from utils.obs_utils import *
 from utils.rewards import calculate_reward
 from utils.save_model import save_checkpoint, load_latest_checkpoint, find_latest_checkpoint
 from config import Config 
-# from dotenv import load_dotenv
-
-# load_dotenv()
+import time
 
 def log_error(error_message):
     os.makedirs("logs", exist_ok=True)
@@ -31,13 +29,13 @@ async def run_training():
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M")
     run_name = f"ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
 
-    wandb.login(key=os.getenv("WANDB_API_KEY"))
-    cfg = Config()
-    wandb.init(
-        project="bomberland",
-        name=run_name,
-        config={key: getattr(cfg, key) for key in dir(cfg) if not key.startswith("__") and not callable(getattr(cfg, key))}
-    )
+    # wandb.login(key=os.getenv("WANDB_API_KEY"))
+    # cfg = Config()
+    # wandb.init(
+    #     project="bomberland",
+    #     name=run_name,
+    #     config={key: getattr(cfg, key) for key in dir(cfg) if not key.startswith("__") and not callable(getattr(cfg, key))}
+    # )
 
     agent = PPOAgent(Config)
     target_agent = PPOAgent(Config)
@@ -60,6 +58,7 @@ async def run_training():
     lstm_states_a = None  # 自己的agent
     lstm_states_b = None  # target_agent（敌方智能体）
 
+    batch_start_time = time.time()  # 🕐 benchmark：每 batch 开始计时
    
     for episode in range(start_episode, Config.num_episodes):
         print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
@@ -189,8 +188,14 @@ async def run_training():
                 msg = f"[关闭错误] Episode {episode+1} gym.close() 出错: {close_error}\n{traceback.format_exc()}"
                 print(msg)
                 log_error(msg)
+        
+        # 🔵 每 batch_size 个 episode 打印一次时间
+        if (episode + 1) % Config.benchmark_batch_size == 0:
+            batch_elapsed = time.time() - batch_start_time
+            print(f"\n🚀 Completed {Config.benchmark_batch_size} episodes in {batch_elapsed:.2f} seconds (Avg {batch_elapsed/Config.benchmark_batch_size:.2f} sec/episode)")
+            batch_start_time = time.time()  # 重置 batch 计时器
 
-    wandb.finish()
+    # wandb.finish()
     print("训练完成")
 
 
@@ -254,10 +259,10 @@ async def evaluate(agent, target_agent, episode, num_episodes=5):
 
     print(f"[评估结果] Win rate: {win_rate:.2f}, Avg Reward: {avg_reward:.2f}")
 
-    wandb.log({
-        "eval_win_rate": win_rate,
-        "eval_avg_reward": avg_reward
-    })
+    # wandb.log({
+    #     "eval_win_rate": win_rate,
+    #     "eval_avg_reward": avg_reward
+    # })
 
 
 if __name__ == "__main__":

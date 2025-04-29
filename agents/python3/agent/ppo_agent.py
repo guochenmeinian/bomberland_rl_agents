@@ -291,12 +291,12 @@ class PPOAgent:
         avg_loss = total_loss_value / num_batches
 
         # 🔵 wandb记录
-        wandb.log({
-            "policy_loss": avg_policy_loss,
-            "value_loss": avg_value_loss,
-            "total_loss": avg_loss,
-            "episode": current_episode
-        })
+        # wandb.log({
+        #     "policy_loss": avg_policy_loss,
+        #     "value_loss": avg_value_loss,
+        #     "total_loss": avg_loss,
+        #     "episode": current_episode
+        # })
 
         print(f"Update stats - Policy loss: {avg_policy_loss:.4f}, Value loss: {avg_value_loss:.4f}, Total loss: {avg_loss:.4f}")
 

@@ -11,6 +11,12 @@ class Config:
     update_target_frequency = 15  # 每15个episode同步一次
     eval_frequency = 100  # 每100次训练后评估一次
 
+    # 多环境设置
+    num_envs = 5  # 🛠️ 开5个环境并行训练
+
+    # 速度benchmark
+    benchmark_batch_size = 20  # 🛠️ 每20个episode打印一次benchmark
+
     # 训练参数
     num_episodes = 10000
     max_steps_per_episode = 650

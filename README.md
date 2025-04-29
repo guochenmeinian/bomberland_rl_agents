@@ -21,14 +21,21 @@ This repo contains our implementation for the project.
 See: [Documentation](https://www.gocoder.one/docs)
 
 1. Clone or download this repo (including both `base-compose.yml` and `docker-compose.yml` files).
-2. To connect agents and run a game instance, run from the root directory:
 
-```
-docker-compose up --abort-on-container-exit --force-recreate
-```
+2. Build the Docker Image:
+    ```
+    cd engine
+    docker build -t bomberland:011a277 -f bomberland-engine/Dockerfile . 
+    ```
 
-3. While the engine is running, access the client by going to `http://localhost:3000/` in your browser (may be different depending on your settings).
-4. From the client, you can connect as a `spectator` or `agent` (to play as a human player)
+3. To connect agents and run a game instance, run from the root directory:
+    ```
+    docker-compose up --abort-on-container-exit --force-recreate
+    ```
+
+4. While the engine is running, access the client by going to `http://localhost:3000/` in your browser (may be different depending on your settings).
+
+5. From the client, you can connect as a `spectator` or `agent` (to play as a human player)
 
 ### Open AI gym wrapper (experimental)
 
