@@ -206,7 +206,7 @@ async def run_training():
             #     "benchmark/batch_elapsed_time": batch_elapsed,
             #     "benchmark/avg_episode_time": avg_time_per_ep,
             #     "benchmark/episode": episode
-            # })
+            # }, step=episode)
 
             batch_start_time = time.time()
 
@@ -274,10 +274,10 @@ async def evaluate(agent, target_agent, episode, num_episodes=5):
 
     print(f"[评估结果] Win rate: {win_rate:.2f}, Avg Reward: {avg_reward:.2f}")
 
-    # wandb.log({
-    #     "eval_win_rate": win_rate,
-    #     "eval_avg_reward": avg_reward
-    # })
+    wandb.log({
+        "eval_win_rate": win_rate,
+        "eval_avg_reward": avg_reward
+    })
 
 
 if __name__ == "__main__":

@@ -170,8 +170,9 @@ async def run_training():
                     wandb.log({
                         "benchmark/batch_elapsed_time": batch_elapsed,
                         "benchmark/avg_episode_time": avg_time_per_ep,
-                        "benchmark/episode": episode_count
-                    })
+                        "benchmark/episode": episode_count,
+                    }, step=episode_count
+                    )
 
                     batch_start_time = time.time()
 
@@ -181,6 +182,11 @@ async def run_training():
                 if (episode_count) % Config.update_target_frequency == 0:
                     target_agent.model.load_state_dict(agent.model.state_dict())
                     print(f"[Sync] target_agent 同步于 Episode {episode_count}")
+                
+                if episode_count % Config.eval_frequency == 0:
+                    print(f"\n[评估] Evaluation at Episode {episode_count}")
+                    await evaluate(agent, target_agent, episode_count)
+
 
                 gym_manager.current_states[env_idx] = await gym_manager.envs[env_idx].reset_game()
                 await asyncio.sleep(0.2)
