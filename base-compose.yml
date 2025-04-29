@@ -14,3 +14,17 @@ services:
             dockerfile: Dockerfile
         volumes:
             - ./agents/python3:/app
+
+    ppo-agent:
+        build:
+            context: agents/python3
+            dockerfile: Dockerfile.ppo.dev
+        volumes:
+            - ./agents/python3:/app
+
+    python-agent:
+        build:
+            context: agents/python3
+            dockerfile: Dockerfile.agent.dev
+        volumes:
+            - ./agents/python3:/app
