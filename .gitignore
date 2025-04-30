@@ -7,3 +7,5 @@ engine/bomberland-library/lib
 engine/bomberland-library/coverage
 .
 .env
+agents/python3/wandb
+agents/python3/logs

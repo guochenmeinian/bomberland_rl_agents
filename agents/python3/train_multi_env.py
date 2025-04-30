@@ -53,8 +53,6 @@ async def run_training():
     await gym_manager.reset_all()
     await asyncio.sleep(0.5)
 
-    lstm_states_a = [None for _ in range(Config.num_envs)]
-    lstm_states_b = [None for _ in range(Config.num_envs)]
     episode_buffers = [[] for _ in range(Config.num_envs)]
     sequence_buffers = [[] for _ in range(Config.num_envs)]  # 🆕 临时收集sequence的小buffer
     total_rewards = [0 for _ in range(Config.num_envs)]
@@ -84,8 +82,8 @@ async def run_training():
                 alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
                 current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
 
-                action_indices_a, log_probs_a, value_a, detonate_targets_a, lstm_states_a[env_idx] = agent.select_actions(
-                    self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state, lstm_states_a[env_idx]
+                action_indices_a, log_probs_a, value_a, detonate_targets_a = agent.select_actions(
+                    self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state
                 )
                 action_indices_a = action_indices_a[0]
                 log_probs_a = log_probs_a[0]
@@ -95,8 +93,8 @@ async def run_training():
                 current_bomb_infos_b, current_bomb_count_b = bombs_positions_and_count(current_state, agent_units_ids_b)
 
                 with torch.no_grad():
-                    action_indices_b, _, _, detonate_targets_b, lstm_states_b[env_idx] = target_agent.select_actions(
-                        self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state, lstm_states_b[env_idx]
+                    action_indices_b, _, _, detonate_targets_b = target_agent.select_actions(
+                        self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state
                     )
                 action_indices_b = action_indices_b[0]
 
@@ -202,9 +200,7 @@ async def run_training():
                 await asyncio.sleep(0.2)
                 await gym_manager.envs[env_idx].make("bomberland-env", gym_manager.current_states[env_idx]["payload"])
 
-                # 🛠️ Reset LSTM
-                lstm_states_a[env_idx] = None
-                lstm_states_b[env_idx] = None
+                
 
     await gym_manager.close_all()
     print("训练完成 ✅")
