@@ -153,6 +153,13 @@ class PPOAgent:
         if isinstance(full_map, np.ndarray) and full_map.ndim == 3:
             full_map = np.expand_dims(full_map, axis=0)        # (1, C, H, W)
 
+        if self_states.ndim == 3:
+            print("[Warning] select_actions received 3D self_states, adding fake time dimension.")
+            self_states = np.expand_dims(self_states, axis=1)  # (1, N, D) → (1, 1, N, D)
+
+        if full_map.ndim == 4:
+            full_map = np.expand_dims(full_map, axis=1)  # (1, C, H, W) → (1, 1, C, H, W)
+
         self_states = torch.tensor(self_states, dtype=torch.float32).to(self.device)
         full_map = torch.tensor(full_map, dtype=torch.float32).to(self.device)
 
@@ -209,7 +216,6 @@ class PPOAgent:
         self.memory.clear()
 
         for sequence in episode_buffer:
-
             if not sequence:
                 continue
 
@@ -225,7 +231,7 @@ class PPOAgent:
                 new_sequence.append((state, map_data, action, log_prob, ret, adv))
 
             self.memory.append(new_sequence)
-        
+
         self.update(current_episode)
 
     def compute_gae(self, rewards, values, dones):
@@ -245,36 +251,35 @@ class PPOAgent:
     def vectorized_ppo_update(self, model, optimizer, batch_data, device, clip_eps):
         self_states, full_maps, actions, old_log_probs, returns, advantages = batch_data
 
-        # 转为 Tensor，送入 device
-        self_states = torch.tensor(self_states, dtype=torch.float32).to(device)        # (B, N, D)
-        full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)            # (B, C, H, W)
-        actions = torch.tensor(actions, dtype=torch.long).to(device)                   # (B, N)
-        old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)    # (B, N)
-        returns = torch.tensor(returns, dtype=torch.float32).to(device)                # (B,)
-        advantages = torch.tensor(advantages, dtype=torch.float32).to(device)          # (B,)
+        # 转为 Tensor
+        self_states = torch.tensor(self_states, dtype=torch.float32).to(device)        # (B, T, N, D)
+        full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)            # (B, T, C, H, W)
+        actions = torch.tensor(actions, dtype=torch.long).to(device)                   # (B, T, N)
+        old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)    # (B, T, N)
+        returns = torch.tensor(returns, dtype=torch.float32).to(device)                # (B, T)
+        advantages = torch.tensor(advantages, dtype=torch.float32).to(device)          # (B, T)
 
         # 标准化 advantage
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
 
-        # 获取 logits: (B, N, A) 和 value: (B,)
-        logits, values = model(self_states, full_maps)
+        # 前向计算
+        logits, values = model(self_states, full_maps)  # logits: (B, T, N, A), values: (B, T)
+        B, T, N, A = logits.shape
 
-        # 计算 log_prob：先 reshape，再恢复
-        B, N, A = logits.shape
-        flat_logits = logits.view(B * N, A)                     # (B*N, A)
-        flat_actions = actions.view(-1)                         # (B*N,)
-        flat_old_log_probs = old_log_probs.view(-1)             # (B*N,)
-        flat_advantages = advantages.unsqueeze(1).expand(-1, N).contiguous().view(-1)  # (B*N,)
+        # reshape → 扁平结构用于 loss 计算
+        flat_logits = logits.view(B * T * N, A)
+        flat_actions = actions.view(-1)
+        flat_old_log_probs = old_log_probs.view(-1)
+        flat_advantages = advantages.unsqueeze(-1).expand(-1, -1, N).contiguous().view(-1)  # (B*T*N,)
 
         dist = torch.distributions.Categorical(logits=flat_logits)
-        flat_log_probs = dist.log_prob(flat_actions)            # (B*N,)
-        ratio = torch.exp(flat_log_probs - flat_old_log_probs)  # (B*N,)
+        flat_log_probs = dist.log_prob(flat_actions)
+        ratio = torch.exp(flat_log_probs - flat_old_log_probs)
 
-        surr1 = ratio * flat_advantages                         # (B*N,)
+        surr1 = ratio * flat_advantages
         surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * flat_advantages
         policy_loss = -torch.min(surr1, surr2).mean()
 
-        # value loss 使用的是均值池化后的 value
         value_loss = F.mse_loss(values, returns)
         loss = policy_loss + 0.5 * value_loss
 
@@ -286,10 +291,11 @@ class PPOAgent:
 
 
 
-    def update(self, current_episode, epochs=4, batch_size=64):
+    def update(self, current_episode, epochs=4, batch_size=4):
         if not self.memory:
             return
 
+        # memory 是 List[sequence]，每个 sequence 是 List[Tuple]
         batched_states = []
         batched_maps = []
         batched_actions = []
@@ -306,25 +312,24 @@ class PPOAgent:
             batched_returns.append(np.array(ret_seq))       # (T,)
             batched_advantages.append(np.array(adv_seq))    # (T,)
 
-        batched_states = np.concatenate(batched_states, axis=0)
-        batched_maps = np.concatenate(batched_maps, axis=0)
-        if batched_maps.ndim == 5:
-            batched_maps = batched_maps.squeeze(1)  # 去掉第 1 维
-        batched_actions = np.concatenate(batched_actions, axis=0)
-        batched_old_log_probs = np.concatenate(batched_old_log_probs, axis=0)
-        batched_returns = np.concatenate(batched_returns, axis=0)
-        batched_advantages = np.concatenate(batched_advantages, axis=0)
+        # 拼成 (B, T, ...)
+        batched_states = np.stack(batched_states)            # (B, T, N, D)
+        batched_maps = np.stack(batched_maps)                # (B, T, C, H, W)
+        batched_actions = np.stack(batched_actions)          # (B, T, N)
+        batched_old_log_probs = np.stack(batched_old_log_probs)
+        batched_returns = np.stack(batched_returns)          # (B, T)
+        batched_advantages = np.stack(batched_advantages)    # (B, T)
 
         total_policy_loss = 0
         total_value_loss = 0
         total_loss = 0
 
-        total_samples = batched_states.shape[0]
-        indices = np.arange(total_samples)
+        B = batched_states.shape[0]
+        indices = np.arange(B)
 
         for _ in range(epochs):
             np.random.shuffle(indices)
-            for start in range(0, total_samples, batch_size):
+            for start in range(0, B, batch_size):
                 end = start + batch_size
                 batch_idx = indices[start:end]
 
@@ -334,7 +339,7 @@ class PPOAgent:
                     batched_actions[batch_idx],
                     batched_old_log_probs[batch_idx],
                     batched_returns[batch_idx],
-                    batched_advantages[batch_idx]
+                    batched_advantages[batch_idx],
                 )
 
                 policy_loss, value_loss, loss = self.vectorized_ppo_update(
@@ -342,14 +347,14 @@ class PPOAgent:
                     optimizer=self.optimizer,
                     batch_data=mini_batch,
                     device=self.device,
-                    clip_eps=self.clip_eps
+                    clip_eps=self.clip_eps,
                 )
 
                 total_policy_loss += policy_loss
                 total_value_loss += value_loss
                 total_loss += loss
 
-        num_batches = (total_samples // batch_size) * epochs
+        num_batches = (B // batch_size) * epochs
         wandb.log({
             "train/policy_loss": total_policy_loss / num_batches,
             "train/value_loss": total_value_loss / num_batches,
@@ -360,4 +365,3 @@ class PPOAgent:
         print(f"Update stats - Policy loss: {total_policy_loss / num_batches:.4f}, Value loss: {total_value_loss / num_batches:.4f}, Total loss: {total_loss / num_batches:.4f}")
 
         self.memory.clear()
-

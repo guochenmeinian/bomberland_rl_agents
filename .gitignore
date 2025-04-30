@@ -8,4 +8,4 @@ engine/bomberland-library/coverage
 .
 .env
 agents/python3/wandb/*
-agents/python3/logs
+agents/python3/logs/*

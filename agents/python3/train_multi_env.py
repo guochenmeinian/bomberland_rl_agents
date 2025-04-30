@@ -159,47 +159,58 @@ async def run_training():
             gym_manager.current_states[env_idx] = next_state
 
             if done:
-                if sequence_buffers[env_idx]:   # 🔵 有剩余再存
+                if sequence_buffers[env_idx]:
                     episode_buffers[env_idx].append(sequence_buffers[env_idx])
                     sequence_buffers[env_idx] = []
-                agent.update_from_buffer(episode_buffers[env_idx], episode_count)
+                done_envs[env_idx] = True
+                num_envs_finished += 1
+
+        # ✅ 所有 env 都完成一轮 episode，统一更新
+        if all(done_envs): # should always be true
+            if not all(episode_buffers[env_idx] for env_idx in range(Config.num_envs)):
+                print("⚠️ 有 env 没有积累足够的 episode_buffer")
+                continue
+            episode_count += 1
+            all_buffers = []
+            for env_idx in range(Config.num_envs):
+                all_buffers.extend(episode_buffers[env_idx])
                 print(f"✅ Env {env_idx} 完成 Episode {episode_count}, 总奖励: {total_rewards[env_idx]:.2f}")
                 total_rewards[env_idx] = 0
                 episode_buffers[env_idx] = []
                 current_decays[env_idx] = 1.0
-                episode_count += 1
 
-                if episode_count % Config.benchmark_batch_size == 0:
-                    batch_elapsed = time.time() - batch_start_time
-                    avg_time_per_ep = batch_elapsed / Config.benchmark_batch_size
+            agent.update_from_buffer(all_buffers, episode_count)
 
-                    print(f"\n🚀 Completed {Config.benchmark_batch_size} episodes in {batch_elapsed:.2f} seconds (Avg {avg_time_per_ep:.2f} sec/episode)")
+            if episode_count % Config.benchmark_batch_size == 0:
+                batch_elapsed = time.time() - batch_start_time
+                avg_time_per_ep = batch_elapsed / Config.benchmark_batch_size
 
-                    # 🟢 wandb log
-                    wandb.log({
-                        "benchmark/batch_elapsed_time": batch_elapsed,
-                        "benchmark/avg_episode_time": avg_time_per_ep,
-                        "benchmark/episode": episode_count,
-                    }, step=episode_count)
+                wandb.log({
+                    "benchmark/batch_elapsed_time": batch_elapsed,
+                    "benchmark/avg_episode_time": avg_time_per_ep,
+                    "benchmark/avg_env_reward": np.mean(total_rewards),
+                    # "benchmark/episode": episode_count,
+                }, step=episode_count)
 
-                    batch_start_time = time.time()
+                batch_start_time = time.time()
 
-                if (episode_count) % Config.save_frequency == 0:
-                    save_checkpoint(agent, episode_count, Config.keep_last_n_checkpoint)
+            if episode_count % Config.save_frequency == 0:
+                save_checkpoint(agent, episode_count, Config.keep_last_n_checkpoint)
 
-                if (episode_count) % Config.update_target_frequency == 0:
-                    target_agent.model.load_state_dict(agent.model.state_dict())
-                    print(f"[Sync] target_agent 同步于 Episode {episode_count}")
-                
-                if episode_count % Config.eval_frequency == 0:
-                    print(f"\n[评估] Evaluation at Episode {episode_count}")
-                    await evaluate(agent, target_agent, episode_count)
+            if episode_count % Config.update_target_frequency == 0:
+                target_agent.model.load_state_dict(agent.model.state_dict())
+                print(f"[Sync] target_agent 同步于 Episode {episode_count}")
 
+            if episode_count % Config.eval_frequency == 0:
+                print(f"\n[评估] Evaluation at Episode {episode_count}")
+                await evaluate(agent, target_agent, episode_count)
 
+            # ✅ 重置所有 env
+            for env_idx in range(Config.num_envs):
                 gym_manager.current_states[env_idx] = await gym_manager.envs[env_idx].reset_game()
                 await asyncio.sleep(0.2)
                 await gym_manager.envs[env_idx].make("bomberland-env", gym_manager.current_states[env_idx]["payload"])
-
+                done_envs[env_idx] = False
                 
 
     await gym_manager.close_all()
