@@ -245,25 +245,37 @@ class PPOAgent:
     def vectorized_ppo_update(self, model, optimizer, batch_data, device, clip_eps):
         self_states, full_maps, actions, old_log_probs, returns, advantages = batch_data
 
-        self_states = torch.tensor(self_states, dtype=torch.float32).to(device)
-        full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)
-        actions = torch.tensor(actions, dtype=torch.long).to(device)
-        old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)
-        returns = torch.tensor(returns, dtype=torch.float32).to(device)
-        advantages = torch.tensor(advantages, dtype=torch.float32).to(device)
+        # 转为 Tensor，送入 device
+        self_states = torch.tensor(self_states, dtype=torch.float32).to(device)        # (B, N, D)
+        full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)            # (B, C, H, W)
+        actions = torch.tensor(actions, dtype=torch.long).to(device)                   # (B, N)
+        old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)    # (B, N)
+        returns = torch.tensor(returns, dtype=torch.float32).to(device)                # (B,)
+        advantages = torch.tensor(advantages, dtype=torch.float32).to(device)          # (B,)
 
+        # 标准化 advantage
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
 
-        logits, values = model(self_states, full_maps)  # logits: (B, num_units, action_dim)
-        dist = torch.distributions.Categorical(logits=logits)
-        log_probs = dist.log_prob(actions)  # (B, num_units)
+        # 获取 logits: (B, N, A) 和 value: (B,)
+        logits, values = model(self_states, full_maps)
 
-        ratio = torch.exp(log_probs - old_log_probs)  # (B, num_units)
-        surr1 = ratio * advantages.unsqueeze(-1)      # (B, num_units)
-        surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * advantages.unsqueeze(-1)
+        # 计算 log_prob：先 reshape，再恢复
+        B, N, A = logits.shape
+        flat_logits = logits.view(B * N, A)                     # (B*N, A)
+        flat_actions = actions.view(-1)                         # (B*N,)
+        flat_old_log_probs = old_log_probs.view(-1)             # (B*N,)
+        flat_advantages = advantages.unsqueeze(1).expand(-1, N).contiguous().view(-1)  # (B*N,)
+
+        dist = torch.distributions.Categorical(logits=flat_logits)
+        flat_log_probs = dist.log_prob(flat_actions)            # (B*N,)
+        ratio = torch.exp(flat_log_probs - flat_old_log_probs)  # (B*N,)
+
+        surr1 = ratio * flat_advantages                         # (B*N,)
+        surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * flat_advantages
         policy_loss = -torch.min(surr1, surr2).mean()
 
-        value_loss = F.mse_loss(values.squeeze(-1), returns)
+        # value loss 使用的是均值池化后的 value
+        value_loss = F.mse_loss(values, returns)
         loss = policy_loss + 0.5 * value_loss
 
         optimizer.zero_grad()
@@ -271,6 +283,7 @@ class PPOAgent:
         optimizer.step()
 
         return policy_loss.item(), value_loss.item(), loss.item()
+
 
 
     def update(self, current_episode, epochs=4, batch_size=64):

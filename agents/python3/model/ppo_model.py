@@ -57,10 +57,8 @@ class PPOModel(nn.Module):
         # Value head（池化后送入）
         self.value_head = nn.Linear(hidden_dim, 1)
 
-        # 每个 unit 一个 policy head（输出动作分布）
-        self.policy_heads = nn.ModuleList([
-            nn.Linear(hidden_dim, action_dim) for _ in range(num_units)
-        ])
+        # ✅ 共享 policy head
+        self.policy_head = nn.Linear(hidden_dim, action_dim)  
 
     def forward(self, self_states, full_map):
         """
@@ -93,7 +91,6 @@ class PPOModel(nn.Module):
         pooled = encoded.mean(dim=1)
         value = self.value_head(pooled).squeeze(-1)  # (B,)
 
-        # 每个 unit 输出 logits（动作分布）
-        logits = torch.stack([head(encoded[:, i]) for i, head in enumerate(self.policy_heads)], dim=1)  # (B, N, A)
+        logits = self.policy_head(encoded)  # ✅ (B, N, A)，直接对所有单位共享 head
 
         return logits, value
