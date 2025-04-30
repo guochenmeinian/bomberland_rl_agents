@@ -14,6 +14,8 @@ from utils.rewards import calculate_reward
 from utils.save_model import save_checkpoint, load_latest_checkpoint, find_latest_checkpoint
 from config import Config
 
+from train import evaluate
+
 def log_error(error_message):
     os.makedirs("logs", exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -24,6 +26,15 @@ def log_error(error_message):
 async def run_training():
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M")
     run_name = f"ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
+
+    wandb.login(key=os.getenv("WANDB_API_KEY"))
+    cfg = Config()
+    wandb.init(
+        project="bomberland",
+        name=run_name,
+        config={key: getattr(cfg, key) for key in dir(cfg) if not key.startswith("__") and not callable(getattr(cfg, key))}
+    )
+    print("WandB is initialized:", wandb.run is not None)
 
     agent = PPOAgent(Config)
     target_agent = PPOAgent(Config)
@@ -171,8 +182,7 @@ async def run_training():
                         "benchmark/batch_elapsed_time": batch_elapsed,
                         "benchmark/avg_episode_time": avg_time_per_ep,
                         "benchmark/episode": episode_count,
-                    }, step=episode_count
-                    )
+                    }, step=episode_count)
 
                     batch_start_time = time.time()
 

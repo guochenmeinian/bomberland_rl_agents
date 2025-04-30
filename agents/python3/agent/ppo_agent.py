@@ -209,7 +209,6 @@ class PPOAgent:
         return actions.cpu().numpy(), log_probs.cpu().numpy(), value.squeeze().cpu().numpy(), detonate_targets, next_lstm_states
 
 
-
     def update_from_buffer(self, episode_buffer, current_episode):
         if not episode_buffer:
             return
@@ -268,6 +267,7 @@ class PPOAgent:
         total_loss_value = 0
 
         for _ in range(epochs):
+            # print("LEN:", len(sequences))
             random_batches = [sequences[i:i + batch_size] for i in range(0, len(sequences), batch_size)]
             for batch in random_batches:
                 policy_loss_sum = 0
@@ -324,10 +324,10 @@ class PPOAgent:
 
         # 🔵 wandb记录
         wandb.log({
-            "train/policy_loss": avg_policy_loss,
-            "train/value_loss": avg_value_loss,
-            "train/total_loss": avg_loss,
-            "train/episode": current_episode
+            "policy_loss": avg_policy_loss,
+            "value_loss": avg_value_loss,
+            "total_loss": avg_loss,
+            "episode": current_episode
         }, step=current_episode)
 
         print(f"Update stats - Policy loss: {avg_policy_loss:.4f}, Value loss: {avg_value_loss:.4f}, Total loss: {avg_loss:.4f}")

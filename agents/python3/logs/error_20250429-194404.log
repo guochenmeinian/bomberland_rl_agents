@@ -1,9 +1,0 @@
-[总体错误] Episode 3752 失败: not enough values to unpack (expected 7, got 4)
-Traceback (most recent call last):
-  File "train.py", line 171, in run_training
-    agent.update_from_buffer(episode_buffer, episode)
-  File "/app/agent/ppo_agent.py", line 217, in update_from_buffer
-    states, maps, actions, log_probs, rewards, values, dones = zip(*episode_buffer)
-ValueError: not enough values to unpack (expected 7, got 4)
-
-

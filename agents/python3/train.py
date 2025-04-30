@@ -29,13 +29,13 @@ async def run_training():
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M")
     run_name = f"ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
 
-    # wandb.login(key=os.getenv("WANDB_API_KEY"))
-    # cfg = Config()
-    # wandb.init(
-    #     project="bomberland",
-    #     name=run_name,
-    #     config={key: getattr(cfg, key) for key in dir(cfg) if not key.startswith("__") and not callable(getattr(cfg, key))}
-    # )
+    wandb.login(key=os.getenv("WANDB_API_KEY"))
+    cfg = Config()
+    wandb.init(
+        project="bomberland",
+        name=run_name,
+        config={key: getattr(cfg, key) for key in dir(cfg) if not key.startswith("__") and not callable(getattr(cfg, key))}
+    )
 
     agent = PPOAgent(Config)
     target_agent = PPOAgent(Config)
@@ -202,15 +202,15 @@ async def run_training():
             print(f"\n🚀 Completed {Config.benchmark_batch_size} episodes in {batch_elapsed:.2f} seconds (Avg {avg_time_per_ep:.2f} sec/episode)")
 
             # 🟢 wandb log
-            # wandb.log({
-            #     "benchmark/batch_elapsed_time": batch_elapsed,
-            #     "benchmark/avg_episode_time": avg_time_per_ep,
-            #     "benchmark/episode": episode
-            # }, step=episode)
+            wandb.log({
+                "benchmark/batch_elapsed_time": batch_elapsed,
+                "benchmark/avg_episode_time": avg_time_per_ep,
+                "benchmark/episode": episode
+            }, step=episode)
 
             batch_start_time = time.time()
 
-    # wandb.finish()
+    wandb.finish()
     print("训练完成")
 
 
