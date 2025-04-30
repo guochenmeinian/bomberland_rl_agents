@@ -1,0 +1,11 @@
+[总体错误] Episode 100 失败: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "train.py", line 176, in run_training
+    await evaluate(agent, target_agent, episode)
+  File "train.py", line 261, in evaluate
+    reward = calculate_reward(next_state, current_state, action_indices_a, episode, agent_id="a")
+  File "/app/utils/rewards.py", line 44, in calculate_reward
+    unit_ids = state["agents"][agent_id]["unit_ids"]
+TypeError: 'NoneType' object is not subscriptable
+
+

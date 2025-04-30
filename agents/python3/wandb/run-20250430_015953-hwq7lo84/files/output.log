@@ -1,0 +1,19 @@
+[Checkpoint] Loaded checkpoints/ppo_checkpoint_ep50.pt (episode 50)
+开始训练，共 10000 轮!!!!!!!!!!
+开始 Episode 51/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+Step 错误: 环境未初始化，请先调用make方法
+警告: step 返回了 None，跳出当前 episode
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+train.py:86: RuntimeWarning: coroutine 'SafeGym.make' was never awaited
+  gym.make("bomberland-env", current_state["payload"])
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+Traceback (most recent call last):
+  File "/app/env/safe_gym.py", line 124, in step
+    raise ValueError("环境未初始化，请先调用make方法")
+ValueError: 环境未初始化，请先调用make方法

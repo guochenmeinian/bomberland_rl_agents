@@ -18,53 +18,43 @@ class VectorGymManager:
 
     async def reset_all(self):
         """重置所有环境"""
-        # self.current_states = []
-        # for env in self.envs:
-        #     state = await env.reset_game()
-        #     await asyncio.sleep(0.2)  # 🧹 防止同步bug，还是保留sleep
-        #     env.make("bomberland-env", state["payload"])
-        #     self.current_states.append(state)
         results = await asyncio.gather(*[env.reset_game() for env in self.envs])
-        self.current_states = results
+        
+        # 设置 _prev_state
+        self.current_states = []
+        for state in results:
+            if isinstance(state, dict):
+                state["_prev_state"] = copy.deepcopy(state)
+            self.current_states.append(state)
+
+        # 创建环境
         await asyncio.gather(*[
             env.make("bomberland-env", state["payload"])
             for env, state in zip(self.envs, self.current_states)
         ])
 
+
     async def step_all(self, all_actions):
-        """
-        同时对所有环境执行动作
-        Args:
-            all_actions: list of actions for each env
-        Returns:
-            next_states: list of next states
-            dones: list of done flags
-            infos: list of info dicts
-        """
-        # next_states = []
-        # dones = []
-        # infos = []
-
-        # for env, actions in zip(self.envs, all_actions):
-        #     try:
-        #         next_state, done, info = await env.step(actions)
-        #         await asyncio.sleep(0.2)
-        #     except Exception as e:
-        #         print(f"[step_all 错误] {e}")
-        #         next_state, done, info = None, True, {}
-
-        #     next_states.append(next_state)
-        #     dones.append(done)
-        #     infos.append(info)
-
-        # self.current_states = next_states
-        # return next_states, dones, infos
         results = await asyncio.gather(*[
             env.step(actions) if actions else (None, True, {}) 
             for env, actions in zip(self.envs, all_actions)
         ])
         next_states, dones, infos = zip(*results)
-        self.current_states = list(next_states)
+
+        updated_states = []
+        for i, (new_state, done) in enumerate(zip(next_states, dones)):
+            prev_state = self.current_states[i]
+            if isinstance(new_state, dict):
+                if isinstance(prev_state, dict):
+                    if "_prev_state" in prev_state:
+                        new_state["_prev_state"] = prev_state["_prev_state"]
+                    else:
+                        new_state["_prev_state"] = prev_state.copy()
+                    if "_meta" in prev_state:
+                        new_state["_meta"] = prev_state["_meta"]
+            updated_states.append(new_state)
+
+        self.current_states = updated_states
         return list(next_states), list(dones), list(infos)
 
     async def close_all(self):

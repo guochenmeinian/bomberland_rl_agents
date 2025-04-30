@@ -285,7 +285,7 @@ class PPOAgent:
 
                     for t in range(T):
                         s_t = s_seq[t].unsqueeze(0)  # (1, num_units, self_state_dim)
-                        m_t = m_seq[t].unsqueeze(0)  # (1, C, H, W)
+                        m_t = m_seq[t] # .unsqueeze(0)  # (1, C, H, W)
 
                         logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
 
@@ -324,10 +324,10 @@ class PPOAgent:
 
         # 🔵 wandb记录
         wandb.log({
-            "policy_loss": avg_policy_loss,
-            "value_loss": avg_value_loss,
-            "total_loss": avg_loss,
-            "episode": current_episode
+            "train/policy_loss": avg_policy_loss,
+            "train/value_loss": avg_value_loss,
+            "train/total_loss": avg_loss,
+            "train/episode": current_episode
         }, step=current_episode)
 
         print(f"Update stats - Policy loss: {avg_policy_loss:.4f}, Value loss: {avg_value_loss:.4f}, Total loss: {avg_loss:.4f}")

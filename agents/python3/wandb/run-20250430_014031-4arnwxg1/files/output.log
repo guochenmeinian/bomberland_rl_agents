@@ -1,0 +1,38 @@
+WandB is initialized: True
+[Checkpoint] Loaded checkpoints/ppo_checkpoint_ep50.pt (episode 50)
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+连接成功！
+连接成功！
+连接成功！
+连接成功！
+连接成功！
+尝试重置游戏地图
+尝试重置游戏地图
+尝试重置游戏地图
+尝试重置游戏地图
+尝试重置游戏地图
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+开始 Episode 51/10000
+Traceback (most recent call last):
+  File "train_multi_env.py", line 213, in <module>
+    asyncio.run(run_training())
+  File "/usr/local/lib/python3.8/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/local/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "train_multi_env.py", line 128, in run_training
+    prev_state = gym_manager.current_states[env_idx]["_prev_state"]
+KeyError: '_prev_state'

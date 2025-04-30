@@ -1,0 +1,22 @@
+[Checkpoint] Loaded checkpoints/ppo_checkpoint_ep50.pt (episode 50)
+开始训练，共 10000 轮!!!!!!!!!!
+开始 Episode 51/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: -0.10, Total: -4.65
+Step 21, Reward: 0.10, Total: -6.58
+Step 31, Reward: 1.16, Total: -3.72
+Step 41, Reward: 1.06, Total: -2.34
+Step 51, Reward: 0.62, Total: 1.28
+Step 61, Reward: 0.19, Total: 4.30
+Step 71, Reward: -0.51, Total: 5.41
+Step 81, Reward: -0.69, Total: 6.94
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+episode_steps: 87
+!!!!!!!!!!!!!!!!
+/app/agent/ppo_agent.py:255: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:261.)

@@ -1,0 +1,19 @@
+[Checkpoint] Loaded checkpoints/ppo_checkpoint_ep50.pt (episode 50)
+开始训练，共 10000 轮!!!!!!!!!!
+开始 Episode 51/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.55, Total: -0.55
+Step 11, Reward: -0.60, Total: -4.39
+Step 21, Reward: -0.05, Total: -6.42
+Step 31, Reward: 0.05, Total: -8.38
+Step 41, Reward: -0.87, Total: -11.04
+Step 51, Reward: -0.05, Total: -11.97
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭

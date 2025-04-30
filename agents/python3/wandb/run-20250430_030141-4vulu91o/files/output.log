@@ -1,0 +1,365 @@
+[Checkpoint] 没找到已有模型，从头训练
+开始训练，共 10000 轮!!!!!!!!!!
+开始 Episode 1/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: 1.14, Total: -2.45
+Step 21, Reward: -0.59, Total: -6.05
+Step 31, Reward: 0.05, Total: -8.00
+Step 41, Reward: -0.19, Total: -11.19
+Step 51, Reward: -0.38, Total: -13.63
+Step 61, Reward: -0.19, Total: -15.57
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+/app/agent/ppo_agent.py:255: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:261.)
+  states = torch.tensor(states, dtype=torch.float32).to(self.device)
+Update stats - Policy loss: 0.5504, Value loss: 8.5540, Total loss: 9.1043
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 2/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.55, Total: -0.55
+Step 11, Reward: -0.54, Total: -4.33
+Step 21, Reward: 0.59, Total: -2.46
+Step 31, Reward: 0.53, Total: -2.37
+Step 41, Reward: 0.24, Total: -6.28
+Step 51, Reward: -0.05, Total: -6.77
+Step 61, Reward: -0.05, Total: -11.08
+Step 71, Reward: -0.05, Total: -9.96
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.3104, Value loss: 8.8907, Total loss: 9.2011
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 3/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.55, Total: -0.55
+Step 11, Reward: 0.40, Total: 0.19
+Step 21, Reward: -0.44, Total: 1.42
+Step 31, Reward: 0.39, Total: 2.83
+Step 41, Reward: -0.24, Total: 2.21
+Step 51, Reward: 0.14, Total: 1.92
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0519, Value loss: 48.0071, Total loss: 48.0590
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 4/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: -0.94, Total: -1.53
+Step 21, Reward: -1.13, Total: -4.34
+Step 31, Reward: 0.19, Total: -5.31
+Step 41, Reward: 0.29, Total: -6.61
+Step 51, Reward: -0.38, Total: -8.91
+Step 61, Reward: -0.19, Total: -5.60
+Step 71, Reward: 0.33, Total: -5.32
+Step 81, Reward: -0.00, Total: -5.32
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.6673, Value loss: 21.0592, Total loss: 21.7265
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 5/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: 0.59, Total: -0.16
+Step 21, Reward: -0.59, Total: 2.20
+Step 31, Reward: 0.53, Total: 3.75
+Step 41, Reward: -0.00, Total: 7.33
+Step 51, Reward: 0.24, Total: 7.95
+Step 61, Reward: 0.61, Total: 9.41
+Step 71, Reward: -0.79, Total: 12.04
+Step 81, Reward: 0.05, Total: 14.31
+Step 91, Reward: 0.23, Total: 15.41
+Step 101, Reward: 0.18, Total: 17.60
+Step 111, Reward: 0.18, Total: 17.38
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Step 121, Reward: 18.93, Total: 36.00
+Update stats - Policy loss: 0.0055, Value loss: 12.0684, Total loss: 12.0738
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 6/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: -0.15, Total: 2.73
+Step 21, Reward: 0.24, Total: 3.08
+Step 31, Reward: 0.10, Total: 3.36
+Step 41, Reward: 0.43, Total: 4.33
+Step 51, Reward: -0.14, Total: 3.90
+Step 61, Reward: 0.38, Total: 9.33
+Step 71, Reward: 0.61, Total: 15.56
+Step 81, Reward: 0.69, Total: 20.79
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.0631, Value loss: 37.3178, Total loss: 37.2547
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 7/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: -0.15, Total: 2.23
+Step 21, Reward: 0.44, Total: 5.04
+Step 31, Reward: -0.53, Total: 4.50
+Step 41, Reward: 0.53, Total: 3.67
+Step 51, Reward: 0.05, Total: 6.30
+Step 61, Reward: 0.80, Total: 7.57
+Step 71, Reward: 0.19, Total: 9.40
+Step 81, Reward: -0.00, Total: 13.44
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.0369, Value loss: 20.2432, Total loss: 20.2801
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 8/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.15, Total: -0.15
+Step 11, Reward: -0.15, Total: 2.28
+Step 21, Reward: -0.15, Total: 4.55
+Step 31, Reward: 0.58, Total: 7.28
+Step 41, Reward: -0.53, Total: 7.57
+Step 51, Reward: 0.38, Total: 6.33
+Step 61, Reward: -0.14, Total: 4.95
+Step 71, Reward: 0.75, Total: 5.19
+Step 81, Reward: 0.51, Total: 7.83
+Step 91, Reward: 0.37, Total: 9.47
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.1109, Value loss: 13.6363, Total loss: 13.7472
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 9/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.05, Total: 0.05
+Step 11, Reward: 0.59, Total: 3.43
+Step 21, Reward: -0.15, Total: 4.21
+Step 31, Reward: -0.05, Total: 7.48
+Step 41, Reward: -0.62, Total: 9.85
+Step 51, Reward: -0.57, Total: 10.13
+Step 61, Reward: -0.66, Total: 14.10
+Step 71, Reward: 0.33, Total: 16.25
+Step 81, Reward: 1.29, Total: 19.44
+Step 91, Reward: 0.50, Total: 22.56
+Step 101, Reward: 0.27, Total: 24.47
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Step 111, Reward: 19.12, Total: 45.08
+Update stats - Policy loss: 0.0256, Value loss: 11.2557, Total loss: 11.2813
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 10/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.45, Total: 2.19
+Step 21, Reward: 0.24, Total: 3.12
+Step 31, Reward: -0.15, Total: 4.30
+Step 41, Reward: 1.59, Total: 7.14
+Step 51, Reward: 0.90, Total: 12.69
+Step 61, Reward: 0.80, Total: 18.31
+Step 71, Reward: 0.37, Total: 20.75
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1667, Value loss: 22.4970, Total loss: 22.3303
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 11/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 1.04, Total: 3.37
+Step 21, Reward: -0.15, Total: 5.59
+Step 31, Reward: 0.58, Total: 7.64
+Step 41, Reward: 0.24, Total: 11.98
+Step 51, Reward: 0.43, Total: 17.38
+Step 61, Reward: 0.80, Total: 23.57
+Step 71, Reward: 0.61, Total: 29.46
+Step 81, Reward: 0.78, Total: 36.69
+Step 91, Reward: -0.32, Total: 41.84
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.1521, Value loss: 18.3813, Total loss: 18.2293
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 12/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: -0.15, Total: 3.24
+Step 21, Reward: -0.15, Total: 4.23
+Step 31, Reward: 0.24, Total: 9.39
+Step 41, Reward: 1.54, Total: 12.81
+Step 51, Reward: -0.29, Total: 12.81
+Step 61, Reward: 0.38, Total: 16.06
+Step 71, Reward: 0.28, Total: 17.28
+Step 81, Reward: 0.14, Total: 18.81
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.2094, Value loss: 17.9190, Total loss: 17.7096
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 13/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.45, Total: 0.45
+Step 11, Reward: 0.64, Total: 4.67
+Step 21, Reward: -0.15, Total: 4.48
+Step 31, Reward: -0.15, Total: 5.31
+Step 41, Reward: -0.62, Total: 4.05
+Step 51, Reward: 0.24, Total: 10.55
+Step 61, Reward: 0.61, Total: 15.46
+Step 71, Reward: -0.61, Total: 18.60
+Step 81, Reward: 0.78, Total: 22.44
+Step 91, Reward: 0.37, Total: 26.52
+Step 101, Reward: 1.27, Total: 30.70
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.3265, Value loss: 13.3977, Total loss: 13.0712
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 14/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.65, Total: 0.65
+Step 11, Reward: 0.25, Total: 2.14
+Step 21, Reward: 0.24, Total: 4.31
+Step 31, Reward: 0.24, Total: 8.35
+Step 41, Reward: 0.53, Total: 10.36
+Step 51, Reward: 0.24, Total: 14.27
+Step 61, Reward: 1.32, Total: 13.98
+Step 71, Reward: 0.14, Total: 13.09
+Step 81, Reward: 0.14, Total: 14.81
+Step 91, Reward: 0.14, Total: 17.60
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Step 101, Reward: -1.00, Total: 18.11
+Update stats - Policy loss: 0.0773, Value loss: 17.0223, Total loss: 17.0996
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 15/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.45, Total: 2.98
+Step 21, Reward: 0.24, Total: 5.34
+Step 31, Reward: -0.15, Total: 9.04
+Step 41, Reward: 0.05, Total: 10.06
+Step 51, Reward: 0.19, Total: 13.87
+Step 61, Reward: 0.56, Total: 19.78
+Step 71, Reward: 0.75, Total: 26.52
+Step 81, Reward: 0.23, Total: 31.25
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.3849, Value loss: 9.9107, Total loss: 9.5258
+[Sync] target_agent 同步于 Episode 15
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 16/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.45, Total: 4.27
+Step 21, Reward: -0.15, Total: 7.13
+Step 31, Reward: 0.24, Total: 8.05
+Step 41, Reward: 0.43, Total: 14.18
+Step 51, Reward: 1.19, Total: 18.24
+Step 61, Reward: 0.38, Total: 19.46
+Step 71, Reward: 0.56, Total: 19.88
+Step 81, Reward: 0.14, Total: 21.87
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: -0.4176, Value loss: 7.1504, Total loss: 6.7328
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 17/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.45, Total: 4.07
+Step 21, Reward: 0.24, Total: 8.50
+Step 31, Reward: -0.58, Total: 8.83
+Step 41, Reward: -0.14, Total: 11.73
+Step 51, Reward: 0.24, Total: 15.03
+Step 61, Reward: 0.61, Total: 19.03
+Step 71, Reward: 0.33, Total: 20.06
+Step 81, Reward: -0.69, Total: 20.62
+Step 91, Reward: 0.14, Total: 21.62
+Step 101, Reward: -0.23, Total: 23.35
+Step 111, Reward: 0.13, Total: 24.83

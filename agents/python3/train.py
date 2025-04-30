@@ -13,16 +13,9 @@ from env.safe_gym import SafeGym
 from utils.obs_utils import *
 from utils.rewards import calculate_reward
 from utils.save_model import save_checkpoint, load_latest_checkpoint, find_latest_checkpoint
+from utils.env_utils import log_error, extract_overlapping_sequences
 from config import Config 
 import time
-
-def log_error(error_message):
-    os.makedirs("logs", exist_ok=True)
-    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-
-    log_path = f"logs/error_{timestamp}.log"
-    with open(log_path, "w") as f:
-        f.write(error_message + "\n\n")
 
 async def run_training():
 
@@ -59,6 +52,8 @@ async def run_training():
     lstm_states_b = None  # target_agent（敌方智能体）
 
     batch_start_time = time.time()  # 🕐 benchmark：每 batch 开始计时
+
+    print(f"开始训练，共 {Config.num_episodes} 轮!!!!!!!!!!")
    
     for episode in range(start_episode, Config.num_episodes):
         print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
@@ -84,10 +79,10 @@ async def run_training():
             gym.make("bomberland-env", current_state["payload"])
             # await asyncio.sleep(0.5)
 
-            episode_buffer = []
             total_reward = 0
             current_decay = initial_decay
-            current_sequence = [] # for lstm timesteps
+            episode_steps = []  # 🟢 替代 current_sequence，完整记录每一步 # for lstm timesteps
+            episode_buffer = []
 
             for step in range(Config.max_steps_per_episode):
                 try:
@@ -154,10 +149,15 @@ async def run_training():
 
                 total_reward += reward
 
-                # 平时凑够 Config.sequence_length 步存一次；如果提前done，且current_sequence不为空，也存一次
-                if len(current_sequence) == Config.sequence_length or (done and current_sequence):
-                    episode_buffer.append(current_sequence)
-                    current_sequence = []
+                episode_steps.append((
+                    self_states_a,
+                    full_map_a,
+                    action_indices_a,
+                    log_probs_a,
+                    reward,
+                    value_a,
+                    done
+                ))
 
                 current_state = next_state
 
@@ -166,6 +166,16 @@ async def run_training():
 
                 if done:
                     break
+                    
+            if len(episode_steps) >= Config.sequence_length:
+                overlapping_sequences = extract_overlapping_sequences(
+                    episode_steps, 
+                    window_size=Config.sequence_length, 
+                    stride=1   # 完全连续滑动
+                )
+                episode_buffer.extend(overlapping_sequences)
+            else:
+                episode_buffer.append(episode_steps)
 
             agent.update_from_buffer(episode_buffer, episode)
             episode_rewards.append(total_reward)
@@ -193,6 +203,13 @@ async def run_training():
                 msg = f"[关闭错误] Episode {episode+1} gym.close() 出错: {close_error}\n{traceback.format_exc()}"
                 print(msg)
                 log_error(msg)
+
+
+        num_episode_buffer = len(episode_buffer)
+        wandb.log({
+            "benchmark/num_episode_buffer": num_episode_buffer,
+            "benchmark/episode": episode
+        }, step=episode)
         
         # 🔵 每 batch_size 个 episode 打印一次时间
         if (episode + 1) % Config.benchmark_batch_size == 0:
@@ -201,10 +218,13 @@ async def run_training():
 
             print(f"\n🚀 Completed {Config.benchmark_batch_size} episodes in {batch_elapsed:.2f} seconds (Avg {avg_time_per_ep:.2f} sec/episode)")
 
+            avg_reward = np.mean(episode_rewards[-Config.benchmark_batch_size:])
+
             # 🟢 wandb log
             wandb.log({
                 "benchmark/batch_elapsed_time": batch_elapsed,
                 "benchmark/avg_episode_time": avg_time_per_ep,
+                "benchmark/avg_reward": avg_reward,
                 "benchmark/episode": episode
             }, step=episode)
 

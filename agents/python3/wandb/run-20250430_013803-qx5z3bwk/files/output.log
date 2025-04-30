@@ -1,0 +1,43 @@
+WandB is initialized: True
+[Checkpoint] Loaded checkpoints/ppo_checkpoint_ep50.pt (episode 50)
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+尝试连接 (1/5)...
+连接成功！
+连接成功！
+连接成功！
+连接成功！
+连接成功！
+尝试重置游戏地图
+尝试重置游戏地图
+尝试重置游戏地图
+尝试重置游戏地图
+尝试重置游戏地图
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+创建环境...
+环境创建成功
+Traceback (most recent call last):
+  File "train_multi_env.py", line 213, in <module>
+    asyncio.run(run_training())
+  File "/usr/local/lib/python3.8/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/local/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "train_multi_env.py", line 53, in run_training
+    await gym_manager.reset_all()
+  File "/app/utils/vector_env_manager.py", line 29, in reset_all
+    await asyncio.gather(*[
+  File "/usr/local/lib/python3.8/asyncio/tasks.py", line 824, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/local/lib/python3.8/asyncio/tasks.py", line 684, in ensure_future
+    raise TypeError('An asyncio.Future, a coroutine or an awaitable is '
+TypeError: An asyncio.Future, a coroutine or an awaitable is required

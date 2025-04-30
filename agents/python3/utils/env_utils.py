@@ -1,7 +1,9 @@
 import random
 from typing import Dict
 
+import os
 import random
+import datetime
 from typing import Dict, Optional
 
 def generate_initial_state(width=6, height=6, world_seed: Optional[int] = None, prng_seed: Optional[int] = None, use_forward_model=False) -> Dict:
@@ -86,3 +88,21 @@ def extract_obs_b(state: Dict):
         if unit["agent_id"] == "b":
             obs.extend(unit["coordinates"])
     return obs
+
+
+def log_error(error_message):
+    os.makedirs("logs", exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+
+    log_path = f"logs/error_{timestamp}.log"
+    with open(log_path, "w") as f:
+        f.write(error_message + "\n\n")
+
+def extract_overlapping_sequences(sequence, window_size=10, stride=1):
+    """
+    将完整 episode 的 step 序列滑动切片为多个固定长度序列
+    """
+    result = []
+    for i in range(0, len(sequence) - window_size + 1, stride):
+        result.append(sequence[i : i + window_size])
+    return result

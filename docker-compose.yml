@@ -76,7 +76,7 @@ services:
         extends:
             file: base-compose.yml
             # update next line with a service in base-compose.yml to change agent
-            service: python3-gym-multi-dev
+            service: python3-gym-single-dev
         environment:
             - GAME_CONNECTION_STRING=ws://game-engine:3000/?role=agent&agentId=agentB&name=python3-agent
         depends_on:

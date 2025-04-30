@@ -1,0 +1,29 @@
+2025-04-30 01:42:00,849 INFO    MainThread:1 [wandb_setup.py:_flush():76] Current SDK version is 0.15.12
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Configure stats pid to 1
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Loading settings from /root/.config/wandb/settings
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Loading settings from /app/wandb/settings
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'api_key': '***REDACTED***'}
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train_multi_env.py', 'program_abspath': '/app/train_multi_env.py', 'program': 'train_multi_env.py'}
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_init.py:_log_setup():528] Logging user logs to /app/wandb/run-20250430_014200-0nwycgd1/logs/debug.log
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_init.py:_log_setup():529] Logging internal logs to /app/wandb/run-20250430_014200-0nwycgd1/logs/debug-internal.log
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_init.py:init():568] calling init triggers
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_init.py:init():575] wandb.init called with sweep_config: {}
+config: {'action_dim': 7, 'benchmark_batch_size': 20, 'checkpoint_dir': 'checkpoints', 'clip_eps': 0.2, 'device': device(type='cpu'), 'eval_frequency': 100, 'fwd_model_uri': 'ws://fwd-server:6969/?role=admin', 'gamma': 0.99, 'keep_last_n_checkpoint': 100, 'lam': 0.95, 'log_frequency': 10, 'lr': 0.0003, 'map_channels': 8, 'map_size': 15, 'max_steps_per_episode': 650, 'num_envs': 5, 'num_episodes': 10000, 'num_units': 3, 'save_frequency': 50, 'self_state_dim': 10, 'sequence_length': 20, 'update_target_frequency': 15}
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_init.py:init():618] starting backend
+2025-04-30 01:42:00,850 INFO    MainThread:1 [wandb_init.py:init():622] setting up manager
+2025-04-30 01:42:00,851 INFO    MainThread:1 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-04-30 01:42:00,852 INFO    MainThread:1 [wandb_init.py:init():628] backend started and connected
+2025-04-30 01:42:00,855 INFO    MainThread:1 [wandb_init.py:init():720] updated telemetry
+2025-04-30 01:42:00,855 INFO    MainThread:1 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2025-04-30 01:42:01,666 INFO    MainThread:1 [wandb_run.py:_on_init():2220] communicating current version
+2025-04-30 01:42:01,726 INFO    MainThread:1 [wandb_run.py:_on_init():2229] got version response upgrade_message: "wandb version 0.19.10 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2025-04-30 01:42:01,726 INFO    MainThread:1 [wandb_init.py:init():804] starting run threads in backend
+2025-04-30 01:42:01,766 INFO    MainThread:1 [wandb_run.py:_console_start():2199] atexit reg
+2025-04-30 01:42:01,767 INFO    MainThread:1 [wandb_run.py:_redirect():2054] redirect: wrap_raw
+2025-04-30 01:42:01,768 INFO    MainThread:1 [wandb_run.py:_redirect():2119] Wrapping output streams.
+2025-04-30 01:42:01,768 INFO    MainThread:1 [wandb_run.py:_redirect():2144] Redirects installed.
+2025-04-30 01:42:01,768 INFO    MainThread:1 [wandb_init.py:init():845] run started, returning control to user process
+2025-04-30 01:42:21,375 WARNING MsgRouterThr:1 [router.py:message_loop():77] message_loop has been closed

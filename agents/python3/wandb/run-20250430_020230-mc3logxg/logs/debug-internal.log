@@ -1,0 +1,212 @@
+2025-04-30 02:02:30,388 INFO    StreamThr :23 [internal.py:wandb_internal():86] W&B internal server running at pid: 23, started at: 2025-04-30 02:02:30.387557
+2025-04-30 02:02:30,389 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status
+2025-04-30 02:02:30,391 INFO    WriterThread:23 [datastore.py:open_for_write():85] open: /app/wandb/run-20250430_020230-mc3logxg/run-mc3logxg.wandb
+2025-04-30 02:02:30,394 DEBUG   SenderThread:23 [sender.py:send():380] send: header
+2025-04-30 02:02:30,394 DEBUG   SenderThread:23 [sender.py:send():380] send: run
+2025-04-30 02:02:30,203 INFO    SenderThread:23 [dir_watcher.py:__init__():211] watching files in: /app/wandb/run-20250430_020230-mc3logxg/files
+2025-04-30 02:02:30,203 INFO    SenderThread:23 [sender.py:_start_run_threads():1122] run started: mc3logxg with start time 1745978550.387234
+2025-04-30 02:02:30,211 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: check_version
+2025-04-30 02:02:30,211 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: check_version
+2025-04-30 02:02:29,745 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: run_start
+2025-04-30 02:02:29,746 DEBUG   HandlerThread:23 [system_info.py:__init__():32] System info init
+2025-04-30 02:02:29,746 DEBUG   HandlerThread:23 [system_info.py:__init__():47] System info init done
+2025-04-30 02:02:29,746 INFO    HandlerThread:23 [system_monitor.py:start():194] Starting system monitor
+2025-04-30 02:02:29,746 INFO    SystemMonitor:23 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2025-04-30 02:02:29,747 INFO    HandlerThread:23 [system_monitor.py:probe():214] Collecting system info
+2025-04-30 02:02:29,748 INFO    SystemMonitor:23 [interfaces.py:start():190] Started cpu monitoring
+2025-04-30 02:02:29,748 INFO    SystemMonitor:23 [interfaces.py:start():190] Started disk monitoring
+2025-04-30 02:02:29,749 INFO    SystemMonitor:23 [interfaces.py:start():190] Started memory monitoring
+2025-04-30 02:02:29,750 INFO    SystemMonitor:23 [interfaces.py:start():190] Started network monitoring
+2025-04-30 02:02:29,761 DEBUG   HandlerThread:23 [system_info.py:probe():196] Probing system
+2025-04-30 02:02:29,763 DEBUG   HandlerThread:23 [gitlib.py:_init_repo():53] git repository is invalid
+2025-04-30 02:02:29,763 DEBUG   HandlerThread:23 [system_info.py:probe():244] Probing system done
+2025-04-30 02:02:29,763 DEBUG   HandlerThread:23 [system_monitor.py:probe():223] {'os': 'Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.2.5', 'python': '3.8.20', 'heartbeatAt': '2025-04-30T02:02:29.761457', 'startedAt': '2025-04-30T02:02:30.383519', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'train.py', 'codePathLocal': 'train.py', 'codePath': 'train.py', 'host': 'cc5171ccbc3c', 'username': 'root', 'executable': '/usr/local/bin/python', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2591.998, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}, {'current': 2591.998, 'min': 0.0, 'max': 0.0}], 'disk': {'/': {'total': 1006.853931427002, 'used': 55.01044845581055}}, 'memory': {'total': 15.555831909179688}}
+2025-04-30 02:02:29,764 INFO    HandlerThread:23 [system_monitor.py:probe():224] Finished collecting system info
+2025-04-30 02:02:29,764 INFO    HandlerThread:23 [system_monitor.py:probe():227] Publishing system info
+2025-04-30 02:02:29,764 DEBUG   HandlerThread:23 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2025-04-30 02:02:29,764 DEBUG   HandlerThread:23 [system_info.py:_save_pip():68] Saving pip packages done
+2025-04-30 02:02:29,764 INFO    HandlerThread:23 [system_monitor.py:probe():229] Finished publishing system info
+2025-04-30 02:02:29,767 DEBUG   SenderThread:23 [sender.py:send():380] send: files
+2025-04-30 02:02:29,767 INFO    SenderThread:23 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2025-04-30 02:02:29,775 DEBUG   SenderThread:23 [sender.py:send():380] send: telemetry
+2025-04-30 02:02:29,823 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:02:29,823 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:02:29,824 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:02:30,076 INFO    wandb-upload_0:23 [upload_job.py:push():131] Uploaded file /tmp/tmp9hff6lg0wandb/2rwm1aul-wandb-metadata.json
+2025-04-30 02:02:31,205 INFO    Thread-12 :23 [dir_watcher.py:_on_file_created():271] file/dir created: /app/wandb/run-20250430_020230-mc3logxg/files/wandb-metadata.json
+2025-04-30 02:02:31,205 INFO    Thread-12 :23 [dir_watcher.py:_on_file_created():271] file/dir created: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:31,206 INFO    Thread-12 :23 [dir_watcher.py:_on_file_created():271] file/dir created: /app/wandb/run-20250430_020230-mc3logxg/files/requirements.txt
+2025-04-30 02:02:32,204 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:35,450 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:02:36,221 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:38,222 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:41,060 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:02:42,233 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:44,246 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:44,777 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:02:44,778 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:02:44,789 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:02:46,850 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:02:49,261 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:51,268 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:52,050 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:02:55,273 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:57,274 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:02:57,334 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:02:59,777 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:02:59,778 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:02:59,789 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:03:00,283 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:02,292 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:02,871 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:03,294 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/config.yaml
+2025-04-30 02:03:06,297 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:08,298 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:09,083 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:12,307 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:14,308 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:14,786 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:03:14,787 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:03:14,801 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:03:14,885 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:17,312 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:19,316 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:20,779 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:23,326 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:25,332 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:25,915 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:28,455 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: partial_history
+2025-04-30 02:03:29,354 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:29,761 DEBUG   SystemMonitor:23 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2025-04-30 02:03:29,763 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:03:29,788 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:03:29,789 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:03:29,806 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:03:30,992 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:31,357 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:35,361 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:36,467 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:37,375 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:41,378 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:42,189 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:44,793 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:03:44,793 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:03:44,807 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:03:47,384 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:48,068 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:53,399 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:53,605 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:58,426 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:03:58,885 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:03:59,781 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:03:59,793 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:03:59,793 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:03:59,817 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:04:03,463 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:04,750 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:10,252 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:10,476 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:14,793 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:04:14,794 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:04:14,818 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:04:15,995 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:16,524 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:21,003 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:22,559 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:24,569 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:26,180 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:27,585 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:29,607 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:29,798 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:04:29,798 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:04:29,819 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:04:29,883 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:04:31,903 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:33,622 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:34,643 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:37,870 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:40,715 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:43,737 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:44,799 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:04:44,800 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:04:44,819 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:04:46,732 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:48,993 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:52,756 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:54,697 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:57,761 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:04:59,775 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:04:59,800 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:04:59,800 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:04:59,820 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:04:59,891 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:05:03,778 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:04,889 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:09,783 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:10,739 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:14,800 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:05:14,801 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:05:14,820 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:05:15,950 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:16,787 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:20,969 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:22,791 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:25,978 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:25,990 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: partial_history
+2025-04-30 02:05:25,994 DEBUG   SenderThread:23 [sender.py:send():380] send: history
+2025-04-30 02:05:25,994 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: summary_record
+2025-04-30 02:05:25,997 INFO    SenderThread:23 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2025-04-30 02:05:26,801 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:26,801 INFO    Thread-12 :23 [dir_watcher.py:_on_file_created():271] file/dir created: /app/wandb/run-20250430_020230-mc3logxg/files/wandb-summary.json
+2025-04-30 02:05:29,815 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:05:29,815 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:05:29,857 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:05:29,982 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:05:30,984 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:33,806 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:36,978 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:39,836 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:42,283 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:44,819 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:05:44,819 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:05:44,867 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:05:45,893 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:47,936 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:51,913 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:52,950 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:53,925 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:56,930 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:58,063 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:05:58,943 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:05:59,822 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:05:59,823 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:05:59,823 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:05:59,824 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:06:02,952 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:03,129 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:04,954 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:08,961 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:08,965 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:10,963 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:14,062 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:14,823 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:06:14,823 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:06:14,824 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:06:14,967 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:16,970 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:19,313 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:20,975 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:22,983 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:24,589 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:25,996 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:28,000 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:29,820 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:29,824 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: internal_messages
+2025-04-30 02:06:29,825 DEBUG   SenderThread:23 [sender.py:send():380] send: stats
+2025-04-30 02:06:29,826 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: stop_status
+2025-04-30 02:06:29,827 DEBUG   SenderThread:23 [sender.py:send_request():407] send_request: stop_status
+2025-04-30 02:06:32,004 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:34,005 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:35,124 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report
+2025-04-30 02:06:40,009 INFO    Thread-12 :23 [dir_watcher.py:_on_file_modified():288] file/dir modified: /app/wandb/run-20250430_020230-mc3logxg/files/output.log
+2025-04-30 02:06:40,224 DEBUG   HandlerThread:23 [handler.py:handle_request():146] handle_request: status_report

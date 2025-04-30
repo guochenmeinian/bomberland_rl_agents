@@ -1,0 +1,310 @@
+[Checkpoint] Loaded checkpoints/ppo_checkpoint_ep50.pt (episode 50)
+开始训练，共 10000 轮!!!!!!!!!!
+开始 Episode 51/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: 0.64, Total: -1.47
+Step 21, Reward: 0.59, Total: -1.44
+Step 31, Reward: 1.07, Total: -2.19
+Step 41, Reward: 0.48, Total: -1.39
+Step 51, Reward: 0.57, Total: 5.53
+Step 61, Reward: 0.47, Total: 10.48
+Step 71, Reward: -0.33, Total: 12.72
+Step 81, Reward: 0.51, Total: 17.90
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+update_from_buffer: 5
+!!!!!!!!!!!!!!!!
+[总体错误] Episode 51 失败: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+Traceback (most recent call last):
+  File "train.py", line 186, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 232, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 290, in update
+    logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/app/model/ppo_model.py", line 72, in forward
+    map_feat = self.cnn(full_map)  # (B, cnn_output_size)，**不是 per-unit 的！**
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 52/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+/app/agent/ppo_agent.py:255: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:261.)
+  states = torch.tensor(states, dtype=torch.float32).to(self.device)
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: -2.13, Total: -2.00
+Step 21, Reward: -0.05, Total: -1.02
+Step 31, Reward: -0.63, Total: 1.35
+Step 41, Reward: -0.39, Total: -0.93
+Step 51, Reward: 0.09, Total: -0.18
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+update_from_buffer: 3
+!!!!!!!!!!!!!!!!
+[总体错误] Episode 52 失败: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+Traceback (most recent call last):
+  File "train.py", line 186, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 232, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 290, in update
+    logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/app/model/ppo_model.py", line 72, in forward
+    map_feat = self.cnn(full_map)  # (B, cnn_output_size)，**不是 per-unit 的！**
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 53/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.45, Total: -0.45
+Step 11, Reward: -0.94, Total: -3.64
+Step 21, Reward: -1.03, Total: -5.56
+Step 31, Reward: -0.15, Total: -5.66
+Step 41, Reward: -0.10, Total: -7.80
+Step 51, Reward: 0.71, Total: -8.10
+Step 61, Reward: 0.19, Total: -7.08
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+update_from_buffer: 4
+!!!!!!!!!!!!!!!!
+[总体错误] Episode 53 失败: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+Traceback (most recent call last):
+  File "train.py", line 186, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 232, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 290, in update
+    logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/app/model/ppo_model.py", line 72, in forward
+    map_feat = self.cnn(full_map)  # (B, cnn_output_size)，**不是 per-unit 的！**
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 54/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -1.15, Total: -1.15
+Step 11, Reward: 1.58, Total: -2.31
+Step 21, Reward: -0.00, Total: -3.17
+Step 31, Reward: 0.44, Total: -5.05
+Step 41, Reward: -1.68, Total: -6.40
+Step 51, Reward: -1.24, Total: -11.52
+Step 61, Reward: 0.52, Total: -12.77
+Step 71, Reward: -0.42, Total: -13.29
+Step 81, Reward: 0.23, Total: -11.77
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+update_from_buffer: 5
+!!!!!!!!!!!!!!!!
+[总体错误] Episode 54 失败: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+Traceback (most recent call last):
+  File "train.py", line 186, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 232, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 290, in update
+    logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/app/model/ppo_model.py", line 72, in forward
+    map_feat = self.cnn(full_map)  # (B, cnn_output_size)，**不是 per-unit 的！**
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 55/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.05, Total: 0.05
+Step 11, Reward: -0.60, Total: -0.86
+Step 21, Reward: 0.39, Total: -3.88
+Step 31, Reward: -0.58, Total: -6.67
+Step 41, Reward: -0.58, Total: -8.75
+Step 51, Reward: -1.19, Total: -7.04
+Step 61, Reward: 0.14, Total: -6.24
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Step 71, Reward: 19.91, Total: 15.35
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+update_from_buffer: 4
+!!!!!!!!!!!!!!!!
+[总体错误] Episode 55 失败: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+Traceback (most recent call last):
+  File "train.py", line 186, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 232, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 290, in update
+    logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/app/model/ppo_model.py", line 72, in forward
+    map_feat = self.cnn(full_map)  # (B, cnn_output_size)，**不是 per-unit 的！**
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 56/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.45, Total: -0.45
+Step 11, Reward: -1.44, Total: -4.45
+Step 21, Reward: -0.10, Total: -8.60
+Step 31, Reward: -0.05, Total: -7.83
+Step 41, Reward: 0.53, Total: -6.73
+Step 51, Reward: 0.09, Total: -8.37
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+update_from_buffer: 3
+!!!!!!!!!!!!!!!!
+[总体错误] Episode 56 失败: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+Traceback (most recent call last):
+  File "train.py", line 186, in run_training
+    agent.update_from_buffer(episode_buffer, episode)
+  File "/app/agent/ppo_agent.py", line 232, in update_from_buffer
+    self.update(current_episode)
+  File "/app/agent/ppo_agent.py", line 290, in update
+    logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/app/model/ppo_model.py", line 72, in forward
+    map_feat = self.cnn(full_map)  # (B, cnn_output_size)，**不是 per-unit 的！**
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [1, 1, 8, 15, 15]
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 57/10000
+尝试连接 (1/5)...
+连接成功！

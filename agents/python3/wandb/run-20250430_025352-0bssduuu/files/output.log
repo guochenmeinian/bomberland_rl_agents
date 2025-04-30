@@ -1,0 +1,59 @@
+[Checkpoint] 没找到已有模型，从头训练
+开始训练，共 10000 轮!!!!!!!!!!
+开始 Episode 1/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.05, Total: 0.05
+Step 11, Reward: 0.64, Total: -1.09
+Step 21, Reward: 0.98, Total: -2.13
+Step 31, Reward: -0.39, Total: -5.36
+Step 41, Reward: -1.30, Total: -4.68
+Step 51, Reward: -0.24, Total: -4.19
+Step 61, Reward: 0.14, Total: -5.24
+Step 71, Reward: 0.28, Total: -3.42
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+/app/agent/ppo_agent.py:255: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:261.)
+  states = torch.tensor(states, dtype=torch.float32).to(self.device)
+Update stats - Policy loss: 0.4856, Value loss: 19.2248, Total loss: 19.7104
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 2/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: -0.65, Total: -0.65
+Step 11, Reward: -0.54, Total: -0.15
+Step 21, Reward: 0.54, Total: 3.54
+Step 31, Reward: 0.63, Total: 2.91
+Step 41, Reward: 1.01, Total: 8.40
+Step 51, Reward: 0.38, Total: 9.60
+Step 61, Reward: 0.38, Total: 13.00
+Step 71, Reward: 0.37, Total: 17.69
+Step 81, Reward: 0.37, Total: 21.16
+警告: 有一个队伍没有活着的单位，跳出当前 episode
+Update stats - Policy loss: 0.6183, Value loss: 21.1169, Total loss: 21.7352
+关闭环境连接...
+Connection with server closed
+Connection with server closed
+环境连接已关闭
+开始 Episode 3/10000
+尝试连接 (1/5)...
+连接成功！
+尝试重置游戏地图
+创建环境...
+环境创建成功
+Step 1, Reward: 0.25, Total: 0.25
+Step 11, Reward: 0.25, Total: 2.54
+Step 21, Reward: 0.44, Total: 6.38
+Step 31, Reward: 1.36, Total: 9.93
+Step 41, Reward: 1.39, Total: 12.43
+Step 51, Reward: 0.62, Total: 18.50
+Step 61, Reward: 0.42, Total: 22.43
+Step 71, Reward: 0.79, Total: 29.87

@@ -41,6 +41,14 @@ See: [Documentation](https://www.gocoder.one/docs)
 
 `docker-compose -f open-ai-gym-wrapper-compose.yml up --force-recreate --abort-on-container-exit`
 
+### Helperful scripts
+```
+# clean
+docker-compose -f open-ai-gym-wrapper-compose.yml down --rmi all
+
+# reinstall
+docker-compose -f open-ai-gym-wrapper-compose.yml build --no-cache
+```
 
 ## Resources
 
