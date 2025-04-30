@@ -146,7 +146,7 @@ class PPOAgent:
         return None # shouldn't be triggered
         
 
-    def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state, lstm_states):
+    def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state):
         # 检查输入维度
         if isinstance(self_states, np.ndarray) and len(self_states.shape) == 2:  # (num_units, self_state_dim)
             self_states = np.expand_dims(self_states, 0)  # 添加批次维度 -> (1, num_units, self_state_dim)
@@ -159,7 +159,7 @@ class PPOAgent:
         full_map = torch.tensor(full_map, dtype=torch.float32).to(self.device)      # (B, C, H, W)
 
         with torch.no_grad():
-            logits_list, value, next_lstm_states = self.model(self_states, full_map, lstm_states)
+            logits_list, value = self.model(self_states, full_map)
         
         # Since each agent has 3 units, we need to store them separately
         actions = []
@@ -206,7 +206,7 @@ class PPOAgent:
         actions = torch.cat(actions, dim=0).unsqueeze(0)      # (B=1, num_units)
         log_probs = torch.cat(log_probs, dim=0).unsqueeze(0)  # (B=1, num_units)
 
-        return actions.cpu().numpy(), log_probs.cpu().numpy(), value.squeeze().cpu().numpy(), detonate_targets, next_lstm_states
+        return actions.cpu().numpy(), log_probs.cpu().numpy(), value.squeeze().cpu().numpy(), detonate_targets
 
 
     def update_from_buffer(self, episode_buffer, current_episode):
@@ -252,8 +252,8 @@ class PPOAgent:
         sequences = []
         for seq in all_sequences:
             states, maps, actions, old_log_probs, returns, advantages = zip(*seq)
-            states = torch.tensor(states, dtype=torch.float32).to(self.device)
-            maps = torch.tensor(maps, dtype=torch.float32).to(self.device)
+            states = torch.tensor(np.array(states), dtype=torch.float32).to(self.device)
+            maps = torch.tensor(np.array(maps), dtype=torch.float32).to(self.device)
             actions = torch.tensor(actions).to(self.device)
             old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(self.device)
             returns = torch.tensor(returns, dtype=torch.float32).to(self.device)
@@ -277,9 +277,6 @@ class PPOAgent:
                     s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq = seq
                     T = s_seq.shape[0]
 
-                    # reset LSTM hidden state
-                    hidden_state = None
-
                     policy_losses = []
                     value_losses = []
 
@@ -287,7 +284,7 @@ class PPOAgent:
                         s_t = s_seq[t].unsqueeze(0)  # (1, num_units, self_state_dim)
                         m_t = m_seq[t] # .unsqueeze(0)  # (1, C, H, W)
 
-                        logits_list, value, hidden_state = self.model(s_t, m_t, hidden_state)
+                        logits_list, value = self.model(s_t, m_t)
 
                         total_unit_loss = 0
                         for unit_idx, logits in enumerate(logits_list):
