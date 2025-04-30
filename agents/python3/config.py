@@ -28,6 +28,9 @@ class Config:
     map_size = 15
     action_dim = 7
     num_units = 3
+    kl_beta = 1.0
+    kl_target = 0.01
+    kl_update_rate = 1.5
 
     gamma = 0.99
     lam = 0.95

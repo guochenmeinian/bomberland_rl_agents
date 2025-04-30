@@ -51,6 +51,11 @@ class PPOAgent:
         self.memory = []
         self.num_units = config.num_units
         self.temporal_windows = [TemporalWindow(max_len=config.sequence_length) for _ in range(config.num_envs)]
+        self.kl_beta = config.kl_beta
+        self.kl_target = config.kl_target
+        self.kl_update_rate = config.kl_update_rate
+
+
 
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
         
@@ -323,22 +328,34 @@ class PPOAgent:
         flat_old_log_probs = old_log_probs.view(-1)
         flat_advantages = advantages.unsqueeze(-1).expand(-1, -1, N).contiguous().view(-1)  # (B*T*N,)
 
-        dist = torch.distributions.Categorical(logits=flat_logits)
-        flat_log_probs = dist.log_prob(flat_actions)
+        # 构造新旧策略分布
+        with torch.no_grad():
+            old_dist = torch.distributions.Categorical(logits=flat_logits.detach())
+        new_dist = torch.distributions.Categorical(logits=flat_logits)
+
+        flat_log_probs = new_dist.log_prob(flat_actions)
         ratio = torch.exp(flat_log_probs - flat_old_log_probs)
 
+        # PPO Clip Loss
         surr1 = ratio * flat_advantages
         surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * flat_advantages
         policy_loss = -torch.min(surr1, surr2).mean()
 
+        # Value Loss
         value_loss = F.mse_loss(values, returns)
-        loss = policy_loss + 0.5 * value_loss
+
+        # KL 散度 & 熵奖励
+        kl = torch.distributions.kl_divergence(old_dist, new_dist).mean()
+        entropy = new_dist.entropy().mean()
+
+        # 总 Loss（含 KL 正则项 & 熵奖励）
+        loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - 0.01 * entropy
 
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
 
-        return policy_loss.item(), value_loss.item(), loss.item()
+        return policy_loss.item(), value_loss.item(), loss.item(), kl.item(), entropy.item()
 
 
 
@@ -378,6 +395,8 @@ class PPOAgent:
         total_policy_loss = 0
         total_value_loss = 0
         total_loss = 0
+        total_kl = 0
+        total_entropy = 0
 
         B = batched_states.shape[0]
         indices = np.arange(B)
@@ -397,7 +416,7 @@ class PPOAgent:
                     batched_advantages[batch_idx],
                 )
 
-                policy_loss, value_loss, loss = self.vectorized_ppo_update(
+                policy_loss, value_loss, loss, kl, entropy = self.vectorized_ppo_update(
                     model=self.model,
                     optimizer=self.optimizer,
                     batch_data=mini_batch,
@@ -405,16 +424,27 @@ class PPOAgent:
                     clip_eps=self.clip_eps,
                 )
 
+                # ✅ 添加 KL 动态调节逻辑
+                if kl > self.kl_target * 1.5:
+                    self.kl_beta *= self.kl_update_rate
+                elif kl < self.kl_target * 0.5:
+                    self.kl_beta /= self.kl_update_rate
+
                 total_policy_loss += policy_loss
                 total_value_loss += value_loss
                 total_loss += loss
+                total_kl += kl
+                total_entropy += entropy
 
         num_batches = (B // batch_size) * epochs
         wandb.log({
             "train/policy_loss": total_policy_loss / num_batches,
             "train/value_loss": total_value_loss / num_batches,
             "train/total_loss": total_loss / num_batches,
-            "train/episode": current_episode
+            "train/kl": total_kl / num_batches,
+            "train/entropy": total_entropy / num_batches,
+            "train/kl_beta": self.kl_beta,
+            "train/episode": current_episode,
         }, step=current_episode)
 
         print(f"Update stats - Policy loss: {total_policy_loss / num_batches:.4f}, Value loss: {total_value_loss / num_batches:.4f}, Total loss: {total_loss / num_batches:.4f}")

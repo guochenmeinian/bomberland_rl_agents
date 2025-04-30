@@ -68,7 +68,11 @@ class PPOModel(nn.Module):
         self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=2)
 
         # Value head（池化后送入）
-        self.value_head = nn.Linear(hidden_dim, 1)
+        self.value_head = nn.Sequential(
+            nn.LayerNorm(hidden_dim),
+            nn.Dropout(0.1),
+            nn.Linear(hidden_dim, 1)
+        )
 
         # ✅ 共享 policy head
         self.policy_head = nn.Linear(hidden_dim, action_dim)  
