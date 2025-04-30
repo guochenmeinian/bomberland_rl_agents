@@ -83,7 +83,7 @@ async def run_training():
                 current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
 
                 action_indices_a, log_probs_a, value_a, detonate_targets_a = agent.select_actions(
-                    self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state
+                    self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state, env_id=env_idx
                 )
                 action_indices_a = action_indices_a[0]
                 log_probs_a = log_probs_a[0]
@@ -94,7 +94,7 @@ async def run_training():
 
                 with torch.no_grad():
                     action_indices_b, _, _, detonate_targets_b = target_agent.select_actions(
-                        self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state
+                        self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state, env_id=env_idx
                     )
                 action_indices_b = action_indices_b[0]
 

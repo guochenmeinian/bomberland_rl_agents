@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
+import numpy as np
 
 class SinusoidalPositionalEncoding(nn.Module):
     def __init__(self, d_model, max_len=5000):
@@ -81,19 +82,26 @@ class PPOModel(nn.Module):
             logits: (B, T, N, A)
             values: (B, T)
         """
+
+        # 🆕 类型安全处理：确保是 torch.Tensor
+        if isinstance(self_states, np.ndarray):
+            self_states = torch.tensor(self_states, dtype=torch.float32)
+        if isinstance(full_map, np.ndarray):
+            full_map = torch.tensor(full_map, dtype=torch.float32)
+
         B, T, N, D = self_states.shape
         C, H, W = full_map.shape[2:]
 
-        self_states = self_states.view(B * T, N, D)
-        full_map = full_map.view(B * T, C, H, W)
+        self_states = self_states.reshape(B * T, N, D)
+        full_map = full_map.reshape(B * T, C, H, W)
 
         # CNN (B*T, C, H, W) → (B*T, cnn_output)
         map_feat = self.cnn(full_map)
         map_feat_exp = map_feat.unsqueeze(1).expand(-1, N, -1)  # (B*T, N, cnn_output)
 
         # 自身状态 → (B*N, D) → fc → (B, N, hidden)
-        self_states_flat = self_states.view(B * T * N, D)
-        self_feat = self.self_fc(self_states_flat).view(B * T, N, self.hidden_dim)
+        self_states_flat = self_states.reshape(B * T * N, D)
+        self_feat = self.self_fc(self_states_flat).reshape(B * T, N, self.hidden_dim)
 
         # 拼接 map + self feature
         combined = torch.cat([map_feat_exp, self_feat], dim=-1)

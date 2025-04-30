@@ -7,6 +7,31 @@ import numpy as np
 from model.ppo_model import PPOModel
 import random
 import wandb
+from collections import deque
+
+
+class TemporalWindow:
+    """用于存储最近 T 步观测信息，生成 Transformer 的输入序列"""
+    def __init__(self, max_len):
+        self.max_len = max_len
+        self.self_states = deque(maxlen=max_len)   # 每步 shape: (N, D)
+        self.full_maps = deque(maxlen=max_len)     # 每步 shape: (C, H, W)
+
+    def push(self, self_state, full_map):
+        self.self_states.append(self_state)
+        self.full_maps.append(full_map)
+
+    def get_sequence(self):
+        # shape: (T, N, D), (T, C, H, W)
+        return np.stack(self.self_states), np.stack(self.full_maps)
+
+    def is_ready(self):
+        return len(self.self_states) >= self.max_len
+
+    def reset(self):
+        self.self_states.clear()
+        self.full_maps.clear()
+
 
 class PPOAgent:
     def __init__(self, config):
@@ -25,6 +50,7 @@ class PPOAgent:
         self.clip_eps = config.clip_eps
         self.memory = []
         self.num_units = config.num_units
+        self.temporal_windows = [TemporalWindow(max_len=config.sequence_length) for _ in range(config.num_envs)]
 
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
         
@@ -146,38 +172,63 @@ class PPOAgent:
         return None # shouldn't be triggered
         
 
-    def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state):
-        # 转成 torch.Tensor
-        if isinstance(self_states, np.ndarray) and self_states.ndim == 2:
-            self_states = np.expand_dims(self_states, axis=0)  # (1, num_units, self_state_dim)
-        if isinstance(full_map, np.ndarray) and full_map.ndim == 3:
-            full_map = np.expand_dims(full_map, axis=0)        # (1, C, H, W)
+    def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state, env_id=0):
+        if isinstance(self_states, np.ndarray) and self_states.ndim == 3 and self_states.shape[0] == 1:
+            self_states = np.squeeze(self_states, axis=0)
+        if isinstance(full_map, np.ndarray) and full_map.ndim == 4 and full_map.shape[0] == 1:
+            full_map = np.squeeze(full_map, axis=0)
 
-        if self_states.ndim == 3:
-            print("[Warning] select_actions received 3D self_states, adding fake time dimension.")
-            self_states = np.expand_dims(self_states, axis=1)  # (1, N, D) → (1, 1, N, D)
+        # original_self_states = self_states.squeeze(0)
+        # original_full_map = full_map.squeeze(0)
 
-        if full_map.ndim == 4:
-            full_map = np.expand_dims(full_map, axis=1)  # (1, C, H, W) → (1, 1, C, H, W)
+        # # 🔵 现在才检查实际要 push 的内容 shape 是否对
+        # print("push self_states shape:", original_self_states.shape)
+        # print("push full_map shape:", original_full_map.shape)
+        # assert original_full_map.shape == (8, 15, 15)
 
-        self_states = torch.tensor(self_states, dtype=torch.float32).to(self.device)
-        full_map = torch.tensor(full_map, dtype=torch.float32).to(self.device)
+        # 如果未填满序列，重复填入当前帧
+        if not self.temporal_windows[env_id].is_ready():
+            while len(self.temporal_windows[env_id].self_states) < self.temporal_windows[env_id].max_len:
+                self.temporal_windows[env_id].push(self_states, full_map)
+        else:
+            self.temporal_windows[env_id].push(self_states, full_map)
+
+        seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
+        # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
+        # if seq_states.ndim == 3:  # (T, N, D)
+        #     seq_states = seq_states.unsqueeze(0)  # → (1, T, N, D)
+
+        # if seq_maps.ndim == 4:    # (T, C, H, W)
+        #     seq_maps = seq_maps.unsqueeze(0)      # → (1, T, C, H, W)
+
+        # 取序列 → (T, N, D), (T, C, H, W)
+        seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
+
+        # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
+        seq_states = torch.tensor(seq_states, dtype=torch.float32).unsqueeze(0).to(self.device)
+        seq_maps = torch.tensor(seq_maps, dtype=torch.float32).unsqueeze(0).to(self.device)
+
+        # print("seq_states.shape:", seq_states.shape)
+        # print("seq_maps.shape:", seq_maps.shape)
 
         with torch.no_grad():
-            logits, values = self.model(self_states, full_map)  # logits: (1, num_units, action_dim)
+            self.model.eval()
+            logits, values = self.model(seq_states, seq_maps)  # logits: (1, T, N, A), values: (1, T)
 
         actions = []
         log_probs = []
         detonate_targets = []
 
+        latest_logits = logits[:, -1]  # (1, N, A)
+        latest_values = values[:, -1]  # (1,)
+
         for i in range(self.model.num_units):
-            unit_logits = logits[0, i]  # shape: (action_dim,)
+            unit_logits = latest_logits[0, i]
             mask = torch.ones_like(unit_logits, dtype=torch.bool)
 
             if current_bomb_count >= 3:
                 mask[4] = False
 
-            # 实际调用 detonation 目标判断
             candidate_target = self.select_detonate_target(unit_ids[i], current_bomb_infos, current_state)
             if candidate_target is None:
                 mask[5] = False
@@ -202,10 +253,10 @@ class PPOAgent:
             actions.append(action)
             log_probs.append(log_prob)
 
-        actions = torch.stack(actions).unsqueeze(0)       # (1, num_units)
-        log_probs = torch.stack(log_probs).unsqueeze(0)   # (1, num_units)
+        actions = torch.stack(actions).unsqueeze(0)
+        log_probs = torch.stack(log_probs).unsqueeze(0)
 
-        return actions.cpu().numpy(), log_probs.cpu().numpy(), values.squeeze().cpu().numpy(), detonate_targets
+        return actions.cpu().numpy(), log_probs.cpu().numpy(), latest_values.squeeze().cpu().numpy(), detonate_targets
 
 
 
@@ -305,6 +356,10 @@ class PPOAgent:
 
         for seq in self.memory:
             s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq = zip(*seq)
+
+            # ✅ 修复 map 的维度为 (T, C, H, W) 而不是 (T, 1, C, H, W)
+            m_seq = [np.squeeze(m, axis=0) if m.ndim == 4 else m for m in m_seq]
+            
             batched_states.append(np.array(s_seq))          # (T, N, D)
             batched_maps.append(np.array(m_seq))            # (T, C, H, W)
             batched_actions.append(np.array(a_seq))         # (T, N)

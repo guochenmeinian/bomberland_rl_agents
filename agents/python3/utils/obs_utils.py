@@ -112,6 +112,19 @@ def state_to_observations(state, agent_id):
         if unit and unit["hp"] > 0:
             x, y = unit["coordinates"]
             full_map[1, y, x] = 1
+
+    expected_num_units = 3  # 你的模型默认每个 agent 最多控制 3 个单位
+    current_units = len(self_states)
+
+    if current_units < expected_num_units:
+        padding = [np.zeros(SELF_STATE_DIM, dtype=np.float32)] * (expected_num_units - current_units)
+        self_states.extend(padding)
+        unit_ids.extend([None] * (expected_num_units - current_units))
+        alive_unit_ids.extend([None] * (expected_num_units - current_units))
+    elif current_units > expected_num_units:
+        self_states = self_states[:expected_num_units]
+        unit_ids = unit_ids[:expected_num_units]
+        alive_unit_ids = alive_unit_ids[:expected_num_units]
     
     return np.array(self_states), np.expand_dims(full_map, 0), unit_ids, alive_unit_ids
 
