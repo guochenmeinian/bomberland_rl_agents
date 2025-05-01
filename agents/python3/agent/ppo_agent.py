@@ -360,8 +360,8 @@ class PPOAgent:
         return policy_loss.item(), value_loss.item(), loss.item(), kl.item(), entropy.item()
 
 
-
-    def update(self, current_episode, epochs=4, batch_size=4):
+    # min_kl_beta防止为0，数值可调; max_kl_beta可选上限限制
+    def update(self, current_episode, epochs=4, batch_size=4, min_kl_beta = 1e-4, max_kl_beta = 1.0):
         if not self.memory:
             return
 
@@ -430,11 +430,11 @@ class PPOAgent:
                     clip_eps=self.clip_eps,
                 )
 
-                # ✅ 添加 KL 动态调节逻辑
                 if kl > self.kl_target * 1.5:
-                    self.kl_beta *= self.kl_update_rate
+                    self.kl_beta = min(self.kl_beta * self.kl_update_rate, max_kl_beta)
                 elif kl < self.kl_target * 0.5:
-                    self.kl_beta /= self.kl_update_rate
+                    self.kl_beta = max(self.kl_beta / self.kl_update_rate, min_kl_beta)
+
 
                 total_policy_loss += policy_loss
                 total_value_loss += value_loss

@@ -47,6 +47,7 @@ async def run_training():
 
     initial_decay = 1.0
     decay_rate = 0.999
+    win_count = 0
     
     batch_start_time = time.time()  # 🕐 benchmark：每 batch 开始计时
 
@@ -163,6 +164,8 @@ async def run_training():
                     print(f"Step {step+1}, Reward: {reward:.2f}, Total: {total_reward:.2f}")
 
                 if done:
+                    if len(filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])) > 0:
+                        win_count += 1
                     break
                     
             if len(episode_steps) >= Config.sequence_length:
@@ -180,8 +183,12 @@ async def run_training():
 
             # 🔵 每 eval_frequency 轮做一次评估
             if (episode + 1) % Config.eval_frequency == 0:
-                print(f"\n[评估] 开始 Evaluation at Episode {episode+1}")
-                await evaluate(agent, target_agent, episode)
+                # print(f"\n[评估] 开始 Evaluation at Episode {episode+1}")
+                # await evaluate(agent, target_agent, episode)
+                wandb.log({
+                    "eval_win_rate": win_count / Config.eval_frequency,
+                })
+                win_count = 0
 
             if (episode + 1) % Config.save_frequency == 0:
                 save_checkpoint(agent, episode+1, Config.keep_last_n_checkpoint)

@@ -1,3 +1,6 @@
+# train_multi_env.py
+# this is experimental (still don't work)
+
 import asyncio
 import datetime
 import numpy as np
@@ -64,6 +67,7 @@ async def run_training():
 
     episode_count = start_episode
     sequence_length = Config.sequence_length  # 🆕 每段多少步组成一个小sequence，比如20步
+    win_count = 0
 
     while episode_count < Config.num_episodes:
         print(f"\n开始 Episode {episode_count+1}/{Config.num_episodes}")
@@ -121,6 +125,14 @@ async def run_training():
         next_states, dones, infos = await gym_manager.step_all(all_actions)
 
         for env_idx, (next_state, done) in enumerate(zip(next_states, dones)):
+            if next_state is None or not isinstance(next_state, dict):
+                print(f"⚠️ Env {env_idx} 返回非法 next_state，跳过")
+                done_envs[env_idx] = True
+                gym_manager.current_states[env_idx] = None
+                sequence_buffers[env_idx] = []
+                episode_buffers[env_idx] = []
+                continue
+
             if done_envs[env_idx]:
                 continue
 
@@ -166,14 +178,18 @@ async def run_training():
                     sequence_buffers[env_idx] = []
                 done_envs[env_idx] = True
                 num_envs_finished += 1
+                if len(filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])) > 0:
+                    win_count += 1
 
         # ✅ 所有 env 都完成一轮 episode，统一更新
         if all(done_envs): # should always be true
             if not all(episode_buffers[env_idx] for env_idx in range(Config.num_envs)):
                 print("⚠️ 有 env 没有积累足够的 episode_buffer")
                 continue
+
             episode_count += 1
             all_buffers = []
+            
             for env_idx in range(Config.num_envs):
                 all_buffers.extend(episode_buffers[env_idx])
                 print(f"✅ Env {env_idx} 完成 Episode {episode_count}, 总奖励: {total_rewards[env_idx]:.2f}")
@@ -204,8 +220,14 @@ async def run_training():
                 print(f"[Sync] target_agent 同步于 Episode {episode_count}")
 
             if episode_count % Config.eval_frequency == 0:
-                print(f"\n[评估] Evaluation at Episode {episode_count}")
-                await evaluate(agent, target_agent, episode_count)
+                # print(f"\n[评估] Evaluation at Episode {episode_count}")
+                # await evaluate(agent, target_agent, episode_count)
+                total_eval_games = Config.eval_frequency * Config.num_envs
+                win_rate = win_count / total_eval_games
+                wandb.log({
+                    "eval/win_rate": win_rate,
+                }, step=episode_count)
+                win_count = 0
 
             # ✅ 重置所有 env
             for env_idx in range(Config.num_envs):

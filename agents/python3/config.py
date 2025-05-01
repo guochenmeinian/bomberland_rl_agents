@@ -29,12 +29,12 @@ class Config:
     action_dim = 7
     num_units = 3
     kl_beta = 0.01
-    kl_target = 0.01
+    kl_target = 0.02
     kl_update_rate = 1.5
 
     gamma = 0.99
     lam = 0.95
-    clip_eps = 0.2
+    clip_eps = 0.1
     lr = 3e-4
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
