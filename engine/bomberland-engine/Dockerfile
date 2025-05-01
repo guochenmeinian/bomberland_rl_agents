@@ -30,6 +30,41 @@
 # ENV GATSBY_BUILD=${GATSBY_BUILD}
 # RUN yarn run build
 
+
+FROM node:18.12-alpine3.15 AS build-ui
+
+RUN apk update && \
+    apk add --no-cache gcc python3 make g++ automake autoconf libtool nasm shadow musl-dev \
+    tiff jpeg zlib zlib-dev file pkgconf && \
+    apk add vips-dev fftw-dev --no-cache --repository http://dl-3.alpinelinux.org/alpine/v3.10/community --repository http://dl-3.alpinelinux.org/alpine/v3.10/main && \
+    rm -fR /var/cache/apk/*
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+COPY bomberland-library/package.json bomberland-library/tsconfig.json ./bomberland-library/
+COPY bomberland-ui/package.json ./bomberland-ui/
+
+RUN yarn install
+COPY bomberland-library ./bomberland-library
+WORKDIR /app/bomberland-library
+RUN yarn build
+
+WORKDIR /app
+
+COPY bomberland-ui ./bomberland-ui
+WORKDIR /app/bomberland-ui
+RUN yarn install
+
+ARG ENVIRONMENT
+ENV ENVIRONMENT=${ENVIRONMENT}
+ARG GATSBY_BUILD
+ENV GATSBY_BUILD=${GATSBY_BUILD}
+
+RUN yarn run build
+
+
+
 FROM node:16.13.2-alpine as build-engine
 COPY package.json /app/package.json
 COPY yarn.lock /app/yarn.lock
@@ -58,7 +93,7 @@ ENV ENVIRONMENT=${ENVIRONMENT}
 ARG BUILD
 ENV BUILD=${BUILD}
 
-# COPY --from=build-ui /app/bomberland-ui/public /app/bomberland-engine/public
+COPY --from=build-ui /app/bomberland-ui/public /app/bomberland-engine/public
 
 RUN yarn run build
 RUN yarn run build:windows
