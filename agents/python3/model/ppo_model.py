@@ -31,23 +31,23 @@ class SinusoidalPositionalEncoding(nn.Module):
 #            ↓
 # [Head（Policy & Value）]
 class PPOModel(nn.Module):
-    def __init__(self, self_state_dim=10, map_channels=8, map_size=15,
+    def __init__(self, self_state_dim=10, map_channels=10, map_size=15,
                  hidden_dim=128, action_dim=6, num_units=3, max_seq_len=650):
         super().__init__()
 
         self.num_units = num_units
         self.hidden_dim = hidden_dim
 
-        cnn_output_size = 64 * map_size * map_size
-
-        # CNN: (B, 8, 15, 15) -> (B, cnn_output_size)
+        # CNN: (B, 10, 15, 15) → (B, 64, 7, 7) → (B, 3136)
         self.cnn = nn.Sequential(
             nn.Conv2d(map_channels, 32, kernel_size=3, padding=1),
             nn.ReLU(),
+            nn.MaxPool2d(2),  # 15×15 → 7×7
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.ReLU(),
-            nn.Flatten()
+            nn.Flatten()      # (64 × 7 × 7 = 3136)
         )
+        cnn_output_size = 3136
         
         # 自身状态 -> hidden
         self.self_fc = nn.Linear(self_state_dim, hidden_dim)
@@ -103,8 +103,8 @@ class PPOModel(nn.Module):
         self_states = self_states.reshape(B * T, N, D)
         full_map = full_map.reshape(B * T, C, H, W)
 
-        # CNN (B*T, C, H, W) → (B*T, cnn_output)
-        map_feat = self.cnn(full_map)
+        # CNN 
+        map_feat = self.cnn(full_map) # (B*T, C, H, W) → (B*T, cnn_output)
         map_feat_exp = map_feat.unsqueeze(1).expand(-1, N, -1)  # (B*T, N, cnn_output)
 
         # 自身状态 → (B*N, D) → fc → (B, N, hidden)
