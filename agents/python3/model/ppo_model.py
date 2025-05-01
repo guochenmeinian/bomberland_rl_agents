@@ -31,7 +31,7 @@ class SinusoidalPositionalEncoding(nn.Module):
 #            ↓
 # [Head（Policy & Value）]
 class PPOModel(nn.Module):
-    def __init__(self, self_state_dim=10, map_channels=10, map_size=15,
+    def __init__(self, self_state_dim=10, map_channels=8, map_size=15,
                  hidden_dim=128, action_dim=6, num_units=3, max_seq_len=650):
         super().__init__()
 

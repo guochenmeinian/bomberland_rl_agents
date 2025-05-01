@@ -29,6 +29,13 @@ class TemporalWindow:
             valid_len: 当前实际填入帧数
         """
         T = len(self.self_states)
+
+        if T == 0:
+            # 创建一个全 0 的 dummy sequence
+            state_dummy = np.zeros((self.max_len, 3, 10), dtype=np.float32)  # 假设 N=3, D=10
+            map_dummy = np.zeros((self.max_len, 8, 15, 15), dtype=np.float32)  # 假设 C=8, H=W=15
+            return state_dummy, map_dummy, 0
+
         states = np.stack(self.self_states)  # (T, N, D)
         maps = np.stack(self.full_maps)      # (T, C, H, W)
         
@@ -41,7 +48,7 @@ class TemporalWindow:
             states = np.concatenate([state_pad, states], axis=0)  # (max_len, N, D)
             maps = np.concatenate([map_pad, maps], axis=0)        # (max_len, C, H, W)
 
-            return states, maps, T # T 是真实步数
+        return states, maps, T # T 是真实步数
 
     def is_ready(self):
         return len(self.self_states) >= self.max_len
@@ -72,7 +79,8 @@ class PPOAgent:
         self.kl_beta = config.kl_beta
         self.kl_target = config.kl_target
         self.kl_update_rate = config.kl_update_rate
-
+        self.batch_size = config.batch_size
+        self.epochs = config.epochs
 
 
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
@@ -210,11 +218,13 @@ class PPOAgent:
         # assert original_full_map.shape == (8, 15, 15)
 
         # 如果未填满序列，重复填入当前帧
-        if not self.temporal_windows[env_id].is_ready():
-            while len(self.temporal_windows[env_id].self_states) < self.temporal_windows[env_id].max_len:
-                self.temporal_windows[env_id].push(self_states, full_map)
-        else:
-            self.temporal_windows[env_id].push(self_states, full_map)
+        # if not self.temporal_windows[env_id].is_ready():
+        #     while len(self.temporal_windows[env_id].self_states) < self.temporal_windows[env_id].max_len:
+        #         self.temporal_windows[env_id].push(self_states, full_map)
+        # else:
+        #   self.temporal_windows[env_id].push(self_states, full_map)
+        # 只 push 当前这一帧
+        self.temporal_windows[env_id].push(self_states, full_map)
 
         # seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
         # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
@@ -308,7 +318,7 @@ class PPOAgent:
 
             self.memory.append(new_sequence)
 
-        self.update(current_episode)
+        self.update(current_episode, epochs=self.epochs, batch_size=self.batch_size)
 
     def compute_gae(self, rewards, values, dones):
         advantages = []
@@ -381,7 +391,7 @@ class PPOAgent:
 
 
     # min_kl_beta防止为0，数值可调; max_kl_beta可选上限限制
-    def update(self, current_episode, epochs=4, batch_size=4, min_kl_beta = 1e-4, max_kl_beta = 1.0):
+    def update(self, current_episode, epochs=5, batch_size=8, min_kl_beta = 1e-4, max_kl_beta = 1.0):
         if not self.memory:
             return
 
@@ -426,6 +436,15 @@ class PPOAgent:
         B = batched_states.shape[0]
         indices = np.arange(B)
 
+        print("update batch_size:", B)
+        print("batched_states shape:", batched_states.shape)
+        print("batched_maps shape:", batched_maps.shape)
+        print("batched_actions shape:", batched_actions.shape)
+        print("batched_old_log_probs shape:", batched_old_log_probs.shape)
+        print("batched_returns shape:", batched_returns.shape)
+        print("batched_advantages shape:", batched_advantages.shape)
+        print("batched_old_logits shape:", batched_old_logits.shape)
+
         for _ in range(epochs):
             np.random.shuffle(indices)
             for start in range(0, B, batch_size):
@@ -454,7 +473,6 @@ class PPOAgent:
                     self.kl_beta = min(self.kl_beta * self.kl_update_rate, max_kl_beta)
                 elif kl < self.kl_target * 0.5:
                     self.kl_beta = max(self.kl_beta / self.kl_update_rate, min_kl_beta)
-
 
                 total_policy_loss += policy_loss
                 total_value_loss += value_loss

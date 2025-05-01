@@ -54,6 +54,7 @@ async def run_training():
     print(f"开始训练，共 {Config.num_episodes} 轮!!!!!!!!!!")
    
     for episode in range(start_episode, Config.num_episodes):
+    # for episode in range(start_episode, start_episode + 1):
         print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
         gym = SafeGym(Config.fwd_model_uri)
         
@@ -178,10 +179,19 @@ async def run_training():
             else:
                 episode_buffer.append(episode_steps)
 
-            print("局数：", len(episode_steps))
+            print("回合数：", len(episode_steps))
             print("滑动窗口后数据全数量：", len(episode_buffer))
 
-            agent.update_from_buffer(episode_buffer, episode)
+            # ✅ 每 N 局进行一次 update
+            # if (episode + 1) % Config.update_every == 0:
+            # 确保局数够多
+            if len(episode_buffer) >= Config.batch_size * Config.epochs // 2:
+                print(f"✅ Episode {episode+1}: 开始 PPO 更新, 当前 buffer size={len(episode_buffer)}")
+                agent.update_from_buffer(episode_buffer, episode)
+                episode_buffer.clear()
+            else:
+                print(f"⏩ Episode {episode+1}: 数据不足 batch_size={Config.batch_size}, 跳过更新")
+
             episode_rewards.append(total_reward)
 
             # 🔵 每 eval_frequency 轮做一次评估
@@ -241,68 +251,6 @@ async def run_training():
     wandb.finish()
     print("训练完成")
 
-
-
-async def evaluate(agent, target_agent, episode, num_episodes=5):
-    total_rewards = []
-    win_count = 0
-
-    for _ in range(num_episodes):
-        gym = SafeGym(Config.fwd_model_uri)
-        await gym.connect()
-        current_state = await gym.reset_game()
-        gym.make("bomberland-env", current_state["payload"])
-        # await asyncio.sleep(0.5)
-
-        total_reward = 0
-        done = False
-        while not done:
-            self_states_a, full_map_a, agent_units_ids_a, agent_alive_units_ids_a = state_to_observations(current_state, agent_id="a")
-            alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
-            current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
-            
-
-            action_indices_a, _, _, detonate_targets_a, old_logits_a = agent.select_actions(
-                self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state
-            )
-            action_indices_a = action_indices_a[0]
-
-            self_states_b, full_map_b, agent_units_ids_b, agent_alive_units_ids_b = state_to_observations(current_state, agent_id="b")
-            alive_mask_b = get_alive_mask(agent_units_ids_b, agent_alive_units_ids_b)
-            current_bomb_infos_b, current_bomb_count_b = bombs_positions_and_count(current_state, agent_units_ids_b)
-
-            action_indices_b, _, _, detonate_targets_b, _ = target_agent.select_actions(
-                self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state
-            )
-            action_indices_b = action_indices_b[0]
-
-            actions_a = action_index_to_game_action(action_indices_a, current_state, detonate_targets_a, agent_id="a")
-            actions_b = action_index_to_game_action(action_indices_b, current_state, detonate_targets_b, agent_id="b")
-            combined_actions = actions_a + actions_b
-
-            next_state, done, info = await gym.step(combined_actions)
-            # await asyncio.sleep(0.2)
-
-            reward = calculate_reward(next_state, current_state, action_indices_a, episode, agent_id="a")
-            total_reward += reward
-            current_state = next_state
-
-            if done:
-                if len(filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])) > 0:
-                    win_count += 1
-
-        total_rewards.append(total_reward)
-        await gym.close()
-
-    avg_reward = np.mean(total_rewards)
-    win_rate = win_count / num_episodes
-
-    print(f"[评估结果] Win rate: {win_rate:.2f}, Avg Reward: {avg_reward:.2f}")
-
-    wandb.log({
-        "eval_win_rate": win_rate,
-        "eval_avg_reward": avg_reward
-    })
 
 
 if __name__ == "__main__":

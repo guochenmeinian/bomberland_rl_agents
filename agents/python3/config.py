@@ -21,6 +21,9 @@ class Config:
     # 训练参数
     num_episodes = 10000
     max_steps_per_episode = 650
+    update_every = 5 # 每n局更新一次
+    batch_size = 32
+    epochs = 5
 
     # PPO参数
     self_state_dim = 10
