@@ -82,7 +82,7 @@ async def run_training():
                 alive_mask_a = get_alive_mask(agent_units_ids_a, agent_alive_units_ids_a)
                 current_bomb_infos_a, current_bomb_count_a = bombs_positions_and_count(current_state, agent_units_ids_a)
 
-                action_indices_a, log_probs_a, value_a, detonate_targets_a = agent.select_actions(
+                action_indices_a, log_probs_a, value_a, detonate_targets_a, old_logits_a = agent.select_actions(
                     self_states_a, full_map_a, alive_mask_a, current_bomb_infos_a, current_bomb_count_a, agent_units_ids_a, current_state, env_id=env_idx
                 )
                 action_indices_a = action_indices_a[0]
@@ -93,7 +93,7 @@ async def run_training():
                 current_bomb_infos_b, current_bomb_count_b = bombs_positions_and_count(current_state, agent_units_ids_b)
 
                 with torch.no_grad():
-                    action_indices_b, _, _, detonate_targets_b = target_agent.select_actions(
+                    action_indices_b, _, _, detonate_targets_b, _ = target_agent.select_actions(
                         self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state, env_id=env_idx
                     )
                 action_indices_b = action_indices_b[0]
@@ -109,7 +109,8 @@ async def run_training():
                     "full_map_a": full_map_a,
                     "action_indices_a": action_indices_a,
                     "log_probs_a": log_probs_a,
-                    "value_a": value_a
+                    "value_a": value_a,
+                    "old_logits_a": old_logits_a
                 }
 
             except Exception as e:
@@ -148,7 +149,8 @@ async def run_training():
                 meta["log_probs_a"],
                 reward,
                 meta["value_a"],
-                done
+                done,
+                meta["old_logits_a"], 
             ))
 
             # 🛠️ 如果积累够一段sequence_length步，就塞入episode_buffer

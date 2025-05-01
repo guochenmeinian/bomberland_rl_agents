@@ -260,8 +260,8 @@ class PPOAgent:
 
         actions = torch.stack(actions).unsqueeze(0)
         log_probs = torch.stack(log_probs).unsqueeze(0)
-
-        return actions.cpu().numpy(), log_probs.cpu().numpy(), latest_values.squeeze().cpu().numpy(), detonate_targets
+        
+        return actions.cpu().numpy(), log_probs.cpu().numpy(), latest_values.squeeze().cpu().numpy(), detonate_targets, latest_logits[0].cpu().numpy()
 
 
 
@@ -283,8 +283,8 @@ class PPOAgent:
             advantages, returns = self.compute_gae(rewards, values_arr, dones)
 
             new_sequence = []
-            for (state, map_data, action, log_prob, reward, value, done), adv, ret in zip(sequence, advantages, returns):
-                new_sequence.append((state, map_data, action, log_prob, ret, adv))
+            for (state, map_data, action, log_prob, reward, value, done, old_logits), adv, ret in zip(sequence, advantages, returns):
+                new_sequence.append((state, map_data, action, log_prob, ret, adv, old_logits))
 
             self.memory.append(new_sequence)
 
@@ -305,7 +305,7 @@ class PPOAgent:
 
 
     def vectorized_ppo_update(self, model, optimizer, batch_data, device, clip_eps):
-        self_states, full_maps, actions, old_log_probs, returns, advantages = batch_data
+        self_states, full_maps, actions, old_log_probs, returns, advantages, old_logits = batch_data
 
         # 转为 Tensor
         self_states = torch.tensor(self_states, dtype=torch.float32).to(device)        # (B, T, N, D)
@@ -314,6 +314,7 @@ class PPOAgent:
         old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)    # (B, T, N)
         returns = torch.tensor(returns, dtype=torch.float32).to(device)                # (B, T)
         advantages = torch.tensor(advantages, dtype=torch.float32).to(device)          # (B, T)
+        old_logits = torch.tensor(old_logits, dtype=torch.float32).to(device)          # (B, T, N, A)
 
         # 标准化 advantage
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
@@ -324,13 +325,14 @@ class PPOAgent:
 
         # reshape → 扁平结构用于 loss 计算
         flat_logits = logits.view(B * T * N, A)
+        flat_old_logits = old_logits.view(B * T * N, A)
         flat_actions = actions.view(-1)
         flat_old_log_probs = old_log_probs.view(-1)
         flat_advantages = advantages.unsqueeze(-1).expand(-1, -1, N).contiguous().view(-1)  # (B*T*N,)
 
         # 构造新旧策略分布
         with torch.no_grad():
-            old_dist = torch.distributions.Categorical(logits=flat_logits.detach())
+            old_dist = torch.distributions.Categorical(logits=flat_old_logits)
         new_dist = torch.distributions.Categorical(logits=flat_logits)
 
         flat_log_probs = new_dist.log_prob(flat_actions)
@@ -370,9 +372,10 @@ class PPOAgent:
         batched_old_log_probs = []
         batched_returns = []
         batched_advantages = []
+        batched_old_logits = []
 
         for seq in self.memory:
-            s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq = zip(*seq)
+            s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq, old_logits_seq = zip(*seq)
 
             # ✅ 修复 map 的维度为 (T, C, H, W) 而不是 (T, 1, C, H, W)
             m_seq = [np.squeeze(m, axis=0) if m.ndim == 4 else m for m in m_seq]
@@ -383,6 +386,7 @@ class PPOAgent:
             batched_old_log_probs.append(np.array(old_lp_seq))  # (T, N)
             batched_returns.append(np.array(ret_seq))       # (T,)
             batched_advantages.append(np.array(adv_seq))    # (T,)
+            batched_old_logits.append(np.array(old_logits_seq))
 
         # 拼成 (B, T, ...)
         batched_states = np.stack(batched_states)            # (B, T, N, D)
@@ -391,6 +395,7 @@ class PPOAgent:
         batched_old_log_probs = np.stack(batched_old_log_probs)
         batched_returns = np.stack(batched_returns)          # (B, T)
         batched_advantages = np.stack(batched_advantages)    # (B, T)
+        batched_old_logits = np.stack(batched_old_logits)  # (B, T, N, A)
 
         total_policy_loss = 0
         total_value_loss = 0
@@ -414,6 +419,7 @@ class PPOAgent:
                     batched_old_log_probs[batch_idx],
                     batched_returns[batch_idx],
                     batched_advantages[batch_idx],
+                    batched_old_logits[batch_idx]
                 )
 
                 policy_loss, value_loss, loss, kl, entropy = self.vectorized_ppo_update(
