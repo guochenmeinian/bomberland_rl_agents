@@ -182,16 +182,6 @@ async def run_training():
             print("回合数：", len(episode_steps))
             print("滑动窗口后数据全数量：", len(episode_buffer))
 
-            # ✅ 每 N 局进行一次 update
-            # if (episode + 1) % Config.update_every == 0:
-            # 确保局数够多
-            if len(episode_buffer) >= Config.batch_size * Config.epochs // 2:
-                print(f"✅ Episode {episode+1}: 开始 PPO 更新, 当前 buffer size={len(episode_buffer)}")
-                agent.update_from_buffer(episode_buffer, episode)
-                episode_buffer.clear()
-            else:
-                print(f"⏩ Episode {episode+1}: 数据不足 batch_size={Config.batch_size}, 跳过更新")
-
             episode_rewards.append(total_reward)
 
             # 🔵 每 eval_frequency 轮做一次评估
@@ -209,6 +199,16 @@ async def run_training():
             if (episode + 1) % Config.update_target_frequency == 0:
                 target_agent.model.load_state_dict(agent.model.state_dict())
                 print(f"[Sync] target_agent 同步于 Episode {episode+1}")
+
+            # ✅ 每 N 局进行一次 update
+            # if (episode + 1) % Config.update_every == 0:
+            # 确保局数够多
+            if len(episode_buffer) >= Config.batch_size * Config.epochs // 2:
+                print(f"✅ Episode {episode+1}: 开始 PPO 更新, 当前 buffer size={len(episode_buffer)}")
+                agent.update_from_buffer(episode_buffer, episode)
+                episode_buffer.clear()
+            else:
+                print(f"⏩ Episode {episode+1}: 数据不足 batch_size={Config.batch_size}, 跳过更新")
 
         except Exception as e:
             msg = f"[总体错误] Episode {episode+1} 失败: {e}\n{traceback.format_exc()}"
