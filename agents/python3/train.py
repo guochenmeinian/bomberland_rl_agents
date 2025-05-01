@@ -178,6 +178,9 @@ async def run_training():
             else:
                 episode_buffer.append(episode_steps)
 
+            print("局数：", len(episode_steps))
+            print("滑动窗口后数据全数量：", len(episode_buffer))
+
             agent.update_from_buffer(episode_buffer, episode)
             episode_rewards.append(total_reward)
 

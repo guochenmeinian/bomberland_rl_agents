@@ -22,8 +22,26 @@ class TemporalWindow:
         self.full_maps.append(full_map)
 
     def get_sequence(self):
-        # shape: (T, N, D), (T, C, H, W)
-        return np.stack(self.self_states), np.stack(self.full_maps)
+        """
+        Returns:
+            states: (max_len, N, D)
+            maps: (max_len, C, H, W)
+            valid_len: 当前实际填入帧数
+        """
+        T = len(self.self_states)
+        states = np.stack(self.self_states)  # (T, N, D)
+        maps = np.stack(self.full_maps)      # (T, C, H, W)
+        
+        pad_len = self.max_len - T
+        if pad_len > 0:
+            # 用零填充（或者也可以用 states[0] 重复）
+            state_pad = np.zeros((pad_len, *states.shape[1:]), dtype=states.dtype)
+            map_pad = np.zeros((pad_len, *maps.shape[1:]), dtype=maps.dtype)
+
+            states = np.concatenate([state_pad, states], axis=0)  # (max_len, N, D)
+            maps = np.concatenate([map_pad, maps], axis=0)        # (max_len, C, H, W)
+
+            return states, maps, T # T 是真实步数
 
     def is_ready(self):
         return len(self.self_states) >= self.max_len
@@ -198,7 +216,7 @@ class PPOAgent:
         else:
             self.temporal_windows[env_id].push(self_states, full_map)
 
-        seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
+        # seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
         # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
         # if seq_states.ndim == 3:  # (T, N, D)
         #     seq_states = seq_states.unsqueeze(0)  # → (1, T, N, D)
@@ -207,11 +225,13 @@ class PPOAgent:
         #     seq_maps = seq_maps.unsqueeze(0)      # → (1, T, C, H, W)
 
         # 取序列 → (T, N, D), (T, C, H, W)
-        seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
+        seq_states, seq_maps, _ = self.temporal_windows[env_id].get_sequence()
 
         # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
         seq_states = torch.tensor(seq_states, dtype=torch.float32).unsqueeze(0).to(self.device)
         seq_maps = torch.tensor(seq_maps, dtype=torch.float32).unsqueeze(0).to(self.device)
+
+        # valid_len_tensor = torch.tensor([valid_len], device=self.device)  # shape: (1,)
 
         # print("seq_states.shape:", seq_states.shape)
         # print("seq_maps.shape:", seq_maps.shape)
