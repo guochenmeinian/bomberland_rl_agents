@@ -8,14 +8,14 @@ from model.ppo_model import PPOModel
 import random
 import wandb
 from collections import deque
-
+from config import Config 
 
 class TemporalWindow:
-    """用于存储最近 T 步观测信息，生成 Transformer 的输入序列"""
+    """store most rencet T (steps) observations to generate sequences"""
     def __init__(self, max_len):
-        self.max_len = max_len
-        self.self_states = deque(maxlen=max_len)   # 每步 shape: (N, D)
-        self.full_maps = deque(maxlen=max_len)     # 每步 shape: (C, H, W)
+        self.max_len = max_len                                      # sequence_length
+        self.self_states = deque(maxlen=max_len)                    # (num_units, dim)
+        self.full_maps = deque(maxlen=max_len)                      # (num_channels, height, width)
 
     def push(self, self_state, full_map):
         self.self_states.append(self_state)
@@ -24,31 +24,31 @@ class TemporalWindow:
     def get_sequence(self):
         """
         Returns:
-            states: (max_len, N, D)
-            maps: (max_len, C, H, W)
-            valid_len: 当前实际填入帧数
+            states: (max_len, num_units, dim)
+            maps: (max_len, num_channels, height, width)
+            valid_len: (not used)
         """
         T = len(self.self_states)
 
         if T == 0:
-            # 创建一个全 0 的 dummy sequence
-            state_dummy = np.zeros((self.max_len, 3, 10), dtype=np.float32)  # 假设 N=3, D=10
-            map_dummy = np.zeros((self.max_len, 8, 15, 15), dtype=np.float32)  # 假设 C=8, H=W=15
+            # (edge case) start game: store a all zero dummy sequence
+            state_dummy = np.zeros((self.max_len, Config.num_units, Config.self_state_dim), dtype=np.float32)
+            map_dummy = np.zeros((self.max_len, Config.map_channels, Config.map_size, Config.map_size), dtype=np.float32)
             return state_dummy, map_dummy, 0
 
-        states = np.stack(self.self_states)  # (T, N, D)
-        maps = np.stack(self.full_maps)      # (T, C, H, W)
+        states = np.stack(self.self_states)                         # (max_len, num_units, dim)
+        maps = np.stack(self.full_maps)                             # (max_len, num_channels, height, width)
         
         pad_len = self.max_len - T
         if pad_len > 0:
-            # 用零填充（或者也可以用 states[0] 重复）
+            # use zeros for paddings
             state_pad = np.zeros((pad_len, *states.shape[1:]), dtype=states.dtype)
             map_pad = np.zeros((pad_len, *maps.shape[1:]), dtype=maps.dtype)
 
-            states = np.concatenate([state_pad, states], axis=0)  # (max_len, N, D)
-            maps = np.concatenate([map_pad, maps], axis=0)        # (max_len, C, H, W)
+            states = np.concatenate([state_pad, states], axis=0)    # (max_len, num_units, dim)
+            maps = np.concatenate([map_pad, maps], axis=0)          # (max_len, num_channels, height, width)
 
-        return states, maps, T # T 是真实步数
+        return states, maps, T                                      # timesteps used
 
     def is_ready(self):
         return len(self.self_states) >= self.max_len
@@ -82,7 +82,6 @@ class PPOAgent:
         self.batch_size = config.batch_size
         self.epochs = config.epochs
 
-
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
         
         if isinstance(game_state, dict) and "payload" in game_state:
@@ -101,7 +100,6 @@ class PPOAgent:
             return None
         
         bomb_scores = []
-
         for bomb_x, bomb_y in candidate_targets:
             score = 0
             blast_diameter = 0
@@ -177,9 +175,10 @@ class PPOAgent:
                             # only 1 hp left, treat as wood block
                             score += 5
                         elif hp == 2:
-                            # 血厚的矿，加少点
+                            # relatively weak block, add some scores
                             score += 3
                         else:        
+                            # needs 3 bombs, only add a little score
                             score += 1
 
                 # Bonus if the bomb is about to expire anyway
@@ -200,7 +199,7 @@ class PPOAgent:
             return (best_bomb[0], best_bomb[1])
             
         # If all bombs have very negative scores, better not to detonate
-        return None # shouldn't be triggered
+        return None # shouldn't be triggered at all
         
 
     def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state, env_id=0):
@@ -209,21 +208,7 @@ class PPOAgent:
         if isinstance(full_map, np.ndarray) and full_map.ndim == 4 and full_map.shape[0] == 1:
             full_map = np.squeeze(full_map, axis=0)
 
-        # original_self_states = self_states.squeeze(0)
-        # original_full_map = full_map.squeeze(0)
-
-        # # 🔵 现在才检查实际要 push 的内容 shape 是否对
-        # print("push self_states shape:", original_self_states.shape)
-        # print("push full_map shape:", original_full_map.shape)
-        # assert original_full_map.shape == (8, 15, 15)
-
-        # 如果未填满序列，重复填入当前帧
-        # if not self.temporal_windows[env_id].is_ready():
-        #     while len(self.temporal_windows[env_id].self_states) < self.temporal_windows[env_id].max_len:
-        #         self.temporal_windows[env_id].push(self_states, full_map)
-        # else:
-        #   self.temporal_windows[env_id].push(self_states, full_map)
-        # 只 push 当前这一帧
+        # only push this state
         self.temporal_windows[env_id].push(self_states, full_map)
 
         # seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
@@ -293,8 +278,6 @@ class PPOAgent:
         
         return actions.cpu().numpy(), log_probs.cpu().numpy(), latest_values.squeeze().cpu().numpy(), detonate_targets, latest_logits[0].cpu().numpy()
 
-
-
     def update_from_buffer(self, episode_buffer, current_episode):
         if not episode_buffer:
             return
@@ -333,11 +316,10 @@ class PPOAgent:
         returns = np.array(advantages) + values[:-1]
         return advantages, returns
 
-
     def vectorized_ppo_update(self, model, optimizer, batch_data, device, clip_eps):
         self_states, full_maps, actions, old_log_probs, returns, advantages, old_logits = batch_data
 
-        # 转为 Tensor
+        # Tensor
         self_states = torch.tensor(self_states, dtype=torch.float32).to(device)        # (B, T, N, D)
         full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)            # (B, T, C, H, W)
         actions = torch.tensor(actions, dtype=torch.long).to(device)                   # (B, T, N)
@@ -346,10 +328,10 @@ class PPOAgent:
         advantages = torch.tensor(advantages, dtype=torch.float32).to(device)          # (B, T)
         old_logits = torch.tensor(old_logits, dtype=torch.float32).to(device)          # (B, T, N, A)
 
-        # 标准化 advantage
+        # standard advantage
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
 
-        # 前向计算
+        # forward
         logits, values = model(self_states, full_maps)  # logits: (B, T, N, A), values: (B, T)
         B, T, N, A = logits.shape
 
@@ -407,25 +389,25 @@ class PPOAgent:
         for seq in self.memory:
             s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq, old_logits_seq = zip(*seq)
 
-            # ✅ 修复 map 的维度为 (T, C, H, W) 而不是 (T, 1, C, H, W)
+            # ✅ (T, C, H, W) not (T, 1, C, H, W)
             m_seq = [np.squeeze(m, axis=0) if m.ndim == 4 else m for m in m_seq]
             
-            batched_states.append(np.array(s_seq))          # (T, N, D)
-            batched_maps.append(np.array(m_seq))            # (T, C, H, W)
-            batched_actions.append(np.array(a_seq))         # (T, N)
+            batched_states.append(np.array(s_seq))              # (T, N, D)
+            batched_maps.append(np.array(m_seq))                # (T, C, H, W)
+            batched_actions.append(np.array(a_seq))             # (T, N)
             batched_old_log_probs.append(np.array(old_lp_seq))  # (T, N)
-            batched_returns.append(np.array(ret_seq))       # (T,)
-            batched_advantages.append(np.array(adv_seq))    # (T,)
+            batched_returns.append(np.array(ret_seq))           # (T,)
+            batched_advantages.append(np.array(adv_seq))        # (T,)
             batched_old_logits.append(np.array(old_logits_seq))
 
         # 拼成 (B, T, ...)
-        batched_states = np.stack(batched_states)            # (B, T, N, D)
-        batched_maps = np.stack(batched_maps)                # (B, T, C, H, W)
-        batched_actions = np.stack(batched_actions)          # (B, T, N)
+        batched_states = np.stack(batched_states)               # (B, T, N, D)
+        batched_maps = np.stack(batched_maps)                   # (B, T, C, H, W)
+        batched_actions = np.stack(batched_actions)             # (B, T, N)
         batched_old_log_probs = np.stack(batched_old_log_probs)
-        batched_returns = np.stack(batched_returns)          # (B, T)
-        batched_advantages = np.stack(batched_advantages)    # (B, T)
-        batched_old_logits = np.stack(batched_old_logits)  # (B, T, N, A)
+        batched_returns = np.stack(batched_returns)             # (B, T)
+        batched_advantages = np.stack(batched_advantages)       # (B, T)
+        batched_old_logits = np.stack(batched_old_logits)       # (B, T, N, A)
 
         total_policy_loss = 0
         total_value_loss = 0

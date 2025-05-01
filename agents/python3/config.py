@@ -1,43 +1,48 @@
-import torch
+# config.py
 import os
+import torch
 
 class Config:
-    # 环境参数
+    
+    # server
     fwd_model_uri = os.environ.get("FWD_MODEL_CONNECTION_STRING", "ws://127.0.0.1:6969/?role=admin")
-    checkpoint_dir = "checkpoints"  # 目录名
-    keep_last_n_checkpoint = 100  # 保留最近的15个checkpoint
-    log_frequency = 10  # 每10个episode打印一次
-    save_frequency = 50  # 每50个episode保存一次
-    update_target_frequency = 15  # 每15个episode同步一次
-    eval_frequency = 100  # 每100次训练后评估一次
-    sequence_length = 20 # 每段20步长
 
-    # 多环境设置
-    num_envs = 5  # 🛠️ 开5个环境并行训练
+    # environment
+    user = "cg3972"                     # team member username
+    checkpoint_dir = "checkpoints"      # save dir
+    keep_last_n_checkpoint = 10         # save n most recent checkpoints
+    log_frequency = 10                  # log reward per n episodes
+    save_frequency = 50                 # save model per n episodes
+    update_target_frequency = 15        # update target_model per n episodes
+    eval_frequency = 50                 # eval win rate per n episodes
 
-    # 速度benchmark
-    benchmark_batch_size = 20  # 🛠️ 每20个episode打印一次benchmark
+    # multi_env
+    num_envs = 5                        # (not used)
 
-    # 训练参数
-    num_episodes = 10000
-    max_steps_per_episode = 650
-    update_every = 5 # 每n局更新一次
-    batch_size = 32
-    epochs = 5
+    # benchmark
+    benchmark_batch_size = 20           # log benchmark
 
-    # PPO参数
-    self_state_dim = 10
-    map_channels = 8
-    map_size = 15
-    action_dim = 7
-    num_units = 3
-    kl_beta = 0.01
+    # training
+    sequence_length = 20                # number of data per sequence
+    num_episodes = 10000                # training epochs
+    max_steps_per_episode = 650         # maximum rounds for each game
+    update_every = 5                    # (not used)
+    batch_size = 32                     # sample that amount of sequences each time when updating model
+    epochs = 5                          # sample that many times when updating model
+
+    # PPO
+    self_state_dim = 10                 # self state size (fixed)
+    map_channels = 8                    # map channels (fixed)
+    map_size = 15                       # map height and width (fixed)
+    action_dim = 7                      # action space: [left, right, up, down, bomb, detonate] (fixed)
+    num_units = 3                       # number of units per team
+    kl_beta = 0.01                      
     kl_target = 0.02
     kl_update_rate = 1.5
-
     gamma = 0.99
-    lam = 0.95
+    lam = 0.95                          # (not used)
     clip_eps = 0.1
-    lr = 3e-4
+    lr = 3e-4                           # learning rate
 
+    # others
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

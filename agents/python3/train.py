@@ -20,7 +20,7 @@ import time
 async def run_training():
 
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M")
-    run_name = f"ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
+    run_name = f"{Config.user}-ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
 
     wandb.login(key=os.getenv("WANDB_API_KEY"))
     cfg = Config()
@@ -39,7 +39,7 @@ async def run_training():
         start_episode = load_latest_checkpoint(agent, latest_ckpt)
         target_agent.model.load_state_dict(agent.model.state_dict())
     else:
-        print("[Checkpoint] 没找到已有模型，从头训练")
+        print("[Error] No model checkpoint found, start training from scratch...")
         start_episode = 0
         target_agent.model.load_state_dict(agent.model.state_dict())
 
@@ -49,20 +49,18 @@ async def run_training():
     decay_rate = 0.999
     win_count = 0
     
-    batch_start_time = time.time()  # 🕐 benchmark：每 batch 开始计时
-
-    print(f"开始训练，共 {Config.num_episodes} 轮!!!!!!!!!!")
+    batch_start_time = time.time()
    
     for episode in range(start_episode, Config.num_episodes):
-    # for episode in range(start_episode, start_episode + 1):
-        print(f"\n开始 Episode {episode+1}/{Config.num_episodes}")
+    # for episode in range(start_episode, start_episode + 1): # for testing
+        print(f"\Start Episode {episode+1}/{Config.num_episodes}")
         gym = SafeGym(Config.fwd_model_uri)
         
         try:
             try:
                 await gym.connect()
             except Exception as e:
-                msg = f"[连接错误] Episode {episode+1} gym.connect() 失败: {e}\n{traceback.format_exc()}"
+                msg = f"[Error] Episode {episode+1} gym.connect() Failed: {e}\n{traceback.format_exc()}"
                 print(msg)
                 log_error(msg)
                 raise e
@@ -70,7 +68,7 @@ async def run_training():
             try:
                 current_state = await gym.reset_game()
             except Exception as e:
-                msg = f"[重置错误] Episode {episode+1} gym.reset_game() 失败: {e}\n{traceback.format_exc()}"
+                msg = f"[Error] Episode {episode+1} gym.reset_game() Failed: {e}\n{traceback.format_exc()}"
                 print(msg)
                 log_error(msg)
                 raise e
@@ -80,8 +78,8 @@ async def run_training():
 
             total_reward = 0
             current_decay = initial_decay
-            episode_steps = []  # 🟢 替代 current_sequence，完整记录每一步
-            episode_buffer = []
+            episode_steps = []  # keep track of all the steps within one episode run
+            episode_buffer = [] # keep track of all sequence steps within one episode run
 
             for step in range(Config.max_steps_per_episode):
                 try:
@@ -101,6 +99,7 @@ async def run_training():
                     alive_mask_b = get_alive_mask(agent_units_ids_b, agent_alive_units_ids_b)
                     current_bomb_infos_b, current_bomb_count_b = bombs_positions_and_count(current_state, agent_units_ids_b)
 
+                    # freeze agent_b to not update the params
                     with torch.no_grad():
                         action_indices_b, _, _, detonate_targets_b, _ = target_agent.select_actions(
                                 self_states_b, full_map_b, alive_mask_b, current_bomb_infos_b, current_bomb_count_b, agent_units_ids_b, current_state
@@ -117,18 +116,18 @@ async def run_training():
                         next_state, done, info = await gym.step(combined_actions)
                         # await asyncio.sleep(0.2)
                     except Exception as e:
-                        msg = f"[执行动作错误] Episode {episode+1} Step {step+1} gym.step() 失败: {e}\n{traceback.format_exc()}"
+                        msg = f"[Error] Episode {episode+1} Step {step+1} gym.step() Failed: {e}\n{traceback.format_exc()}"
                         print(msg)
                         log_error(msg)
                         raise e
                 except Exception as step_error:
-                    msg = f"[Step 错误] Episode {episode+1} Step {step+1}: {step_error}\n{traceback.format_exc()}"
+                    msg = f"[Error] Episode {episode+1} Step {step+1}: {step_error}\n{traceback.format_exc()}"
                     print(msg)
                     log_error(msg)
                     break
 
                 if next_state is None:
-                    print("警告: step 返回了 None，跳出当前 episode")
+                    print("[Warning]: step returns None, skip current episode")
                     break
 
                 # if next_state["tick"] >= next_state["config"]["game_duration_ticks"]:
@@ -137,8 +136,9 @@ async def run_training():
                 alive_units = filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])
                 alive_enemies = filter_alive_units("b", next_state["agents"]["b"]["unit_ids"], next_state["unit_state"])
 
+                # game already ended, early stop to move to next round
                 if len(alive_units) == 0 or len(alive_enemies) == 0:
-                    print("警告: 有一个队伍没有活着的单位，跳出当前 episode")
+                    print("[Warning]: Game already ended, moving to next round...")
                     done = True
 
                 reward = calculate_reward(next_state, prev_state, action_indices_a, episode, agent_id="a")
@@ -161,64 +161,63 @@ async def run_training():
 
                 current_state = next_state
 
-                if step % 10 == 0:
-                    print(f"Step {step+1}, Reward: {reward:.2f}, Total: {total_reward:.2f}")
+                if step % Config.log_frequency == 0:
+                    print(f"Step {step+1}, Reward: {reward:.2f}, Total Reward: {total_reward:.2f}")
 
                 if done:
                     if len(filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])) > 0:
                         win_count += 1
                     break
-                    
+            
             if len(episode_steps) >= Config.sequence_length:
                 overlapping_sequences = extract_overlapping_sequences(
                     episode_steps, 
                     window_size=Config.sequence_length, 
-                    stride=1   # 完全连续滑动
+                    stride=1 # fully consecutive sequences (e.g. ([1,20], [2,21], [3,22], ...))
                 )
                 episode_buffer.extend(overlapping_sequences)
-            else:
+            else: # edge case (e.g. [220-227])
                 episode_buffer.append(episode_steps)
 
-            print("回合数：", len(episode_steps))
-            print("滑动窗口后数据全数量：", len(episode_buffer))
+            print("current buffer size:", len(episode_steps))
+            print("current buffer size after sliding window:", len(episode_buffer))
 
             episode_rewards.append(total_reward)
 
-            # 🔵 每 eval_frequency 轮做一次评估
+            # ✅ eval win rate
             if (episode + 1) % Config.eval_frequency == 0:
-                # print(f"\n[评估] 开始 Evaluation at Episode {episode+1}")
+                # print(f"\n[Eval] Start Evaluation at Episode {episode+1}")
                 # await evaluate(agent, target_agent, episode)
                 wandb.log({
                     "eval_win_rate": win_count / Config.eval_frequency,
                 })
                 win_count = 0
 
+            # ✅ save model
             if (episode + 1) % Config.save_frequency == 0:
                 save_checkpoint(agent, episode+1, Config.keep_last_n_checkpoint)
 
             if (episode + 1) % Config.update_target_frequency == 0:
                 target_agent.model.load_state_dict(agent.model.state_dict())
-                print(f"[Sync] target_agent 同步于 Episode {episode+1}")
+                print(f"[Sync] target_agent synced on Episode {episode+1}")
 
-            # ✅ 每 N 局进行一次 update
-            # if (episode + 1) % Config.update_every == 0:
-            # 确保局数够多
+            # ✅ only update if number of entries in the buffer are enough
             if len(episode_buffer) >= Config.batch_size * Config.epochs // 2:
-                print(f"✅ Episode {episode+1}: 开始 PPO 更新, 当前 buffer size={len(episode_buffer)}")
+                print(f"✅ Episode {episode+1}: start PPO update, current buffer size={len(episode_buffer)}")
                 agent.update_from_buffer(episode_buffer, episode)
                 episode_buffer.clear()
             else:
-                print(f"⏩ Episode {episode+1}: 数据不足 batch_size={Config.batch_size}, 跳过更新")
+                print(f"✅ Episode {episode+1}: insufficient amount of data, current buffer size={len(episode_buffer)}, skipping...")
 
         except Exception as e:
-            msg = f"[总体错误] Episode {episode+1} 失败: {e}\n{traceback.format_exc()}"
+            msg = f"[Error] Episode {episode+1} Failed: {e}\n{traceback.format_exc()}"
             print(msg)
             log_error(msg)
         finally:
             try:
                 await gym.close()
             except Exception as close_error:
-                msg = f"[关闭错误] Episode {episode+1} gym.close() 出错: {close_error}\n{traceback.format_exc()}"
+                msg = f"[Error] Episode {episode+1} gym.close() error: {close_error}\n{traceback.format_exc()}"
                 print(msg)
                 log_error(msg)
 
@@ -229,7 +228,7 @@ async def run_training():
             "benchmark/episode": episode
         }, step=episode)
         
-        # 🔵 每 batch_size 个 episode 打印一次时间
+        # ✅ log time and benchmark
         if (episode + 1) % Config.benchmark_batch_size == 0:
             batch_elapsed = time.time() - batch_start_time
             avg_time_per_ep = batch_elapsed / Config.benchmark_batch_size
@@ -249,7 +248,7 @@ async def run_training():
             batch_start_time = time.time()
 
     wandb.finish()
-    print("训练完成")
+    print("Training completed.")
 
 
 

@@ -1,3 +1,5 @@
+# agent.py
+# this is a agent that moves randomly for testing
 from typing import Union
 from game_state import GameState
 import asyncio

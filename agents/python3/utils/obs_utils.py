@@ -1,4 +1,4 @@
-# obs_utils.py
+# utils/obs_utils.py
 import torch
 import numpy as np
 
@@ -150,7 +150,7 @@ def action_index_to_game_action(action_indices, state, detonate_targets, agent_i
         3: {"type": "move", "move": "left"},
         4: {"type": "bomb"},
         5: {"type": "detonate"},
-        6: None  # 不动时不发送动作
+        6: None # do nothing, win
     }
     
     for i, unit_id in enumerate(unit_ids):
