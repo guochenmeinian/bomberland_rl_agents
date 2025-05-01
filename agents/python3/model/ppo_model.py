@@ -61,11 +61,11 @@ class PPOModel(nn.Module):
         # 用于时序 transformer，支持 max_seq_len*T*N
         self.pos_encoding = SinusoidalPositionalEncoding(hidden_dim, max_len=max_seq_len * num_units)
 
-        # Transformer encoder
-        encoder_layer = nn.TransformerEncoderLayer(
-            d_model=hidden_dim, nhead=4, batch_first=True
+        # Entity-wise Attention 模块（每帧对 N 个单位做 Attention）
+        self.entity_attention = nn.TransformerEncoder(
+            nn.TransformerEncoderLayer(d_model=hidden_dim, nhead=4, batch_first=True),
+            num_layers=1
         )
-        self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=2)
 
         # Value head（池化后送入）
         self.value_head = nn.Sequential(
@@ -75,7 +75,11 @@ class PPOModel(nn.Module):
         )
 
         # ✅ 共享 policy head
-        self.policy_head = nn.Linear(hidden_dim, action_dim)  
+        self.policy_head = nn.Sequential(
+            # nn.LayerNorm(hidden_dim),
+            # nn.Dropout(0.1),
+            nn.Linear(hidden_dim, action_dim)
+        )
 
     def forward(self, self_states, full_map):
         """
@@ -110,18 +114,21 @@ class PPOModel(nn.Module):
         # 拼接 map + self feature
         combined = torch.cat([map_feat_exp, self_feat], dim=-1)
         unit_embeds = self.unit_encoder(combined)  # (B*T, N, H)
+        unit_embeds = unit_embeds.view(B, T, N, self.hidden_dim) # (B, T, N, H)
 
-        # reshape 到 Transformer 格式：(B, T×N, H)
-        unit_embeds = unit_embeds.view(B, T * N, self.hidden_dim)
+        # 添加位置编码（对 T×N 做线性编码）
+        unit_embeds = unit_embeds.view(B, T * N, self.hidden_dim) # (B*T, N, H)
+        unit_embeds = self.pos_encoding(unit_embeds.view(B, T * N, self.hidden_dim)) # (B*T, N, H)
+        unit_embeds = unit_embeds.view(B, T, N, self.hidden_dim) # (B, T, N, H)
 
-        # 加上时序位置编码（注意：你可以自行添加unit位置编码）
-        encoded = self.pos_encoding(unit_embeds)
+        # Entity-wise Attention per timestep
+        attended = []
+        for t in range(T):
+            x = unit_embeds[:, t, :, :]  # (B, N, H)
+            x = self.entity_attention(x)  # (B, N, H)
+            attended.append(x.unsqueeze(1))  # (B, 1, N, H)
 
-        # Transformer 编码 (B, T*N, H)
-        encoded = self.transformer_encoder(encoded)  # (B, T*N, H)
-
-        # reshape 回来 (B, T, N, H)
-        encoded = encoded.view(B, T, N, self.hidden_dim)
+        encoded = torch.cat(attended, dim=1)  # (B, T, N, H)
 
         logits = self.policy_head(encoded)  # (B, T, N, A)
         value = self.value_head(encoded).squeeze(-1)  # (B, T, N) → 取均值
