@@ -1,1 +1,0 @@
-{"train/policy_loss": -0.04843601072207093, "train/value_loss": 51.781171560287476, "train/total_loss": 51.732735549565405, "train/episode": 62, "_timestamp": 1745979715.1265352, "_runtime": 139.00594210624695, "_step": 62, "benchmark/batch_elapsed_time": 101.75728273391724, "benchmark/avg_episode_time": 5.0878641366958615, "benchmark/episode": 59}

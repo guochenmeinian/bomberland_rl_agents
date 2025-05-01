@@ -1,1 +1,0 @@
-{"_wandb": {"runtime": 59}, "train/policy_loss": 0.04603563324333383, "train/value_loss": 25.621517179103996, "train/total_loss": 25.66755281234733, "train/episode": 0, "_timestamp": 1745981883.4395134, "_runtime": 59.707754373550415, "_step": 0}
