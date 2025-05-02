@@ -13,7 +13,7 @@ class Config:
     keep_last_n_checkpoint = 10         # save n most recent checkpoints
     log_frequency = 10                  # log reward per n episodes
     save_frequency = 50                 # save model per n episodes
-    update_target_frequency = 15        # update target_model per n episodes
+    update_target_frequency = 35        # update target_model per n episodes
     eval_frequency = 25                 # eval win rate per n episodes
 
     # multi_env

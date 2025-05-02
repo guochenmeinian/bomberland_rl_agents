@@ -203,10 +203,7 @@ async def run_training():
 
             buffer_len = len(episode_buffer)
 
-            # 档位阈值（可以调整）
-            tiny_threshold = 16                                 # 保底最小 buffer size
-
-            # if number of entries in the buffer are enough
+            # buffer update based on threshold
             if buffer_len >= Config.full_threshold:
                 print(f"✅ Full PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
                 batch_size = Config.batch_size

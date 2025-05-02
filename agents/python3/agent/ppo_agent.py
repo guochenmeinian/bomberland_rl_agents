@@ -69,6 +69,7 @@ class PPOAgent:
             num_units=config.num_units
         ).to(self.device)
 
+        self.total_num_episodes = config.num_episodes
         self.optimizer = optim.Adam(self.model.parameters(), lr=config.lr)
         self.gamma = config.gamma
         self.lam = config.lam
@@ -318,7 +319,7 @@ class PPOAgent:
         returns = np.array(advantages) + values[:-1]
         return advantages, returns
 
-    def vectorized_ppo_update(self, model, optimizer, batch_data, device, clip_eps):
+    def vectorized_ppo_update(self, episode_idx, model, optimizer, batch_data, device, clip_eps):
         self_states, full_maps, actions, old_log_probs, returns, advantages, old_logits = batch_data
 
         # Tensor
@@ -360,12 +361,15 @@ class PPOAgent:
         # Value Loss
         value_loss = F.mse_loss(values, returns)
 
-        # KL 散度 & 熵奖励
+        # KL 散度: + self.kl_beta * kl 
         kl = torch.distributions.kl_divergence(old_dist, new_dist).mean()
-        entropy = new_dist.entropy().mean()
 
+        # 熵奖励: - entropy_coeff * entropy
+        entropy_coeff = max(0.001, 0.01 * (1 - episode_idx / self.total_num_episodes))
+        entropy = new_dist.entropy().mean()
+        
         # 总 Loss（含 KL 正则项 & 熵奖励）
-        loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - 0.01 * entropy
+        loss = policy_loss + 0.5 * value_loss - entropy_coeff * entropy
 
         optimizer.zero_grad()
         loss.backward()
@@ -446,6 +450,7 @@ class PPOAgent:
                 )
 
                 policy_loss, value_loss, loss, kl, entropy = self.vectorized_ppo_update(
+                    episode_idx=current_episode,
                     model=self.model,
                     optimizer=self.optimizer,
                     batch_data=mini_batch,
