@@ -7,56 +7,7 @@ import numpy as np
 from model.ppo_model import PPOModel
 import random
 import wandb
-from collections import deque
 from config import Config 
-
-class TemporalWindow:
-    """store most rencet T (steps) observations to generate sequences"""
-    def __init__(self, max_len):
-        self.max_len = max_len                                      # sequence_length
-        self.self_states = deque(maxlen=max_len)                    # (num_units, dim)
-        self.full_maps = deque(maxlen=max_len)                      # (num_channels, height, width)
-
-    def push(self, self_state, full_map):
-        self.self_states.append(self_state)
-        self.full_maps.append(full_map)
-
-    def get_sequence(self):
-        """
-        Returns:
-            states: (max_len, num_units, dim)
-            maps: (max_len, num_channels, height, width)
-            valid_len: (not used)
-        """
-        T = len(self.self_states) # number of timesteps that's not empty
-
-        if T == 0:
-            # (edge case) start game: store a all zero dummy sequence
-            state_dummy = np.zeros((self.max_len, Config.num_units, Config.self_state_dim), dtype=np.float32)
-            map_dummy = np.zeros((self.max_len, Config.map_channels, Config.map_size, Config.map_size), dtype=np.float32)
-            return state_dummy, map_dummy, 0
-
-        states = np.stack(self.self_states)                         # (max_len, num_units, dim)
-        maps = np.stack(self.full_maps)                             # (max_len, num_channels, height, width)
-        
-        pad_len = self.max_len - T
-        if pad_len > 0:
-            # use zeros for paddings
-            state_pad = np.zeros((pad_len, *states.shape[1:]), dtype=states.dtype)
-            map_pad = np.zeros((pad_len, *maps.shape[1:]), dtype=maps.dtype)
-
-            states = np.concatenate([state_pad, states], axis=0)    # (max_len, num_units, dim)
-            maps = np.concatenate([map_pad, maps], axis=0)          # (max_len, num_channels, height, width)
-
-        return states, maps, T                                      # timesteps used
-
-    def is_ready(self):
-        return len(self.self_states) >= self.max_len
-
-    def reset(self):
-        self.self_states.clear()
-        self.full_maps.clear()
-
 
 class PPOAgent:
     def __init__(self, config):
@@ -76,7 +27,6 @@ class PPOAgent:
         self.clip_eps = config.clip_eps
         self.memory = []
         self.num_units = config.num_units
-        self.temporal_windows = [TemporalWindow(max_len=config.sequence_length) for _ in range(config.num_envs)]
         self.kl_beta = config.kl_beta
         self.kl_target = config.kl_target
         self.kl_update_rate = config.kl_update_rate
@@ -206,68 +156,94 @@ class PPOAgent:
         
 
     def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state, env_id=0):
-        if isinstance(self_states, np.ndarray) and self_states.ndim == 3 and self_states.shape[0] == 1:
-            self_states = np.squeeze(self_states, axis=0)
-        if isinstance(full_map, np.ndarray) and full_map.ndim == 4 and full_map.shape[0] == 1:
-            full_map = np.squeeze(full_map, axis=0)
+        """
+        Args:
+            self_states: (N, D)               # 每个 unit 的自状态
+            full_map:    (C, H, W)            # 当前帧地图信息
+            alive_mask:  (N,)                 # 存活 unit mask（未用）
+            current_bomb_infos: List[(x,y,owner_id)]
+            current_bomb_count: int
+            unit_ids: List[str]
+            current_state: dict
 
-        # only push this state
-        self.temporal_windows[env_id].push(self_states, full_map)
+        Returns:
+            actions:        (1, N)
+            log_probs:      (1, N)
+            value:          float
+            detonate_targets: List[Optional[(x, y)]]
+            logits:         (N, A)
+        """
 
-        # seq_states, seq_maps = self.temporal_windows[env_id].get_sequence()
-        # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
-        # if seq_states.ndim == 3:  # (T, N, D)
-        #     seq_states = seq_states.unsqueeze(0)  # → (1, T, N, D)
+        # 🟦 Step 1: preprocess输入 → 添加 batch 维度
+        if isinstance(self_states, np.ndarray):
+            self_states = torch.tensor(self_states, dtype=torch.float32)
+        if isinstance(full_map, np.ndarray):
+            full_map = torch.tensor(full_map, dtype=torch.float32)
 
-        # if seq_maps.ndim == 4:    # (T, C, H, W)
-        #     seq_maps = seq_maps.unsqueeze(0)      # → (1, T, C, H, W)
+        # only add batch dim if not already batched
+        if self_states.ndim == 2:  # (N, D)
+            self_states = self_states.unsqueeze(0)  # → (1, N, D)
+        if full_map.ndim == 3:  # (C, H, W)
+            full_map = full_map.unsqueeze(0)        # → (1, C, H, W)
 
-        # 取序列 → (T, N, D), (T, C, H, W)
-        seq_states, seq_maps, _ = self.temporal_windows[env_id].get_sequence()
-
-        # 添加 batch 维度 → (1, T, N, D), (1, T, C, H, W)
-        seq_states = torch.tensor(seq_states, dtype=torch.float32).unsqueeze(0).to(self.device)
-        seq_maps = torch.tensor(seq_maps, dtype=torch.float32).unsqueeze(0).to(self.device)
-
-        # valid_len_tensor = torch.tensor([valid_len], device=self.device)  # shape: (1,)
-
-        # print("seq_states.shape:", seq_states.shape)
-        # print("seq_maps.shape:", seq_maps.shape)
-
+        # 🟦 Step 2: forward 模型，获得 logits 和 value
         with torch.no_grad():
             self.model.eval()
-            logits, values = self.model(seq_states, seq_maps)  # logits: (1, T, N, A), values: (1, T)
+            logits, values = self.model(self_states, full_map)  # logits: (1, N, A), values: (1,)
+
+        logits = logits[0]   # (N, A)
+        value = values[0]    # scalar → float
 
         actions = []
         log_probs = []
         detonate_targets = []
 
-        latest_logits = logits[:, -1]  # (1, N, A)
-        latest_values = values[:, -1]  # (1,)
-
+        # 🟦 Step 3: 遍历每个 unit，按合法动作采样 action
         for i in range(self.model.num_units):
-            unit_logits = latest_logits[0, i]
+            unit_logits = logits[i]         # (A,)
             mask = torch.ones_like(unit_logits, dtype=torch.bool)
 
+            # 限制最多放3颗炸弹
             if current_bomb_count >= 3:
                 mask[4] = False
 
+            # 判断是否可引爆
             candidate_target = self.select_detonate_target(unit_ids[i], current_bomb_infos, current_state)
             if candidate_target is None:
                 mask[5] = False
 
+            # 屏蔽非法动作
             masked_logits = unit_logits.clone()
             masked_logits[~mask] = -1e10
 
-            probs = torch.softmax(masked_logits, dim=-1)
-            dist = torch.distributions.Categorical(probs)
+            # debug logging
+            if torch.isnan(masked_logits).any():
+                print(f"[NaN Warning] masked_logits unit {i}:", masked_logits.tolist())
 
-            action = dist.sample()
-            log_prob = dist.log_prob(action)
+            # fallback if all masked
+            if (~mask).all():
+                print(f"[Fallback] unit {i} has no valid action, default to stay")
+                action = torch.tensor(6, device=unit_logits.device)
+                log_prob = torch.tensor(0.0, device=unit_logits.device)
+            else:
+                probs = torch.softmax(masked_logits, dim=-1)
+                if torch.isnan(probs).any() or probs.sum().item() == 0:
+                    print(f"[Warning] invalid probs for unit {i}")
+                    print("  unit_logits:", unit_logits.tolist())
+                    print("  mask:", mask.tolist())
+                    print("  masked_logits:", masked_logits.tolist())
+                    probs = torch.ones_like(probs) / probs.shape[0]  # uniform fallback
 
+                dist = torch.distributions.Categorical(probs)
+                action = dist.sample()
+                log_prob = dist.log_prob(action)
+
+
+            # 炸弹计数更新
             if action.item() == 4:
                 current_bomb_count += 1
 
+            # detonate 目标记录
             if action.item() == 5:
                 detonate_targets.append(candidate_target)
             else:
@@ -276,35 +252,43 @@ class PPOAgent:
             actions.append(action)
             log_probs.append(log_prob)
 
-        actions = torch.stack(actions).unsqueeze(0)
-        log_probs = torch.stack(log_probs).unsqueeze(0)
-        
-        return actions.cpu().numpy(), log_probs.cpu().numpy(), latest_values.squeeze().cpu().numpy(), detonate_targets, latest_logits[0].cpu().numpy()
+        # 🟦 Step 4: 返回动作结果（添加 batch 维度）
+        actions = torch.stack(actions).unsqueeze(0)     # (1, N)
+        log_probs = torch.stack(log_probs).unsqueeze(0) # (1, N)
+
+        return (
+            actions.cpu().numpy(),         # (1, N)
+            log_probs.cpu().numpy(),       # (1, N)
+            value.item(),                  # scalar
+            detonate_targets,              # list[N]
+            logits.cpu().numpy()           # (N, A)
+        )
 
     def update_from_buffer(self, episode_buffer, current_episode, epochs, batch_size):
         if not episode_buffer:
             return
-        
+
         self.memory.clear()
 
-        for sequence in episode_buffer:
-            if not sequence:
-                continue
+        rewards = np.array([step[4] for step in episode_buffer])
+        values = np.array([step[5] for step in episode_buffer])
+        dones = np.array([step[6] for step in episode_buffer])
 
-            # sequence 是一个 list of (state, map, action, log_prob, reward, value, done)
-            rewards = np.array([step[4] for step in sequence])
-            values_arr = np.array([step[5] for step in sequence])
-            dones = np.array([step[6] for step in sequence])
+        advantages, returns = self.compute_gae(rewards, values, dones)
+        wandb.log({
+            "train/advantage_mean": np.mean(advantages),
+            "train/advantage_std": np.std(advantages)
+        }, step=current_episode)
 
-            advantages, returns = self.compute_gae(rewards, values_arr, dones)
 
-            new_sequence = []
-            for (state, map_data, action, log_prob, reward, value, done, old_logits), adv, ret in zip(sequence, advantages, returns):
-                new_sequence.append((state, map_data, action, log_prob, ret, adv, old_logits))
-
-            self.memory.append(new_sequence)
+        for i, (state, map_obs, action, log_prob, _, _, _, old_logits) in enumerate(episode_buffer):
+            self.memory.append((
+                state, map_obs, action, log_prob,
+                returns[i], advantages[i], old_logits
+            ))
 
         self.update(current_episode, epochs, batch_size)
+
 
     def compute_gae(self, rewards, values, dones):
         advantages = []
@@ -322,30 +306,25 @@ class PPOAgent:
     def vectorized_ppo_update(self, episode_idx, model, optimizer, batch_data, device, clip_eps):
         self_states, full_maps, actions, old_log_probs, returns, advantages, old_logits = batch_data
 
-        # Tensor
-        self_states = torch.tensor(self_states, dtype=torch.float32).to(device)        # (B, T, N, D)
-        full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)            # (B, T, C, H, W)
-        actions = torch.tensor(actions, dtype=torch.long).to(device)                   # (B, T, N)
-        old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)    # (B, T, N)
-        returns = torch.tensor(returns, dtype=torch.float32).to(device)                # (B, T)
-        advantages = torch.tensor(advantages, dtype=torch.float32).to(device)          # (B, T)
-        old_logits = torch.tensor(old_logits, dtype=torch.float32).to(device)          # (B, T, N, A)
+        self_states = torch.tensor(self_states, dtype=torch.float32).to(device)      # (B, N, D)
+        full_maps = torch.tensor(full_maps, dtype=torch.float32).to(device)          # (B, C, H, W)
+        actions = torch.tensor(actions, dtype=torch.long).to(device)                 # (B, N)
+        old_log_probs = torch.tensor(old_log_probs, dtype=torch.float32).to(device)  # (B, N)
+        returns = torch.tensor(returns, dtype=torch.float32).to(device)              # (B,)
+        advantages = torch.tensor(advantages, dtype=torch.float32).to(device)        # (B,)
+        old_logits = torch.tensor(old_logits, dtype=torch.float32).to(device)        # (B, N, A)
 
-        # standard advantage
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
 
-        # forward
-        logits, values = model(self_states, full_maps)  # logits: (B, T, N, A), values: (B, T)
-        B, T, N, A = logits.shape
+        logits, values = model(self_states, full_maps)  # (B, N, A), (B,)
+        B, N, A = logits.shape
 
-        # reshape → 扁平结构用于 loss 计算
-        flat_logits = logits.view(B * T * N, A)
-        flat_old_logits = old_logits.view(B * T * N, A)
+        flat_logits = logits.view(B * N, A)
+        flat_old_logits = old_logits.view(B * N, A)
         flat_actions = actions.view(-1)
         flat_old_log_probs = old_log_probs.view(-1)
-        flat_advantages = advantages.unsqueeze(-1).expand(-1, -1, N).contiguous().view(-1)  # (B*T*N,)
+        flat_advantages = advantages.unsqueeze(1).expand(-1, N).reshape(-1)
 
-        # 构造新旧策略分布
         with torch.no_grad():
             old_dist = torch.distributions.Categorical(logits=flat_old_logits)
         new_dist = torch.distributions.Categorical(logits=flat_logits)
@@ -353,22 +332,16 @@ class PPOAgent:
         flat_log_probs = new_dist.log_prob(flat_actions)
         ratio = torch.exp(flat_log_probs - flat_old_log_probs)
 
-        # PPO Clip Loss
         surr1 = ratio * flat_advantages
         surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * flat_advantages
         policy_loss = -torch.min(surr1, surr2).mean()
 
-        # Value Loss
         value_loss = F.mse_loss(values, returns)
 
-        # KL 散度: + self.kl_beta * kl 
         kl = torch.distributions.kl_divergence(old_dist, new_dist).mean()
-
-        # 熵奖励: - entropy_coeff * entropy
-        entropy_coeff = max(0.001, 0.01 * (1 - episode_idx / self.total_num_episodes))
+        entropy_coeff = max(0.001, 0.02 * (1 - episode_idx / self.total_num_episodes))
         entropy = new_dist.entropy().mean()
-        
-        # 总 Loss（含 KL 正则项 & 熵奖励）
+
         loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - entropy_coeff * entropy
 
         optimizer.zero_grad()
@@ -378,42 +351,36 @@ class PPOAgent:
         return policy_loss.item(), value_loss.item(), loss.item(), kl.item(), entropy.item()
 
 
+
     # min_kl_beta防止为0，数值可调; max_kl_beta可选上限限制
     def update(self, current_episode, epochs=5, batch_size=32):
         if not self.memory:
             return
 
-        # memory 是 List[sequence]，每个 sequence 是 List[Tuple]
-        batched_states = []
-        batched_maps = []
-        batched_actions = []
-        batched_old_log_probs = []
-        batched_returns = []
-        batched_advantages = []
-        batched_old_logits = []
+        # memory 是 list of step tuple
+        batched_states, batched_maps, batched_actions = [], [], []
+        batched_old_log_probs, batched_returns, batched_advantages, batched_old_logits = [], [], [], []
 
-        for seq in self.memory:
-            s_seq, m_seq, a_seq, old_lp_seq, ret_seq, adv_seq, old_logits_seq = zip(*seq)
+        for item in self.memory:
+            s, m, a, logp, ret, adv, old_logits = item
+            if m.ndim == 4:
+                m = np.squeeze(m, axis=0)  # 防止 map 是 (1, C, H, W)
+            batched_states.append(s)
+            batched_maps.append(m)
+            batched_actions.append(a)
+            batched_old_log_probs.append(logp)
+            batched_returns.append(ret)
+            batched_advantages.append(adv)
+            batched_old_logits.append(old_logits)
 
-            # ✅ (T, C, H, W) not (T, 1, C, H, W)
-            m_seq = [np.squeeze(m, axis=0) if m.ndim == 4 else m for m in m_seq]
-            
-            batched_states.append(np.array(s_seq))              # (T, N, D)
-            batched_maps.append(np.array(m_seq))                # (T, C, H, W)
-            batched_actions.append(np.array(a_seq))             # (T, N)
-            batched_old_log_probs.append(np.array(old_lp_seq))  # (T, N)
-            batched_returns.append(np.array(ret_seq))           # (T,)
-            batched_advantages.append(np.array(adv_seq))        # (T,)
-            batched_old_logits.append(np.array(old_logits_seq))
-
-        # 拼成 (B, T, ...)
-        batched_states = np.stack(batched_states)               # (B, T, N, D)
-        batched_maps = np.stack(batched_maps)                   # (B, T, C, H, W)
-        batched_actions = np.stack(batched_actions)             # (B, T, N)
+        # 拼接为 (B, ...)
+        batched_states = np.stack(batched_states)
+        batched_maps = np.stack(batched_maps)
+        batched_actions = np.stack(batched_actions)
         batched_old_log_probs = np.stack(batched_old_log_probs)
-        batched_returns = np.stack(batched_returns)             # (B, T)
-        batched_advantages = np.stack(batched_advantages)       # (B, T)
-        batched_old_logits = np.stack(batched_old_logits)       # (B, T, N, A)
+        batched_returns = np.stack(batched_returns)
+        batched_advantages = np.stack(batched_advantages)
+        batched_old_logits = np.stack(batched_old_logits)
 
         total_policy_loss = 0
         total_value_loss = 0
@@ -423,15 +390,6 @@ class PPOAgent:
 
         B = batched_states.shape[0]
         indices = np.arange(B)
-
-        print("buffer size:", B)
-        print("batched_states shape:", batched_states.shape)
-        print("batched_maps shape:", batched_maps.shape)
-        print("batched_actions shape:", batched_actions.shape)
-        print("batched_old_log_probs shape:", batched_old_log_probs.shape)
-        print("batched_returns shape:", batched_returns.shape)
-        print("batched_advantages shape:", batched_advantages.shape)
-        print("batched_old_logits shape:", batched_old_logits.shape)
 
         for _ in range(epochs):
             np.random.shuffle(indices)
@@ -458,6 +416,7 @@ class PPOAgent:
                     clip_eps=self.clip_eps,
                 )
 
+                # KL 更新
                 if kl > self.kl_target * 1.5:
                     self.kl_beta = min(self.kl_beta * self.kl_update_rate, self.max_kl_beta)
                 elif kl < self.kl_target * 0.5:
@@ -469,7 +428,8 @@ class PPOAgent:
                 total_kl += kl
                 total_entropy += entropy
 
-        num_batches = (B // batch_size) * epochs
+        num_batches = max(1, (B // batch_size) * epochs)
+
         wandb.log({
             "train/policy_loss": total_policy_loss / num_batches,
             "train/value_loss": total_value_loss / num_batches,

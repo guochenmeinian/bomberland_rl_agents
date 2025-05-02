@@ -20,7 +20,7 @@ import time
 async def run_training():
 
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M")
-    run_name = f"{Config.user}-ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
+    run_name = f"{Config.user}-{Config.model_name}-ppo-lr{Config.lr}-g{Config.gamma}-c{Config.clip_eps}-{now}"
 
     wandb.login(key=os.getenv("WANDB_API_KEY"))
     cfg = Config()
@@ -78,8 +78,7 @@ async def run_training():
 
             total_reward = 0
             current_decay = initial_decay
-            episode_steps = []  # keep track of all the steps within one episode run
-            episode_buffer = [] # keep track of all sequence steps within one episode run
+            episode_buffer = [] # keep track of all steps within one episode run
 
             for step in range(Config.max_steps_per_episode):
                 try:
@@ -148,7 +147,7 @@ async def run_training():
 
                 total_reward += reward
 
-                episode_steps.append((
+                episode_buffer.append((
                     self_states_a,
                     full_map_a,
                     action_indices_a,
@@ -169,18 +168,13 @@ async def run_training():
                         win_count += 1
                     break
             
-            if len(episode_steps) >= Config.sequence_length:
-                overlapping_sequences = extract_overlapping_sequences(
-                    episode_steps, 
-                    window_size=Config.sequence_length, 
-                    stride=1 # fully consecutive sequences (e.g. ([1,20], [2,21], [3,22], ...))
-                )
-                episode_buffer.extend(overlapping_sequences)
-            else: # edge case (e.g. [220-227])
-                episode_buffer.append(episode_steps)
-
-            print("current buffer size:", len(episode_steps))
-            print("current buffer size after sliding window:", len(episode_buffer))
+            buffer_size = len(episode_buffer)
+            print("current buffer size:", buffer_size)
+            wandb.log({
+                "benchmark/buffer_size": buffer_size
+            }, step=episode)
+            agent.update_from_buffer(episode_buffer, episode, epochs=Config.epochs, batch_size=Config.batch_size)
+            episode_buffer.clear()
 
             episode_rewards.append(total_reward)
 
@@ -200,30 +194,6 @@ async def run_training():
             if (episode + 1) % Config.update_target_frequency == 0:
                 target_agent.model.load_state_dict(agent.model.state_dict())
                 print(f"[Sync] target_agent synced on Episode {episode+1}")
-
-            buffer_len = len(episode_buffer)
-
-            # buffer update based on threshold
-            if buffer_len >= Config.full_threshold:
-                batch_size = Config.batch_size
-                epochs = Config.epochs
-                print(f"✅ Full PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
-            elif buffer_len >= Config.mid_threshold:
-                batch_size = max(32, buffer_len // 3)
-                epochs = 3
-                print(f"🟡 Mid PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
-            else:
-                batch_size = max(8, buffer_len // 2)
-                epochs = 2
-                print(f"🔴 Edge PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
-
-            wandb.log({
-                "benchmark/num_episode_buffer": buffer_len,
-                "benchmark/episode": episode
-            }, step=episode)
-
-            agent.update_from_buffer(episode_buffer, episode, epochs=epochs, batch_size=batch_size)
-            episode_buffer.clear()
 
         except Exception as e:
             msg = f"[Error] Episode {episode+1} Failed: {e}\n{traceback.format_exc()}"
