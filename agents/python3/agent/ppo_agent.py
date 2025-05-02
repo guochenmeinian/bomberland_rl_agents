@@ -424,7 +424,7 @@ class PPOAgent:
         B = batched_states.shape[0]
         indices = np.arange(B)
 
-        print("update batch_size:", B)
+        print("buffer size:", B)
         print("batched_states shape:", batched_states.shape)
         print("batched_maps shape:", batched_maps.shape)
         print("batched_actions shape:", batched_actions.shape)

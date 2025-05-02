@@ -217,6 +217,11 @@ async def run_training():
                 epochs = 2
                 print(f"🔴 Edge PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
 
+            wandb.log({
+                "benchmark/num_episode_buffer": buffer_len,
+                "benchmark/episode": episode
+            }, step=episode)
+
             agent.update_from_buffer(episode_buffer, episode, epochs=epochs, batch_size=batch_size)
             episode_buffer.clear()
 
@@ -231,13 +236,6 @@ async def run_training():
                 msg = f"[Error] Episode {episode+1} gym.close() error: {close_error}\n{traceback.format_exc()}"
                 print(msg)
                 log_error(msg)
-
-
-        num_episode_buffer = len(episode_buffer)
-        wandb.log({
-            "benchmark/num_episode_buffer": num_episode_buffer,
-            "benchmark/episode": episode
-        }, step=episode)
         
         # ✅ log time and benchmark
         if (episode + 1) % Config.benchmark_batch_size == 0:
@@ -248,7 +246,7 @@ async def run_training():
 
             avg_reward = np.mean(episode_rewards[-Config.benchmark_batch_size:])
 
-            # 🟢 wandb log
+            # ✅ wandb log
             wandb.log({
                 "benchmark/batch_elapsed_time": batch_elapsed,
                 "benchmark/avg_episode_time": avg_time_per_ep,

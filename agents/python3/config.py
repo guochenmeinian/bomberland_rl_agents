@@ -12,8 +12,8 @@ class Config:
     checkpoint_dir = "checkpoints"      # save dir
     keep_last_n_checkpoint = 10         # save n most recent checkpoints
     log_frequency = 10                  # log reward per n episodes
-    save_frequency = 50                 # save model per n episodes
-    update_target_frequency = 35        # update target_model per n episodes
+    save_frequency = 100                # save model per n episodes
+    update_target_frequency = 50        # update target_model per n episodes
     eval_frequency = 25                 # eval win rate per n episodes
 
     # multi_env

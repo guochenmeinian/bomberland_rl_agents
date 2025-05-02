@@ -4,7 +4,7 @@ import os
 import torch
 from agent.ppo_agent import PPOAgent
 from utils.obs_utils import state_to_observations, action_index_to_game_action, get_alive_mask
-from utils.save_model import find_latest_checkpoint
+from utils.save_model import find_latest_checkpoint, load_checkpoint
 from config import Config
 from env.game_state import GameState
 from utils.obs_utils import bombs_positions_and_count
@@ -16,11 +16,11 @@ class Agent:
     def __init__(self):
         self.device = Config.device
         self.agent_model = PPOAgent(Config)
-        latest_ckpt = find_latest_checkpoint()
+        checkpoint_path = "checkpoints/ppo_checkpoint_ep3400.pt"
+        # latest_ckpt = find_latest_checkpoint()
+        latest_ckpt = 3350
         print(f"✅ Loaded checkpoint from: {latest_ckpt}")
         
-        self.lstm_states = None
-
         self.client = GameState(uri)
         self.client.set_game_tick_callback(self._on_game_tick)
 
@@ -42,11 +42,11 @@ class Agent:
 
             alive_mask = get_alive_mask(unit_ids, alive_unit_ids)
             # 直接PPO推理
-            action_indices, _, _, detonate_targets, new_lstm_states = self.agent_model.select_actions(
-                self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, game_state, self.lstm_states
+            action_indices, _, _, detonate_targets, _ = self.agent_model.select_actions(
+                self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, game_state
             )
             action_indices = action_indices[0]  # batch size = 1, 取第一个
-            self.lstm_states = new_lstm_states
+           
 
             # 生成动作
             actions_to_send = action_index_to_game_action(action_indices, game_state, detonate_targets, agent_id=agent_id)

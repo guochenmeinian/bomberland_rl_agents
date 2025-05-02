@@ -8,26 +8,26 @@ services:
             - 3000:3000
         environment:
             # 1. for training
-            - ADMIN_ROLE_ENABLED=1
-            - AGENT_ID_MAPPING=agentA,agentB
-            - INITIAL_HP=3
-            - PRNG_SEED=1234
-            - SHUTDOWN_ON_GAME_END_ENABLED=1
-            - TELEMETRY_ENABLED=1
-            - TICK_RATE_HZ=10
-            - TRAINING_MODE_ENABLED=1
-            - WORLD_SEED=1234
-
-            # 2. for evaluation
-            # - ADMIN_ROLE_ENABLED=0
+            # - ADMIN_ROLE_ENABLED=1
             # - AGENT_ID_MAPPING=agentA,agentB
             # - INITIAL_HP=3
             # - PRNG_SEED=1234
             # - SHUTDOWN_ON_GAME_END_ENABLED=1
             # - TELEMETRY_ENABLED=1
             # - TICK_RATE_HZ=10
-            # - TRAINING_MODE_ENABLED=0
+            # - TRAINING_MODE_ENABLED=1
             # - WORLD_SEED=1234
+
+            # 2. for evaluation
+            - ADMIN_ROLE_ENABLED=0
+            - AGENT_ID_MAPPING=agentA,agentB
+            - INITIAL_HP=3
+            - PRNG_SEED=1234
+            - SHUTDOWN_ON_GAME_END_ENABLED=1
+            - TELEMETRY_ENABLED=1
+            - TICK_RATE_HZ=10
+            - TRAINING_MODE_ENABLED=0
+            - WORLD_SEED=1234
         deploy:
             resources:
                 limits:
@@ -38,47 +38,30 @@ services:
 
     # # Uncomment the following "agent-a" blocks to connect a second agent to the environment
 
-    # agent-a:
-    #     extends:
-    #         file: base-compose.yml
-    #         # update next line with a service in base-compose.yml to change agent
-    #         service: ppo-agent
-    #     environment:
-    #         - GAME_CONNECTION_STRING=ws://game-engine:3000/?role=agent&agentId=agentA&name=ppo-trained-agent
-    #     depends_on:
-    #         - game-engine
-    #     deploy:
-    #         resources:
-    #             limits:
-    #                 cpus: "1"
-    #                 memory: "1024M"
-    #     networks:
-    #         - coderone-tournament
+    agent-a:
+        extends:
+            file: base-compose.yml
+            # update next line with a service in base-compose.yml to change agent
+            service: ppo-agent
+        environment:
+            - GAME_CONNECTION_STRING=ws://game-engine:3000/?role=agent&agentId=agentA&name=ppo-trained-agent
+        depends_on:
+            - game-engine
+        deploy:
+            resources:
+                limits:
+                    cpus: "1"
+                    memory: "1024M"
+        networks:
+            - coderone-tournament
 
-    # agent-b:
-    #     extends:
-    #         file: base-compose.yml
-    #         # update next line with a service in base-compose.yml to change agent
-    #         service: ppo-agent
-    #     environment:
-    #         - GAME_CONNECTION_STRING=ws://game-engine:3000/?role=agent&agentId=agentB&name=ppo-trained-agent
-    #     depends_on:
-    #         - game-engine
-    #     deploy:
-    #         resources:
-    #             limits:
-    #                 cpus: "1"
-    #                 memory: "1024M"
-    #     networks:
-    #         - coderone-tournament
-    
     agent-b:
         extends:
             file: base-compose.yml
             # update next line with a service in base-compose.yml to change agent
-            service: python3-gym-single-dev
+            service: ppo-agent
         environment:
-            - GAME_CONNECTION_STRING=ws://game-engine:3000/?role=agent&agentId=agentB&name=python3-agent
+            - GAME_CONNECTION_STRING=ws://game-engine:3000/?role=agent&agentId=agentB&name=ppo-agent
         depends_on:
             - game-engine
         deploy:
