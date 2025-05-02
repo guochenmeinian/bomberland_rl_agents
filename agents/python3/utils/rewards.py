@@ -200,7 +200,7 @@ def calculate_danger_penalty(state, prev_state, unit_ids, alive_prev_units, aliv
                 
                 # 只有当确实从危险区域移动到了安全区域才给予奖励
                 if was_in_danger and not now_in_danger:
-                    penalty += 0.5  # 奖励远离危险
+                    penalty += 1  # 奖励远离危险
     
     return penalty
 
@@ -224,6 +224,7 @@ def calculate_smart_bomb_reward(state, prev_state, action_indices, unit_ids, ene
     for pos, bomb in current_bombs.items():
         if pos not in previous_bombs and bomb.get("unit_id") in unit_ids_set:
             placed_bombs.append(bomb)
+            reward += 0.2  # 奖励可能放置炸弹
     
     # 检查每个放置的炸弹是否能打到敌人
     for bomb in placed_bombs:
@@ -351,6 +352,8 @@ def calculate_reward(state, prev_state, action_indices, episode, agent_id):
         progress = min(episode / max(1, Config.num_episodes), 1.0)  # 防止除零
         exploration_weight = max(0.3, 1.0 - progress)
         reward += exploration_weight * 0.05 * unique_actions  # 降低了行动多样性奖励
+    
+    
 
     # 处理单位状态变化的奖励/惩罚
     for unit_id in unit_ids:
@@ -387,7 +390,7 @@ def calculate_reward(state, prev_state, action_indices, episode, agent_id):
             
             hp_diff = prev_enemy.get("hp", 0) - curr_enemy.get("hp", 0)
             if hp_diff > 0:
-                reward += 1.0 * hp_diff  # 增加伤害敌人奖励
+                reward += 1.5 * hp_diff  # 增加伤害敌人奖励
             if curr_enemy.get("stunned", 0) > prev_enemy.get("stunned", 0):
                 reward += 0.5
 
