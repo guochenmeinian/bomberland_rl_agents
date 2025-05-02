@@ -369,7 +369,7 @@ class PPOAgent:
         entropy = new_dist.entropy().mean()
         
         # 总 Loss（含 KL 正则项 & 熵奖励）
-        loss = policy_loss + 0.5 * value_loss - entropy_coeff * entropy
+        loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - entropy_coeff * entropy
 
         optimizer.zero_grad()
         loss.backward()

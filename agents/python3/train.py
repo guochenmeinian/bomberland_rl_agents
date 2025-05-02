@@ -205,9 +205,9 @@ async def run_training():
 
             # buffer update based on threshold
             if buffer_len >= Config.full_threshold:
-                print(f"✅ Full PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
                 batch_size = Config.batch_size
                 epochs = Config.epochs
+                print(f"✅ Full PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
             elif buffer_len >= Config.mid_threshold:
                 batch_size = max(32, buffer_len // 3)
                 epochs = 3
