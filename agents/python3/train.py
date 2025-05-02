@@ -170,10 +170,25 @@ async def run_training():
             
             buffer_size = len(episode_buffer)
             print("current buffer size:", buffer_size)
+            # buffer update based on threshold
+            if buffer_size >= Config.full_threshold:
+                batch_size = Config.batch_size
+                epochs = Config.epochs
+                print(f"✅ Full PPO update: buffer={buffer_size}, batch={batch_size}, epoch={epochs}")
+            elif buffer_size >= Config.mid_threshold:
+                batch_size = max(32, buffer_size // 3)
+                epochs = 3
+                print(f"🟡 Mid PPO update: buffer={buffer_size}, batch={batch_size}, epoch={epochs}")
+            else:
+                batch_size = max(8, buffer_size // 2)
+                epochs = 2
+                print(f"🔴 Edge PPO update: buffer={buffer_size}, batch={batch_size}, epoch={epochs}")
+
             wandb.log({
                 "benchmark/buffer_size": buffer_size
             }, step=episode)
-            agent.update_from_buffer(episode_buffer, episode, epochs=Config.epochs, batch_size=Config.batch_size)
+
+            agent.update_from_buffer(episode_buffer, episode, epochs=epochs, batch_size=batch_size)
             episode_buffer.clear()
 
             episode_rewards.append(total_reward)

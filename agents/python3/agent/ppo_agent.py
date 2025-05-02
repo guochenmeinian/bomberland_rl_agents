@@ -314,12 +314,21 @@ class PPOAgent:
         advantages = torch.tensor(advantages, dtype=torch.float32).to(device)        # (B,)
         old_logits = torch.tensor(old_logits, dtype=torch.float32).to(device)        # (B, N, A)
 
+        B, N = actions.shape
+        advantages = advantages.view(B, 1).expand(B, N)  # (B, N)
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+        flat_advantages = advantages.reshape(-1)         # (B*N,)
 
-        logits, values = model(self_states, full_maps)  # (B, N, A), (B,)
+        logits, values = model(self_states, full_maps)  # logits: (B, N, A), values: (B,)
         B, N, A = logits.shape
 
         flat_logits = logits.view(B * N, A)
+        if torch.isnan(flat_logits).any():
+            print("NaN detected in logits!")
+            print(flat_logits)
+            raise ValueError("NaN in logits")
+
+
         flat_old_logits = old_logits.view(B * N, A)
         flat_actions = actions.view(-1)
         flat_old_log_probs = old_log_probs.view(-1)
@@ -339,7 +348,7 @@ class PPOAgent:
         value_loss = F.mse_loss(values, returns)
 
         kl = torch.distributions.kl_divergence(old_dist, new_dist).mean()
-        entropy_coeff = max(0.001, 0.02 * (1 - episode_idx / self.total_num_episodes))
+        entropy_coeff = max(0.003, 0.01 * (1 - episode_idx / self.total_num_episodes))
         entropy = new_dist.entropy().mean()
 
         loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - entropy_coeff * entropy
