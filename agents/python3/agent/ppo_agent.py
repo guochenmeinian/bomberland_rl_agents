@@ -328,11 +328,12 @@ class PPOAgent:
             print(flat_logits)
             raise ValueError("NaN in logits")
 
+        if flat_logits.abs().max().item() > 1e4:
+            print(f"[Warning] logits too large: max={flat_logits.abs().max().item()}")
 
         flat_old_logits = old_logits.view(B * N, A)
         flat_actions = actions.view(-1)
         flat_old_log_probs = old_log_probs.view(-1)
-        flat_advantages = advantages.unsqueeze(1).expand(-1, N).reshape(-1)
 
         with torch.no_grad():
             old_dist = torch.distributions.Categorical(logits=flat_old_logits)
@@ -355,6 +356,7 @@ class PPOAgent:
 
         optimizer.zero_grad()
         loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0) # prevent explode
         optimizer.step()
 
         return policy_loss.item(), value_loss.item(), loss.item(), kl.item(), entropy.item()
