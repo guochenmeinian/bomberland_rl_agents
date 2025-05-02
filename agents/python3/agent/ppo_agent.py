@@ -28,7 +28,7 @@ class TemporalWindow:
             maps: (max_len, num_channels, height, width)
             valid_len: (not used)
         """
-        T = len(self.self_states)
+        T = len(self.self_states) # number of timesteps that's not empty
 
         if T == 0:
             # (edge case) start game: store a all zero dummy sequence
@@ -81,6 +81,8 @@ class PPOAgent:
         self.kl_update_rate = config.kl_update_rate
         self.batch_size = config.batch_size
         self.epochs = config.epochs
+        self.min_kl_beta = config.min_kl_beta
+        self.max_kl_beta = config.max_kl_beta
 
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
         
@@ -278,7 +280,7 @@ class PPOAgent:
         
         return actions.cpu().numpy(), log_probs.cpu().numpy(), latest_values.squeeze().cpu().numpy(), detonate_targets, latest_logits[0].cpu().numpy()
 
-    def update_from_buffer(self, episode_buffer, current_episode):
+    def update_from_buffer(self, episode_buffer, current_episode, epochs, batch_size):
         if not episode_buffer:
             return
         
@@ -301,7 +303,7 @@ class PPOAgent:
 
             self.memory.append(new_sequence)
 
-        self.update(current_episode, epochs=self.epochs, batch_size=self.batch_size)
+        self.update(current_episode, epochs, batch_size)
 
     def compute_gae(self, rewards, values, dones):
         advantages = []
@@ -373,7 +375,7 @@ class PPOAgent:
 
 
     # min_kl_beta防止为0，数值可调; max_kl_beta可选上限限制
-    def update(self, current_episode, epochs=5, batch_size=8, min_kl_beta = 1e-4, max_kl_beta = 1.0):
+    def update(self, current_episode, epochs=5, batch_size=32):
         if not self.memory:
             return
 
@@ -452,9 +454,9 @@ class PPOAgent:
                 )
 
                 if kl > self.kl_target * 1.5:
-                    self.kl_beta = min(self.kl_beta * self.kl_update_rate, max_kl_beta)
+                    self.kl_beta = min(self.kl_beta * self.kl_update_rate, self.max_kl_beta)
                 elif kl < self.kl_target * 0.5:
-                    self.kl_beta = max(self.kl_beta / self.kl_update_rate, min_kl_beta)
+                    self.kl_beta = max(self.kl_beta / self.kl_update_rate, self.min_kl_beta)
 
                 total_policy_loss += policy_loss
                 total_value_loss += value_loss

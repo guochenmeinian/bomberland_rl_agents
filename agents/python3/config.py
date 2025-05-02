@@ -14,7 +14,7 @@ class Config:
     log_frequency = 10                  # log reward per n episodes
     save_frequency = 50                 # save model per n episodes
     update_target_frequency = 15        # update target_model per n episodes
-    eval_frequency = 50                 # eval win rate per n episodes
+    eval_frequency = 25                 # eval win rate per n episodes
 
     # multi_env
     num_envs = 5                        # (not used)
@@ -27,8 +27,10 @@ class Config:
     num_episodes = 10000                # training epochs
     max_steps_per_episode = 650         # maximum rounds for each game
     update_every = 5                    # (not used)
-    batch_size = 32                     # sample that amount of sequences each time when updating model
-    epochs = 5                          # sample that many times when updating model
+    batch_size = 64                     # sample that amount of sequences each time when updating model
+    epochs = 4                          # sample that many times when updating model
+    full_threshold = 256                # 
+    mid_threshold = 128
 
     # PPO
     self_state_dim = 10                 # self state size (fixed)
@@ -43,6 +45,8 @@ class Config:
     lam = 0.95                          # (not used)
     clip_eps = 0.1
     lr = 3e-4                           # learning rate
+    min_kl_beta = 1e-4
+    max_kl_beta = 10.0
 
     # others
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

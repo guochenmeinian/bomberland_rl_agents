@@ -189,8 +189,8 @@ async def run_training():
                 # print(f"\n[Eval] Start Evaluation at Episode {episode+1}")
                 # await evaluate(agent, target_agent, episode)
                 wandb.log({
-                    "eval_win_rate": win_count / Config.eval_frequency,
-                })
+                    "eval/eval_win_rate": win_count / Config.eval_frequency,
+                }, step=episode)
                 win_count = 0
 
             # ✅ save model
@@ -201,13 +201,27 @@ async def run_training():
                 target_agent.model.load_state_dict(agent.model.state_dict())
                 print(f"[Sync] target_agent synced on Episode {episode+1}")
 
-            # ✅ only update if number of entries in the buffer are enough
-            if len(episode_buffer) >= Config.batch_size * Config.epochs // 2:
-                print(f"✅ Episode {episode+1}: start PPO update, current buffer size={len(episode_buffer)}")
-                agent.update_from_buffer(episode_buffer, episode)
-                episode_buffer.clear()
+            buffer_len = len(episode_buffer)
+
+            # 档位阈值（可以调整）
+            tiny_threshold = 16                                 # 保底最小 buffer size
+
+            # if number of entries in the buffer are enough
+            if buffer_len >= Config.full_threshold:
+                print(f"✅ Full PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
+                batch_size = Config.batch_size
+                epochs = Config.epochs
+            elif buffer_len >= Config.mid_threshold:
+                batch_size = max(32, buffer_len // 3)
+                epochs = 3
+                print(f"🟡 Mid PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
             else:
-                print(f"✅ Episode {episode+1}: insufficient amount of data, current buffer size={len(episode_buffer)}, skipping...")
+                batch_size = max(8, buffer_len // 2)
+                epochs = 2
+                print(f"🔴 Edge PPO update: buffer={buffer_len}, batch={batch_size}, epoch={epochs}")
+
+            agent.update_from_buffer(episode_buffer, episode, epochs=epochs, batch_size=batch_size)
+            episode_buffer.clear()
 
         except Exception as e:
             msg = f"[Error] Episode {episode+1} Failed: {e}\n{traceback.format_exc()}"
