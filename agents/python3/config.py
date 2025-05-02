@@ -40,7 +40,7 @@ class Config:
     action_dim = 7                      # action space: [left, right, up, down, bomb, detonate] (fixed)
     num_units = 3                       # number of units per team
     kl_beta = 0.01                      
-    kl_target = 0.02
+    kl_target = 0.05
     kl_update_rate = 1.5
     gamma = 0.99
     lam = 0.95                          # (not used)

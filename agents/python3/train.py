@@ -139,6 +139,9 @@ async def run_training():
                 if len(alive_units) == 0 or len(alive_enemies) == 0:
                     print("[Warning]: Game already ended, moving to next round...")
                     done = True
+                    if len(alive_units) > 0:
+                        win_count += 1
+                    break
 
                 reward = calculate_reward(next_state, prev_state, action_indices_a, episode, agent_id="a")
 
@@ -146,6 +149,12 @@ async def run_training():
                 current_decay *= decay_rate
 
                 total_reward += reward
+
+                current_state = next_state
+
+                if step % Config.log_frequency == 0:
+                    print(f"Step {step+1}, Reward: {reward:.2f}, Total Reward: {total_reward:.2f}")
+
 
                 episode_buffer.append((
                     self_states_a,
@@ -157,16 +166,6 @@ async def run_training():
                     done,
                     old_logits_a
                 ))
-
-                current_state = next_state
-
-                if step % Config.log_frequency == 0:
-                    print(f"Step {step+1}, Reward: {reward:.2f}, Total Reward: {total_reward:.2f}")
-
-                if done:
-                    if len(filter_alive_units("a", next_state["agents"]["a"]["unit_ids"], next_state["unit_state"])) > 0:
-                        win_count += 1
-                    break
             
             buffer_size = len(episode_buffer)
             print("current buffer size:", buffer_size)

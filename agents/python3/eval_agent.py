@@ -16,10 +16,22 @@ class Agent:
     def __init__(self):
         self.device = Config.device
         self.agent_model = PPOAgent(Config)
-        checkpoint_path = "checkpoints/ppo_checkpoint_ep3400.pt"
-        # latest_ckpt = find_latest_checkpoint()
-        latest_ckpt = 3350
-        print(f"✅ Loaded checkpoint from: {latest_ckpt}")
+
+        checkpoint_path = "checkpoints/ppo_checkpoint_ep650.pt"
+        if os.path.exists(checkpoint_path):
+            checkpoint = torch.load(checkpoint_path, map_location=self.device)
+            state_dict = checkpoint["model"] 
+            self.agent_model.model.load_state_dict(state_dict)
+            print(f"✅ Loaded checkpoint from: {checkpoint_path}")
+
+
+            for name, param in self.agent_model.model.named_parameters():
+                if torch.isnan(param).any():
+                    print(f"❌ NaN detected in model parameter: {name}")
+                    raise ValueError("Model contains NaN, aborting!")
+        else:
+            print(f"⚠️ Warning: checkpoint not found at {checkpoint_path}")
+            raise FileNotFoundError(f"Checkpoint not found at {checkpoint_path}")
         
         self.client = GameState(uri)
         self.client.set_game_tick_callback(self._on_game_tick)
