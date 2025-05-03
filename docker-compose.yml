@@ -25,7 +25,7 @@ services:
             - PRNG_SEED=1234
             - SHUTDOWN_ON_GAME_END_ENABLED=1
             - TELEMETRY_ENABLED=1
-            - TICK_RATE_HZ=5
+            - TICK_RATE_HZ=10
             - TRAINING_MODE_ENABLED=0
             - WORLD_SEED=1234
         deploy:

@@ -274,7 +274,8 @@ class PPOAgent:
         values = np.array([step[5] for step in episode_buffer])
         dones = np.array([step[6] for step in episode_buffer])
 
-        rewards = np.clip(rewards, -10, 10)  # 防止 value loss 爆炸
+        # rewards = np.clip(rewards, -10, 10)  # 防止 value loss 爆炸
+        rewards *= 0.5
 
         advantages, returns = self.compute_gae(rewards, values, dones)
         wandb.log({
@@ -351,8 +352,8 @@ class PPOAgent:
         value_loss = F.mse_loss(values, returns)
 
         kl = torch.distributions.kl_divergence(old_dist, new_dist).mean()
-        # entropy_coeff = max(0.003, 0.01 * (1 - episode_idx / self.total_num_episodes))
-        entropy_coeff = 0.1
+        entropy_coeff = max(0.001, 0.01 * (1 - episode_idx / self.total_num_episodes))
+        # entropy_coeff = 0.1
         entropy = new_dist.entropy().mean()
 
         loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - entropy_coeff * entropy
