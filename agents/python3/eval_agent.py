@@ -17,7 +17,7 @@ class Agent:
         self.device = Config.device
         self.agent_model = PPOAgent(Config)
 
-        checkpoint_path = "checkpoints/ppo_checkpoint_ep350.pt"
+        checkpoint_path = "checkpoints/ppo_checkpoint_ep6600.pt"
         if os.path.exists(checkpoint_path):
             checkpoint = torch.load(checkpoint_path, map_location=self.device)
             state_dict = checkpoint["model"] 

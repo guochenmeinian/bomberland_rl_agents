@@ -1,5 +1,5 @@
 from config import Config
-
+import wandb
 
 def detect_invalid_moves(action_indices, unit_ids, alive_prev_units, alive_curr_units):
     if action_indices is None or not unit_ids:

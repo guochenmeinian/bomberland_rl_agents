@@ -20,6 +20,7 @@ class PPOAgent:
             num_units=config.num_units
         ).to(self.device)
 
+        # Training configuration
         self.total_num_episodes = config.num_episodes
         self.optimizer = optim.Adam(self.model.parameters(), lr=config.lr)
         self.gamma = config.gamma
@@ -35,7 +36,16 @@ class PPOAgent:
         self.min_kl_beta = config.min_kl_beta
         self.max_kl_beta = config.max_kl_beta
 
+        # Dynamic KL schedule
+        self.N1 = int(self.total_num_episodes * 0.3)  # e.g. 30%
+        self.N2 = int(self.total_num_episodes * 0.6)  # e.g. 60%
+
+
     def select_detonate_target(self, unit_id, current_bomb_infos, game_state):
+        """
+        Evaluate detonation candidates for a unit's placed bombs based on expected damage to enemies,
+        potential harm to teammates, destructible terrain, and bomb timer proximity.
+        """
         
         if isinstance(game_state, dict) and "payload" in game_state:
             game_state = game_state["payload"]
@@ -142,90 +152,90 @@ class PPOAgent:
                                     
             bomb_scores.append((bomb_x, bomb_y, score, ticks_until_explosion))
         
-        # If no bomb has a positive score, prefer bombs that will explode soon
-        # if all(score <= 0 for _, _, score, _ in bomb_scores):
-        #     bomb_scores = [(bx, by, -ticks, ticks) for bx, by, _, ticks in bomb_scores]
-        
         # Select the bomb with the highest score
         if bomb_scores:
             best_bomb = max(bomb_scores, key=lambda x: x[2])
             return (best_bomb[0], best_bomb[1])
             
-        # If all bombs have very negative scores, better not to detonate
-        return None # shouldn't be triggered at all
+        # This shouldn't be triggered at all
+        return None
         
 
     def select_actions(self, self_states, full_map, alive_mask, current_bomb_infos, current_bomb_count, unit_ids, current_state, env_id=0):
         """
+        Sample legal actions for each unit based on network predictions and domain constraints
+        (e.g., max bomb count, detonator availability).
+
         Args:
-            self_states: (N, D)               # 每个 unit 的自状态
-            full_map:    (C, H, W)            # 当前帧地图信息
-            alive_mask:  (N,)                 # 存活 unit mask（未用）
-            current_bomb_infos: List[(x,y,owner_id)]
-            current_bomb_count: int
-            unit_ids: List[str]
-            current_state: dict
+            self_states: (N, D)               # Per-unit self state features
+            full_map:    (C, H, W)            # Global map tensor for the current frame
+            alive_mask:  (N,)                 # Mask indicating which units are alive (currently unused)
+            current_bomb_infos: List[(x, y, owner_id)]  # Active bombs and their owners
+            current_bomb_count: int           # Number of active bombs placed by this agent
+            unit_ids: List[str]               # IDs of current agent's units
+            current_state: dict               # Full game state dictionary
 
         Returns:
-            actions:        (1, N)
-            log_probs:      (1, N)
-            value:          float
-            detonate_targets: List[Optional[(x, y)]]
-            logits:         (N, A)
+            actions:          (1, N)          # Sampled actions per unit
+            log_probs:        (1, N)          # Corresponding log-probabilities
+            value:            float           # Estimated value of the current state
+            detonate_targets: List[Optional[(x, y)]]  # Chosen detonation targets (if any)
+            logits:           (N, A)          # Action logits from the policy network
         """
 
-        # 🟦 Step 1: preprocess输入 → 添加 batch 维度
+        # Step 1: Preprocess input, add batch dimension if missing
         if isinstance(self_states, np.ndarray):
             self_states = torch.tensor(self_states, dtype=torch.float32)
         if isinstance(full_map, np.ndarray):
             full_map = torch.tensor(full_map, dtype=torch.float32)
 
-        # only add batch dim if not already batched
+        # Only add batch dim if not already batched
         if self_states.ndim == 2:  # (N, D)
             self_states = self_states.unsqueeze(0)  # → (1, N, D)
         if full_map.ndim == 3:  # (C, H, W)
             full_map = full_map.unsqueeze(0)        # → (1, C, H, W)
 
-        # 🟦 Step 2: forward 模型，获得 logits 和 value
+        # Step 2: Forward pass to obtain logits and value estimate
         with torch.no_grad():
             self.model.eval()
             logits, values = self.model(self_states, full_map)  # logits: (1, N, A), values: (1,)
 
-        logits = logits[0]   # (N, A)
-        value = values[0]    # scalar → float
+        logits = logits[0]      # (N, A)
+        value = values[0]       # scalar → float
 
         actions = []
         log_probs = []
         detonate_targets = []
 
-        # 🟦 Step 3: 遍历每个 unit，按合法动作采样 action
+        # Step 3: Iterate over each unit to sample legal actions
         for i in range(self.model.num_units):
-            unit_logits = logits[i]         # (A,)
+            unit_logits = logits[i]     # (A,)
             mask = torch.ones_like(unit_logits, dtype=torch.bool)
 
-            # 限制最多放3颗炸弹
+            # Rule: Prevent placing more than 3 bombs
             if current_bomb_count >= 3:
                 mask[4] = False
 
-            # 判断是否可引爆
+            # Rule: Only allow detonation if the unit has an active bomb
             candidate_target = self.select_detonate_target(unit_ids[i], current_bomb_infos, current_state)
             if candidate_target is None:
                 mask[5] = False
 
-            # 屏蔽非法动作
+            # Mask invalid actions by assigning them large negative logits
             masked_logits = unit_logits.clone()
             masked_logits[~mask] = -1e10
 
-            # debug logging
+            # Debug: Check for invalid logits
             if torch.isnan(masked_logits).any():
                 print(f"[NaN Warning] masked_logits unit {i}:", masked_logits.tolist())
 
-            # fallback if all masked
+            # Fallback: All actions masked — default to 'stay'
             if (~mask).all():
                 print(f"[Fallback] unit {i} has no valid action, default to stay")
                 action = torch.tensor(6, device=unit_logits.device)
                 log_prob = torch.tensor(0.0, device=unit_logits.device)
             else:
+                # Sample from masked distribution
                 probs = torch.softmax(masked_logits, dim=-1)
                 if torch.isnan(probs).any() or probs.sum().item() == 0:
                     print(f"[Warning] invalid probs for unit {i}")
@@ -238,12 +248,11 @@ class PPOAgent:
                 action = dist.sample()
                 log_prob = dist.log_prob(action)
 
-
-            # 炸弹计数更新
+            # Update bomb count if action is 'place bomb'
             if action.item() == 4:
                 current_bomb_count += 1
 
-            # detonate 目标记录
+            # Track detonation targets if action is 'detonate'
             if action.item() == 5:
                 detonate_targets.append(candidate_target)
             else:
@@ -252,7 +261,7 @@ class PPOAgent:
             actions.append(action)
             log_probs.append(log_prob)
 
-        # 🟦 Step 4: 返回动作结果（添加 batch 维度）
+        # Step 4: Stack results and return (add batch dimension)
         actions = torch.stack(actions).unsqueeze(0)     # (1, N)
         log_probs = torch.stack(log_probs).unsqueeze(0) # (1, N)
 
@@ -265,6 +274,11 @@ class PPOAgent:
         )
 
     def update_from_buffer(self, episode_buffer, current_episode, epochs, batch_size):
+        """
+        Processes one episode buffer by computing GAE and organizing data
+        into the agent's memory for batched training.
+        """
+
         if not episode_buffer:
             return
 
@@ -274,15 +288,24 @@ class PPOAgent:
         values = np.array([step[5] for step in episode_buffer])
         dones = np.array([step[6] for step in episode_buffer])
 
-        rewards = np.clip(rewards, -10, 10)  # 防止 value loss 爆炸
+        # rewards = np.clip(rewards, -10, 10)
+        # Scale rewards to prevent value loss explosion
+        rewards *= 0.1
+        wandb.log({
+            "reward/mean": np.mean(rewards),
+            "reward/std": np.std(rewards),
+            "reward/max": np.max(rewards),
+            "reward/min": np.min(rewards),
+        }, step=current_episode)
 
+        # Compute Generalized Advantage Estimation
         advantages, returns = self.compute_gae(rewards, values, dones)
         wandb.log({
             "train/advantage_mean": np.mean(advantages),
             "train/advantage_std": np.std(advantages)
         }, step=current_episode)
 
-
+        # Store processed data for training
         for i, (state, map_obs, action, log_prob, _, _, _, old_logits) in enumerate(episode_buffer):
             self.memory.append((
                 state, map_obs, action, log_prob,
@@ -293,6 +316,9 @@ class PPOAgent:
 
 
     def compute_gae(self, rewards, values, dones):
+        """
+        Compute GAE (Generalized Advantage Estimation) and returns.
+        """
         advantages = []
         gae = 0
         values = np.append(values, values[-1])
@@ -306,6 +332,7 @@ class PPOAgent:
         return advantages, returns
 
     def vectorized_ppo_update(self, episode_idx, model, optimizer, batch_data, device, clip_eps):
+        # (B, N, D), (B, C, H, W), (B, N), (B, N), (B,), (B,), (B, N, A)
         self_states, full_maps, actions, old_log_probs, returns, advantages, old_logits = batch_data
 
         self_states = torch.tensor(self_states, dtype=torch.float32).to(device)      # (B, N, D)
@@ -351,23 +378,40 @@ class PPOAgent:
         value_loss = F.mse_loss(values, returns)
 
         kl = torch.distributions.kl_divergence(old_dist, new_dist).mean()
-        # entropy_coeff = max(0.003, 0.01 * (1 - episode_idx / self.total_num_episodes))
-        entropy_coeff = 0.1
+        # Dynamically adjust KL coefficient
+        if episode_idx <= N1:
+            kl_beta = self.kl_beta
+        elif episode_idx <= N2:
+            kl_beta = self.kl_beta * (1 - (episode_idx - N1) / (N2 - N1))
+        else:
+            kl_beta = 0.0
+
+        entropy_coeff = max(0.03, 0.05 * (1 - episode_idx / self.total_num_episodes))
+        # entropy_coeff = 0.1
         entropy = new_dist.entropy().mean()
 
-        loss = policy_loss + 0.5 * value_loss + self.kl_beta * kl - entropy_coeff * entropy
+        loss = policy_loss + 0.5 * value_loss + kl_beta * kl - entropy_coeff * entropy
 
         optimizer.zero_grad()
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0) # prevent explode
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)    # prevent explode
         optimizer.step()
+
+        wandb.log({
+            "train/kl_beta": kl_beta,
+            "train/entropy_coeff": entropy_coeff,
+            "train/policy_ratio": ratio.mean().item(),
+            "train/clip_fraction": (torch.abs(ratio - 1.0) > self.clip_eps).float().mean().item(),
+            "train/logprob_std": flat_log_probs.std().item(),
+        }, step=episode_idx)
 
         return policy_loss.item(), value_loss.item(), loss.item(), kl.item(), entropy.item()
 
 
-
-    # min_kl_beta防止为0，数值可调; max_kl_beta可选上限限制
     def update(self, current_episode, epochs=5, batch_size=32):
+        """
+        Main PPO update loop. Batches from memory and performs multiple epochs of mini-batch updates.
+        """
         if not self.memory:
             return
 
@@ -378,7 +422,7 @@ class PPOAgent:
         for item in self.memory:
             s, m, a, logp, ret, adv, old_logits = item
             if m.ndim == 4:
-                m = np.squeeze(m, axis=0)  # 防止 map 是 (1, C, H, W)
+                m = np.squeeze(m, axis=0)   # Remove singleton batch dim if needed
             batched_states.append(s)
             batched_maps.append(m)
             batched_actions.append(a)
@@ -387,7 +431,7 @@ class PPOAgent:
             batched_advantages.append(adv)
             batched_old_logits.append(old_logits)
 
-        # 拼接为 (B, ...)
+        # -> (B, ...)
         batched_states = np.stack(batched_states)
         batched_maps = np.stack(batched_maps)
         batched_actions = np.stack(batched_actions)
@@ -430,7 +474,7 @@ class PPOAgent:
                     clip_eps=self.clip_eps,
                 )
 
-                # KL 更新
+                # Adjust KL penalty to keep learning stable
                 if kl > self.kl_target * 1.5:
                     self.kl_beta = min(self.kl_beta * self.kl_update_rate, self.max_kl_beta)
                 elif kl < self.kl_target * 0.5:
